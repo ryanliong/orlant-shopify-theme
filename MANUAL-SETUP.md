@@ -36,6 +36,11 @@ Theme repo: <https://github.com/ryanliong/orlant-shopify-theme>
 - [ ] **Navigation menus** → Content › Menus. The header expects:
       Shop · Models · Compatibility · FAQ · Contact.
       Leave a placeholder item for the future store locator (brief §9.1).
+- [ ] **Accessories collection** for the cart upsell ("You may also need").
+      It currently points at `all-models`, so the cart offers other drying
+      racks — fine as a placeholder, wrong for launch. Create a collection of
+      spare poles, remotes and mounting plates, then repoint the
+      **Orlant: cart upsell** section at it in the theme editor.
 - [ ] **Delete the "Home page" (`frontpage`) collection** once the home page
       is built and its featured section points at `all-models`. It is a
       Shopify default and shows up as a meaningless tile on `/collections`.

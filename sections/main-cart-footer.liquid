@@ -32,7 +32,7 @@
             name="note"
             form="cart"
             id="Cart-note"
-            placeholder="{{ 'sections.cart.note' | t }}"
+            placeholder="{{ 'sections.cart.note_placeholder' | t }}"
           >{{ cart.note }}</textarea>
         </cart-note>
       {%- endif -%}
@@ -124,6 +124,13 @@
                   {{ content_for_additional_checkout_buttons }}
                 </div>
               {%- endif -%}
+
+              {%- comment -%}
+                Delivery reassurance and accepted payment methods, directly
+                under the checkout button — the point where a buyer committing
+                to a four-figure appliance wants to see them.
+              {%- endcomment -%}
+              {%- render 'orlant-cart-extras' -%}
           {%- endcase -%}
         {% endfor %}
 

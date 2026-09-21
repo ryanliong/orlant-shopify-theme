@@ -274,7 +274,6 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
@@ -289,7 +288,7 @@
       "remove_title": "Remove {{ title }}",
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
-      "note": "Order special instructions",
+      "note": "Installation notes (optional)",
       "checkout": "Check out",
       "empty": "Your cart is empty",
       "product_disclosure": "Product disclosure",
@@ -315,7 +314,8 @@
       "login": {
         "title": "Have an account?",
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in</a> to check out faster."
-      }
+      },
+      "note_placeholder": "Preferred installation date, unit type (HDB or condo), ceiling type, or anything else the installer should know."
     },
     "footer": {
       "payment": "Payment methods"

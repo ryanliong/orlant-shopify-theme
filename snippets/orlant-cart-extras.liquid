@@ -1,0 +1,54 @@
+{% comment %}
+  Delivery/installation reassurance and accepted-payment icons for the cart.
+
+  Rendered in both the cart drawer and the full cart page so the two never
+  drift apart — both read the same Settings > Orlant values.
+
+  Accepts:
+  - compact: {Boolean} Tighter spacing for the drawer.
+
+  Usage:
+  {% render 'orlant-cart-extras', compact: true %}
+{% endcomment %}
+
+{%- liquid
+  assign show_delivery = false
+  if settings.orlant_show_delivery_message and settings.orlant_delivery_message != blank
+    assign show_delivery = true
+  endif
+
+  comment
+    Mirror the payment snippet's own guard rather than trusting the toggle:
+    the icon row renders nothing when no provider is active on the store, and
+    without this the wrapper would still draw its top border around an empty
+    box. Stores have no enabled_payment_types until a gateway is set up.
+  endcomment
+  assign show_payments = false
+  if settings.orlant_show_native_payment_icons and shop.enabled_payment_types.size > 0
+    assign show_payments = true
+  endif
+  if settings.orlant_show_paynow and settings.orlant_paynow_icon != blank
+    assign show_payments = true
+  endif
+  if settings.orlant_show_atome and settings.orlant_atome_icon != blank
+    assign show_payments = true
+  endif
+  if settings.orlant_show_shopback and settings.orlant_shopback_icon != blank
+    assign show_payments = true
+  endif
+-%}
+
+{%- if show_delivery or show_payments -%}
+  <div class="orlant-cart-extras{% if compact %} orlant-cart-extras--compact{% endif %}">
+    {%- if show_delivery -%}
+      <p class="orlant-cart-extras__delivery">
+        <span class="orlant-cart-extras__icon">
+          {%- render 'orlant-icon', icon: 'truck' -%}
+        </span>
+        {{ settings.orlant_delivery_message }}
+      </p>
+    {%- endif -%}
+
+    {%- render 'orlant-payment-icons', alignment: 'start' -%}
+  </div>
+{%- endif -%}

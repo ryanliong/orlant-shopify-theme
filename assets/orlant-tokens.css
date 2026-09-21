@@ -311,3 +311,49 @@
   color: rgba(var(--color-foreground), 0.78);
   line-height: 1.7;
 }
+
+/* --- Cart ---------------------------------------------------------------- */
+
+.orlant-cart-extras {
+  display: grid;
+  gap: 1.2rem;
+  margin-top: var(--orlant-space-sm);
+  padding-top: var(--orlant-space-sm);
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.orlant-cart-extras--compact {
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  padding-top: 1.2rem;
+}
+
+.orlant-cart-extras__delivery {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.orlant-cart-extras__icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  color: var(--orlant-plum-500);
+}
+
+/* The installation note is the one field that changes what the installer
+   does on the day, so give it more presence than a collapsed afterthought. */
+.cart__note label {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.cart__note .text-area {
+  min-height: 9rem;
+}
+
+.orlant-upsell__heading {
+  margin: 0 0 var(--orlant-space-md);
+}

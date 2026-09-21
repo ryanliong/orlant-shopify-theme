@@ -502,7 +502,7 @@
                 id="CartDrawer-Note"
                 class="text-area text-area--resize-vertical field__input"
                 name="note"
-                placeholder="{{ 'sections.cart.note' | t }}"
+                placeholder="{{ 'sections.cart.note_placeholder' | t }}"
               >{{ cart.note }}</textarea>
             </cart-note>
           </details>
@@ -587,6 +587,12 @@
           >
             {{ 'sections.cart.checkout' | t }}
           </button>
+
+          {%- comment -%}
+            Same reassurance block as the cart page, compact spacing for the
+            drawer. Both read Settings > Orlant so they cannot drift apart.
+          {%- endcomment -%}
+          {%- render 'orlant-cart-extras', compact: true -%}
         </div>
       </div>
     </div>
