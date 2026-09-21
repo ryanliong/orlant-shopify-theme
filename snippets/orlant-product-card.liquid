@@ -1,0 +1,61 @@
+{% comment %}
+  Orlant additions to the product card.
+
+  Rendered from inside snippets/card-product.liquid rather than replacing it.
+  Dawn's card already handles hover-second-image, sale and sold-out badges,
+  compare-at pricing, swatches and quick-add across 600+ lines; forking that to
+  add two fields would mean maintaining a parallel copy and re-fixing every
+  upstream bug twice.
+
+  Accepts:
+  - card_product: {Object} Required.
+  - part: {String} Which piece to render:
+      "tagline" — one-line spec under the product title (orlant.card_tagline)
+      "badge"   — merchandising badge (orlant.badge), e.g. "New", "Best seller"
+  - section_id: {String} Required for "badge", to keep ids unique.
+
+  Both render nothing when their metafield is empty.
+
+  Usage:
+  {% render 'orlant-product-card', card_product: card_product, part: 'tagline' %}
+{% endcomment %}
+
+{%- case part -%}
+  {%- when 'tagline' -%}
+    {%- comment -%}
+      Rendered from both of Dawn's card__information blocks. Dawn emits two —
+      one inside .card__inner and one below — and picks between them in CSS
+      depending on card style and whether the product has media, exactly as it
+      does with the product title. Rendering into only one would drop the
+      tagline for some style/media combinations, so this mirrors Dawn and
+      accepts the same hidden duplicate Dawn already ships for the title.
+    {%- endcomment -%}
+    {%- assign tagline = card_product.metafields.orlant.card_tagline.value -%}
+    {%- if tagline != blank -%}
+      <p class="orlant-card__tagline">{{ tagline }}</p>
+    {%- endif -%}
+
+  {%- when 'badge' -%}
+    {%- assign badge = card_product.metafields.orlant.badge.value -%}
+    {%- comment -%}
+      Only shown when the product is in stock and not on sale — Dawn already
+      renders "Sold out" and "Sale" badges in this same corner, and stacking a
+      third label there turns the card into a sticker wall.
+    {%- endcomment -%}
+    {%- if badge != blank and card_product.available -%}
+      {%- comment -%}
+        Written as `unless compare_at > price` rather than `if compare_at <=
+        price`: compare_at_price is nil on anything not on sale, and nil <= n
+        is false in Liquid, so the positive form suppressed the badge on
+        exactly the products meant to show it. This is Dawn's own idiom.
+      {%- endcomment -%}
+      {%- unless card_product.compare_at_price > card_product.price -%}
+        <span
+          id="OrlantBadge-{{ section_id }}-{{ card_product.id }}"
+          class="badge orlant-card__badge"
+        >
+          {{- badge -}}
+        </span>
+      {%- endunless -%}
+    {%- endif -%}
+{%- endcase -%}

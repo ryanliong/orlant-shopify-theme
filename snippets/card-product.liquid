@@ -125,8 +125,10 @@
                   {{ card_product.title | escape }}
                 </a>
               </h3>
+              {%- render 'orlant-product-card', card_product: card_product, part: 'tagline' -%}
             </div>
             <div class="card__badge {{ settings.badge_position }}">
+              {%- render 'orlant-product-card', card_product: card_product, part: 'badge', section_id: section_id -%}
               {%- if card_product.available == false -%}
                 <span
                   id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
@@ -162,6 +164,7 @@
                 {{ card_product.title | escape }}
               </a>
             </h3>
+            {%- render 'orlant-product-card', card_product: card_product, part: 'tagline' -%}
             <div class="card-information">
               {%- if show_vendor -%}
                 <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
@@ -551,6 +554,7 @@
             {% endif %}
           {% endif %}
           <div class="card__badge {{ settings.badge_position }}">
+            {%- render 'orlant-product-card', card_product: card_product, part: 'badge', section_id: section_id -%}
             {%- if card_product.available == false -%}
               <span
                 id="Badge-{{ section_id }}-{{ card_product.id }}"

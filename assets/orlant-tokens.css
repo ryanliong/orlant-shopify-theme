@@ -275,3 +275,39 @@
     padding-bottom: 8rem;
   }
 }
+
+/* --- Product card -------------------------------------------------------- */
+
+.orlant-card__tagline {
+  margin: 0.4rem 0 0;
+  font-size: 1.3rem;
+  line-height: 1.45;
+  color: rgba(var(--color-foreground), 0.68);
+}
+
+/*
+  Champagne is the premium accent and is reserved for small highlights, so the
+  merchandising badge is the one place it acts as a fill. Ink text on champagne
+  is 7.72:1, comfortably past AA.
+*/
+.orlant-card__badge {
+  background-color: var(--orlant-champagne);
+  color: var(--orlant-ink);
+  border-color: var(--orlant-champagne);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Collection banner */
+.orlant-collection-banner {
+  display: grid;
+  gap: var(--orlant-space-sm);
+  max-width: 68rem;
+}
+
+.orlant-collection-banner__description {
+  color: rgba(var(--color-foreground), 0.78);
+  line-height: 1.7;
+}
