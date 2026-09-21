@@ -183,3 +183,95 @@
   object-fit: contain;
   border-radius: 0.3rem;
 }
+
+/* --- Product buy box ----------------------------------------------------- */
+
+.orlant-highlights {
+  margin: var(--orlant-space-sm) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.orlant-highlights__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
+}
+
+.orlant-highlights__icon {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  margin-top: 0.15rem;
+  color: var(--orlant-plum-500);
+}
+
+.orlant-reassurance {
+  margin-top: var(--orlant-space-md);
+  padding-top: var(--orlant-space-md);
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  display: grid;
+  gap: var(--orlant-space-sm);
+}
+
+.orlant-reassurance__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.orlant-reassurance__item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.orlant-reassurance__icon {
+  flex: 0 0 auto;
+  display: inline-flex;
+  color: var(--orlant-plum-500);
+}
+
+.orlant-icon {
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.orlant-reassurance__delivery {
+  margin: 0;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.orlant-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
+.orlant-whatsapp--full {
+  width: 100%;
+}
+
+.orlant-whatsapp__icon {
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 auto;
+}
+
+/* The sticky bar covers the foot of the page on mobile; keep the last section
+   clear of it so nothing is permanently hidden underneath. */
+@media screen and (max-width: 749px) {
+  body:has(.orlant-sticky-atc:not([hidden])) .shopify-section:last-of-type {
+    padding-bottom: 8rem;
+  }
+}

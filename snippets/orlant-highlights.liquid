@@ -1,0 +1,30 @@
+{% comment %}
+  Key highlights — three to five short bullets from orlant.highlights.
+
+  Renders nothing when the metafield is empty, so products that have not been
+  filled in yet simply omit the block rather than showing an empty list.
+
+  Accepts:
+  - product: {Object} Required.
+
+  Usage:
+  {% render 'orlant-highlights', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign highlights = product.metafields.orlant.highlights.value
+-%}
+
+{%- if highlights != blank and highlights.size > 0 -%}
+  <ul class="orlant-highlights list-unstyled" role="list">
+    {%- for item in highlights -%}
+      <li class="orlant-highlights__item">
+        <svg class="orlant-highlights__icon" viewBox="0 0 20 20" fill="none" aria-hidden="true" focusable="false">
+          <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.2" opacity="0.35"/>
+          <path d="m6 10.2 2.6 2.6L14 7.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>{{ item }}</span>
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}

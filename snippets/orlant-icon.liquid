@@ -1,0 +1,43 @@
+{% comment %}
+  Line icons used by the reassurance row and trust bar.
+
+  Simple 24x24 stroke icons drawn inline rather than loaded as a sprite —
+  there are only eight and inlining avoids a request and a flash of no icon.
+
+  Accepts:
+  - icon: {String} One of truck, tool, shield, lock, star, heart, chat, check.
+
+  Usage:
+  {% render 'orlant-icon', icon: 'truck' %}
+{% endcomment %}
+
+<svg
+  class="orlant-icon"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  {%- case icon -%}
+    {%- when 'truck' -%}
+      <path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/>
+    {%- when 'tool' -%}
+      <path d="M14.5 5.5a3.5 3.5 0 0 0 4.6 4.6l-8.4 8.4a2 2 0 0 1-2.8-2.8z"/><path d="m5 5 3 3"/>
+    {%- when 'shield' -%}
+      <path d="M12 3 5 6v5c0 4.2 2.9 8 7 9 4.1-1 7-4.8 7-9V6z"/><path d="m9 12 2 2 4-4"/>
+    {%- when 'lock' -%}
+      <rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>
+    {%- when 'star' -%}
+      <path d="m12 4 2.4 5 5.6.8-4 3.9 1 5.5-5-2.6-5 2.6 1-5.5-4-3.9 5.6-.8z"/>
+    {%- when 'heart' -%}
+      <path d="M12 20s-7-4.4-7-9a3.9 3.9 0 0 1 7-2.4A3.9 3.9 0 0 1 19 11c0 4.6-7 9-7 9z"/>
+    {%- when 'chat' -%}
+      <path d="M20 12a7 7 0 0 1-9.9 6.4L4 20l1.6-5.1A7 7 0 1 1 20 12z"/>
+    {%- else -%}
+      <path d="m5 12.5 4.2 4.2L19 7"/>
+  {%- endcase -%}
+</svg>

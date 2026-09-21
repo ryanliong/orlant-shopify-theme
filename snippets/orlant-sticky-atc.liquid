@@ -1,0 +1,46 @@
+{% comment %}
+  Sticky add-to-cart bar for mobile.
+
+  Appears once the real buy buttons scroll out of view. The button carries a
+  `form` attribute pointing at the main product form, so it submits the real
+  form — including the selected variant — rather than duplicating it. A second
+  copy of the form would fall out of sync with the variant picker.
+
+  Accepts:
+  - product: {Object} Required.
+  - product_form_id: {String} Required. Id of the main product form.
+
+  Usage:
+  {% render 'orlant-sticky-atc', product: product, product_form_id: product_form_id %}
+{% endcomment %}
+
+{%- liquid
+  assign current = product.selected_or_first_available_variant
+-%}
+
+<orlant-sticky-atc class="orlant-sticky-atc" hidden>
+  <div class="orlant-sticky-atc__inner">
+    <div class="orlant-sticky-atc__info">
+      <span class="orlant-sticky-atc__title">{{ product.title | escape }}</span>
+      <span class="orlant-sticky-atc__price" data-sticky-price>
+        {{- current.price | money -}}
+      </span>
+    </div>
+
+    <button
+      type="submit"
+      name="add"
+      form="{{ product_form_id }}"
+      class="button button--primary orlant-sticky-atc__button"
+      {% if current.available == false %}
+        disabled
+      {% endif %}
+    >
+      {%- if current.available -%}
+        {{ 'products.product.add_to_cart' | t }}
+      {%- else -%}
+        {{ 'products.product.sold_out' | t }}
+      {%- endif -%}
+    </button>
+  </div>
+</orlant-sticky-atc>

@@ -1,0 +1,155 @@
+/* Product information tabs — see sections/orlant-product-tabs.liquid */
+
+.orlant-tabs__title {
+  margin: 0 0 var(--orlant-space-md);
+}
+
+/*
+  Mobile: plain block flow, so source order gives trigger/panel/trigger/panel.
+  That is the accordion.
+*/
+.orlant-tabs {
+  display: block;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+.orlant-tabs__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--orlant-space-sm);
+  width: 100%;
+  padding: 1.8rem 0;
+  background: none;
+  border: 0;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  color: rgb(var(--color-foreground));
+  font-size: 1.6rem;
+  font-family: var(--font-body-family);
+  text-align: left;
+  cursor: pointer;
+}
+
+.orlant-tabs__chevron {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2rem;
+  transition: transform var(--orlant-duration) var(--orlant-ease);
+}
+
+.orlant-tabs__trigger--active .orlant-tabs__chevron {
+  transform: rotate(180deg);
+}
+
+.orlant-tabs__panel {
+  padding: 0 0 var(--orlant-space-md);
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+}
+
+/*
+  Desktop: flex row. Triggers take order 0 so they gather into a strip at the
+  top; panels take order 1 and fall below at full width. Only the selected
+  panel is visible, so the strip sits directly above its own content.
+*/
+@media screen and (min-width: 750px) {
+  .orlant-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    border-top: 0;
+  }
+
+  .orlant-tabs__trigger {
+    order: 0;
+    width: auto;
+    padding: 1.2rem 0;
+    margin-right: var(--orlant-space-lg);
+    border-bottom: 0.2rem solid transparent;
+    color: rgba(var(--color-foreground), 0.6);
+    transition: color var(--orlant-duration) var(--orlant-ease),
+      border-color var(--orlant-duration) var(--orlant-ease);
+  }
+
+  .orlant-tabs__trigger:hover {
+    color: rgb(var(--color-foreground));
+  }
+
+  .orlant-tabs__trigger--active {
+    color: rgb(var(--color-foreground));
+    border-bottom-color: var(--orlant-champagne);
+  }
+
+  .orlant-tabs__chevron {
+    display: none;
+  }
+
+  .orlant-tabs__panel {
+    order: 1;
+    width: 100%;
+    padding: var(--orlant-space-md) 0 0;
+    border-bottom: 0;
+    border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+    margin-top: -0.1rem;
+  }
+}
+
+/* Specification table */
+.orlant-specs {
+  width: 100%;
+  border-collapse: collapse;
+  max-width: 68rem;
+}
+
+.orlant-specs__row {
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.1);
+}
+
+.orlant-specs__row:last-child {
+  border-bottom: 0;
+}
+
+.orlant-specs__label,
+.orlant-specs__value {
+  padding: 1.2rem 0;
+  text-align: left;
+  font-size: 1.5rem;
+  vertical-align: top;
+}
+
+.orlant-specs__label {
+  width: 40%;
+  font-weight: 500;
+  color: rgba(var(--color-foreground), 0.7);
+  padding-right: var(--orlant-space-sm);
+}
+
+.orlant-specs__value {
+  font-weight: 400;
+}
+
+/* Product FAQ */
+.orlant-faq {
+  margin: 0;
+  max-width: 68rem;
+}
+
+.orlant-faq__item + .orlant-faq__item {
+  margin-top: var(--orlant-space-md);
+}
+
+.orlant-faq__q {
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+
+.orlant-faq__a {
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.8);
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orlant-tabs__chevron,
+  .orlant-tabs__trigger {
+    transition: none;
+  }
+}

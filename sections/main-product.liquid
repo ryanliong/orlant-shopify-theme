@@ -97,6 +97,29 @@
                   >
                     {{- block.settings.text -}}
                   </p>
+                {%- when 'orlant_series' -%}
+                  {%- assign series = product.metafields.orlant.series.value -%}
+                  {%- if series != blank -%}
+                    <p class="orlant-eyebrow" {{ block.shopify_attributes }}>{{ series }}</p>
+                  {%- endif -%}
+                {%- when 'orlant_highlights' -%}
+                  <div {{ block.shopify_attributes }}>
+                    {%- render 'orlant-highlights', product: product -%}
+                  </div>
+                {%- when 'orlant_reassurance' -%}
+                  <div {{ block.shopify_attributes }}>
+                    {%- render 'orlant-reassurance',
+                      show_payment_icons: block.settings.show_payment_icons
+                    -%}
+                  </div>
+                {%- when 'orlant_whatsapp' -%}
+                  <div {{ block.shopify_attributes }}>
+                    {%- render 'orlant-whatsapp-button',
+                      product: product,
+                      style: block.settings.button_style,
+                      full_width: true
+                    -%}
+                  </div>
                 {%- when 'title' -%}
                   <div class="product__title" {{ block.shopify_attributes }}>
                     <h1>{{ product.title | escape }}</h1>
@@ -751,6 +774,17 @@
       </script>
     </div>
   </product-component>
+
+  {%- comment -%}
+    Inside <product-info> on purpose: Dawn re-renders this whole element
+    through the Section Rendering API on every variant change, so the bar's
+    price and sold-out state stay correct with no JS of its own.
+  {%- endcomment -%}
+  {%- if section.settings.orlant_enable_sticky_atc -%}
+    {{ 'orlant-sticky-atc.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'orlant-sticky-atc.js' | asset_url }}" defer="defer"></script>
+    {%- render 'orlant-sticky-atc', product: product, product_form_id: product_form_id -%}
+  {%- endif -%}
 </product-info>
 
 {% schema %}
@@ -761,6 +795,66 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "orlant_series",
+      "name": "Orlant: series label",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shows the product's orlant.series metafield above the title. Hidden when that metafield is empty."
+        }
+      ]
+    },
+    {
+      "type": "orlant_highlights",
+      "name": "Orlant: key highlights",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shows the product's orlant.highlights metafield as a bulleted list. Hidden when that metafield is empty."
+        }
+      ]
+    },
+    {
+      "type": "orlant_reassurance",
+      "name": "Orlant: reassurance row",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Delivery, installation, warranty and payment items. Edit the text in Theme settings > Orlant so every product stays consistent."
+        },
+        {
+          "type": "checkbox",
+          "id": "show_payment_icons",
+          "default": true,
+          "label": "Show accepted payment icons"
+        }
+      ]
+    },
+    {
+      "type": "orlant_whatsapp",
+      "name": "Orlant: WhatsApp enquiry",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Hidden until a WhatsApp number is set in Theme settings > Orlant. The product name and link are added to the message automatically."
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "options": [
+            { "value": "secondary", "label": "Outlined" },
+            { "value": "primary", "label": "Solid" }
+          ],
+          "default": "secondary",
+          "label": "Button style"
+        }
+      ]
     },
     {
       "type": "text",
@@ -2152,6 +2246,13 @@
       "id": "enable_sticky_info",
       "default": true,
       "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "orlant_enable_sticky_atc",
+      "default": true,
+      "label": "Sticky add to cart on mobile",
+      "info": "Shows a fixed add-to-cart bar once the buy buttons scroll out of view. Mobile only."
     },
     {
       "type": "color_scheme",

@@ -1,0 +1,75 @@
+/* Sticky mobile add-to-cart — see snippets/orlant-sticky-atc.liquid */
+
+.orlant-sticky-atc {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4;
+  display: block;
+  background: rgb(var(--color-background));
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  box-shadow: 0 -0.4rem 1.6rem rgba(var(--orlant-plum-900-rgb, 42, 23, 64), 0.08);
+  /* Clear the iOS home indicator. */
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  animation: orlant-sticky-in var(--orlant-duration) var(--orlant-ease);
+}
+
+.orlant-sticky-atc[hidden] {
+  display: none;
+}
+
+.orlant-sticky-atc__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--orlant-space-sm);
+  padding: 1rem 1.6rem;
+}
+
+.orlant-sticky-atc__info {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.orlant-sticky-atc__title {
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.orlant-sticky-atc__price {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.orlant-sticky-atc__button {
+  flex: 0 0 auto;
+  min-width: 14rem;
+  margin: 0;
+}
+
+@keyframes orlant-sticky-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* Desktop keeps the real buy box in view; the bar is mobile-only per brief 4.3. */
+@media screen and (min-width: 750px) {
+  .orlant-sticky-atc {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orlant-sticky-atc {
+    animation: none;
+  }
+}

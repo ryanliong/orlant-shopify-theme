@@ -1,0 +1,66 @@
+{% comment %}
+  Reassurance row — delivery, installation, warranty, secure payment.
+
+  Items come from Settings > Orlant so they stay consistent across every
+  product. An item with blank text is skipped.
+
+  Settings are read inside the loop rather than collected into arrays first:
+  Liquid's split drops empty segments, so a blank item would shift every
+  following icon onto the wrong label.
+
+  Accepts:
+  - show_payment_icons: {Boolean} Append the accepted-payment row.
+
+  Usage:
+  {% render 'orlant-reassurance', show_payment_icons: true %}
+{% endcomment %}
+
+{%- liquid
+  assign item_count = 0
+  for i in (1..4)
+    assign text_key = 'orlant_reassurance_' | append: i | append: '_text'
+    if settings[text_key] != blank
+      assign item_count = item_count | plus: 1
+    endif
+  endfor
+-%}
+
+{%- liquid
+  assign has_delivery = false
+  if settings.orlant_show_delivery_message and settings.orlant_delivery_message != blank
+    assign has_delivery = true
+  endif
+-%}
+
+{%- if item_count > 0 or has_delivery or show_payment_icons -%}
+  <div class="orlant-reassurance">
+    {%- if item_count > 0 -%}
+      <ul class="orlant-reassurance__list list-unstyled" role="list">
+        {%- for i in (1..4) -%}
+          {%- liquid
+            assign text_key = 'orlant_reassurance_' | append: i | append: '_text'
+            assign icon_key = 'orlant_reassurance_' | append: i | append: '_icon'
+            assign item_text = settings[text_key]
+            assign item_icon = settings[icon_key] | default: 'check'
+          -%}
+          {%- if item_text != blank -%}
+            <li class="orlant-reassurance__item">
+              <span class="orlant-reassurance__icon">
+                {%- render 'orlant-icon', icon: item_icon -%}
+              </span>
+              <span>{{ item_text }}</span>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if has_delivery -%}
+      <p class="orlant-reassurance__delivery">{{ settings.orlant_delivery_message }}</p>
+    {%- endif -%}
+
+    {%- if show_payment_icons -%}
+      {%- render 'orlant-payment-icons', alignment: 'start' -%}
+    {%- endif -%}
+  </div>
+{%- endif -%}
