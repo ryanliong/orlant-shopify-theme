@@ -1466,5 +1466,291 @@
         "label": "t:settings_schema.customer_accounts.settings.customer_account_menu.label"
       }
     ]
+  },
+  {
+    "name": "Orlant",
+    "settings": [
+      {
+        "type": "header",
+        "content": "WhatsApp enquiry"
+      },
+      {
+        "type": "paragraph",
+        "content": "Powers the WhatsApp button on product pages and the final CTA banner. Leave the number blank to hide those buttons everywhere."
+      },
+      {
+        "type": "text",
+        "id": "orlant_whatsapp_number",
+        "label": "WhatsApp number",
+        "info": "Full international format, digits only — no +, spaces or dashes. Singapore example: 6591234567",
+        "default": "6591234567"
+      },
+      {
+        "type": "text",
+        "id": "orlant_whatsapp_message",
+        "label": "Prefilled message",
+        "info": "Sent as the first message. On a product page the product name and URL are appended automatically.",
+        "default": "Hi Orlant, I would like to ask about"
+      },
+      {
+        "type": "header",
+        "content": "Delivery & installation message"
+      },
+      {
+        "type": "paragraph",
+        "content": "Shown in the cart drawer, on the cart page and under the product buy box."
+      },
+      {
+        "type": "text",
+        "id": "orlant_delivery_message",
+        "label": "Message",
+        "default": "Free delivery and on-site installation across Singapore."
+      },
+      {
+        "type": "checkbox",
+        "id": "orlant_show_delivery_message",
+        "label": "Show delivery message",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Reassurance row"
+      },
+      {
+        "type": "paragraph",
+        "content": "Up to four items shown under the product buy box. Clear the text to hide an item."
+      },
+      {
+        "type": "text",
+        "id": "orlant_reassurance_1_text",
+        "label": "Item 1 text",
+        "default": "Free delivery"
+      },
+      {
+        "type": "select",
+        "id": "orlant_reassurance_1_icon",
+        "label": "Item 1 icon",
+        "options": [
+          {
+            "value": "truck",
+            "label": "Truck"
+          },
+          {
+            "value": "tool",
+            "label": "Tool"
+          },
+          {
+            "value": "shield",
+            "label": "Shield"
+          },
+          {
+            "value": "lock",
+            "label": "Lock"
+          },
+          {
+            "value": "star",
+            "label": "Star"
+          },
+          {
+            "value": "heart",
+            "label": "Heart"
+          },
+          {
+            "value": "chat",
+            "label": "Chat"
+          },
+          {
+            "value": "check",
+            "label": "Check"
+          }
+        ],
+        "default": "truck"
+      },
+      {
+        "type": "text",
+        "id": "orlant_reassurance_2_text",
+        "label": "Item 2 text",
+        "default": "On-site installation"
+      },
+      {
+        "type": "select",
+        "id": "orlant_reassurance_2_icon",
+        "label": "Item 2 icon",
+        "options": [
+          {
+            "value": "truck",
+            "label": "Truck"
+          },
+          {
+            "value": "tool",
+            "label": "Tool"
+          },
+          {
+            "value": "shield",
+            "label": "Shield"
+          },
+          {
+            "value": "lock",
+            "label": "Lock"
+          },
+          {
+            "value": "star",
+            "label": "Star"
+          },
+          {
+            "value": "heart",
+            "label": "Heart"
+          },
+          {
+            "value": "chat",
+            "label": "Chat"
+          },
+          {
+            "value": "check",
+            "label": "Check"
+          }
+        ],
+        "default": "tool"
+      },
+      {
+        "type": "text",
+        "id": "orlant_reassurance_3_text",
+        "label": "Item 3 text",
+        "default": "2-year warranty"
+      },
+      {
+        "type": "select",
+        "id": "orlant_reassurance_3_icon",
+        "label": "Item 3 icon",
+        "options": [
+          {
+            "value": "truck",
+            "label": "Truck"
+          },
+          {
+            "value": "tool",
+            "label": "Tool"
+          },
+          {
+            "value": "shield",
+            "label": "Shield"
+          },
+          {
+            "value": "lock",
+            "label": "Lock"
+          },
+          {
+            "value": "star",
+            "label": "Star"
+          },
+          {
+            "value": "heart",
+            "label": "Heart"
+          },
+          {
+            "value": "chat",
+            "label": "Chat"
+          },
+          {
+            "value": "check",
+            "label": "Check"
+          }
+        ],
+        "default": "shield"
+      },
+      {
+        "type": "text",
+        "id": "orlant_reassurance_4_text",
+        "label": "Item 4 text",
+        "default": "Secure payment"
+      },
+      {
+        "type": "select",
+        "id": "orlant_reassurance_4_icon",
+        "label": "Item 4 icon",
+        "options": [
+          {
+            "value": "truck",
+            "label": "Truck"
+          },
+          {
+            "value": "tool",
+            "label": "Tool"
+          },
+          {
+            "value": "shield",
+            "label": "Shield"
+          },
+          {
+            "value": "lock",
+            "label": "Lock"
+          },
+          {
+            "value": "star",
+            "label": "Star"
+          },
+          {
+            "value": "heart",
+            "label": "Heart"
+          },
+          {
+            "value": "chat",
+            "label": "Chat"
+          },
+          {
+            "value": "check",
+            "label": "Check"
+          }
+        ],
+        "default": "lock"
+      },
+      {
+        "type": "header",
+        "content": "Payment icons"
+      },
+      {
+        "type": "paragraph",
+        "content": "Shopify draws icons for methods enabled in Settings > Payments automatically. Use these to add methods Shopify cannot draw — PayNow via HitPay, and Atome or ShopBack later. Upload an SVG or transparent PNG about 80x50px."
+      },
+      {
+        "type": "checkbox",
+        "id": "orlant_show_native_payment_icons",
+        "label": "Show Shopify payment icons",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "orlant_show_paynow",
+        "label": "Show PayNow icon",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "orlant_paynow_icon",
+        "label": "PayNow icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "orlant_show_atome",
+        "label": "Show Atome icon",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "orlant_atome_icon",
+        "label": "Atome icon"
+      },
+      {
+        "type": "checkbox",
+        "id": "orlant_show_shopback",
+        "label": "Show ShopBack icon",
+        "default": false
+      },
+      {
+        "type": "image_picker",
+        "id": "orlant_shopback_icon",
+        "label": "ShopBack icon"
+      }
+    ]
   }
 ]

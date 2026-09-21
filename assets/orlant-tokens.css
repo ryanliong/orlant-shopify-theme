@@ -1,0 +1,134 @@
+/*
+  Orlant design tokens
+  --------------------
+  Brand palette, focus treatment and motion defaults.
+  Loaded after base.css so these win over Dawn's defaults.
+
+  Colour *schemes* live in config/settings_data.json (editable by the client
+  in the theme editor). The raw brand values below are the source of truth for
+  accents that are not part of a Dawn scheme — champagne rules, badges, icons.
+*/
+
+:root {
+  /* Brand palette */
+  --orlant-plum-900: #2a1740;
+  --orlant-plum-700: #4b2a73;
+  --orlant-plum-500: #7a52a8;
+  --orlant-lavender-100: #f3eef9;
+  --orlant-champagne: #c9a86a;
+  --orlant-ink: #1c1822;
+  --orlant-white: #ffffff;
+
+  /* Focus ring. plum-500 clears 3:1 on white (5.83) and lavender (5.11). */
+  --orlant-focus: var(--orlant-plum-500);
+
+  /* Spacing scale */
+  --orlant-space-xs: 0.8rem;
+  --orlant-space-sm: 1.6rem;
+  --orlant-space-md: 2.4rem;
+  --orlant-space-lg: 4rem;
+  --orlant-space-xl: 6.4rem;
+  --orlant-space-2xl: 9.6rem;
+
+  /* Radii — cards 8-12px, buttons 4-6px per brief §3 */
+  --orlant-radius-card: 1.2rem;
+  --orlant-radius-media: 0.8rem;
+  --orlant-radius-button: 0.5rem;
+
+  /* Motion */
+  --orlant-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --orlant-duration: 180ms;
+}
+
+/*
+  Dark schemes: plum-500 only reaches 2.78:1 against plum-900, which fails the
+  3:1 non-text minimum. Champagne reaches 7.18:1, so dark schemes ring in
+  champagne instead. Scheme ids are the three dark schemes shipped in
+  settings_data.json — see README if the client adds more.
+*/
+.color-scheme-3,
+.color-scheme-4,
+.color-scheme-5 {
+  --orlant-focus: var(--orlant-champagne);
+}
+
+/* Focus: override Dawn's low-contrast 50%-alpha foreground ring. */
+:root {
+  --focused-base-outline: 0.2rem solid var(--orlant-focus);
+  --focused-base-outline-offset: 0.3rem;
+  --focused-base-box-shadow: 0 0 0 0.3rem rgb(var(--color-background)), 0 0 0 0.5rem var(--orlant-focus);
+}
+
+*:focus-visible,
+.focused {
+  outline: var(--focused-base-outline);
+  outline-offset: var(--focused-base-outline-offset);
+  box-shadow: var(--focused-base-box-shadow);
+}
+
+.focus-inset:focus-visible,
+.focused.focus-inset {
+  outline: 0.2rem solid var(--orlant-focus);
+  outline-offset: -0.2rem;
+  box-shadow: none;
+}
+
+.focus-offset:focus-visible,
+.focus-offset.focused {
+  outline: 0.2rem solid var(--orlant-focus);
+  outline-offset: 1rem;
+}
+
+/* Buttons: gentle hover lift, no bounce. */
+.button,
+.shopify-challenge__button,
+.customer button {
+  transition: background-color var(--orlant-duration) var(--orlant-ease),
+    color var(--orlant-duration) var(--orlant-ease),
+    box-shadow var(--orlant-duration) var(--orlant-ease),
+    transform var(--orlant-duration) var(--orlant-ease);
+}
+
+.button:not([disabled]):hover {
+  transform: translateY(-0.1rem);
+}
+
+/* Champagne hairline — the premium accent. Never a fill, never body text. */
+.orlant-rule {
+  border: 0;
+  border-top: 0.1rem solid var(--orlant-champagne);
+  width: 6rem;
+  margin: 0 0 var(--orlant-space-sm);
+}
+
+.orlant-rule--center {
+  margin-inline: auto;
+}
+
+/* Eyebrow / series label */
+.orlant-eyebrow {
+  font-size: 1.2rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(var(--color-foreground), 0.7);
+  margin: 0 0 var(--orlant-space-xs);
+}
+
+/* Media corners */
+.orlant-media {
+  border-radius: var(--orlant-radius-media);
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button:not([disabled]):hover {
+    transform: none;
+  }
+
+  .button,
+  .shopify-challenge__button,
+  .customer button {
+    transition: none;
+  }
+}
