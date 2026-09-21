@@ -10,3 +10,11 @@ Thumbs.db
 .shopify
 node_modules
 *.zip
+# Never commit Admin API credentials. The token lives in ~/.orlant-admin-token,
+# outside the repo; these are backstops in case one is ever copied in.
+*.token
+*-token
+.orlant-admin-token
+.env
+.env.*
+.shopify/
