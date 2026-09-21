@@ -1,0 +1,87 @@
+{% comment %}
+  Renders the accepted-payment icon row.
+
+  Shopify draws icons for methods enabled in Settings > Payments via
+  shop.enabled_payment_types. PayNow (through HitPay), Atome and ShopBack are
+  not in that list, so they are uploaded as images in theme settings and
+  appended here.
+
+  Used by the footer, the cart drawer, the cart page and the product buy box,
+  so all four stay in sync with one set of settings.
+
+  Accepts:
+  - alignment: {String} "start" (default), "center" or "end".
+  - heading: {String} Optional visible label. Falls back to a visually hidden one.
+
+  Usage:
+  {% render 'orlant-payment-icons', alignment: 'center' %}
+{% endcomment %}
+
+{%- liquid
+  assign alignment = alignment | default: 'start'
+
+  assign manual_icons = ''
+  if settings.orlant_show_paynow and settings.orlant_paynow_icon != blank
+    assign manual_icons = manual_icons | append: 'paynow,'
+  endif
+  if settings.orlant_show_atome and settings.orlant_atome_icon != blank
+    assign manual_icons = manual_icons | append: 'atome,'
+  endif
+  if settings.orlant_show_shopback and settings.orlant_shopback_icon != blank
+    assign manual_icons = manual_icons | append: 'shopback,'
+  endif
+  assign manual_icons = manual_icons | split: ','
+
+  assign show_native = false
+  if settings.orlant_show_native_payment_icons and shop.enabled_payment_types.size > 0
+    assign show_native = true
+  endif
+-%}
+
+{%- if show_native or manual_icons.size > 0 -%}
+  <div class="orlant-payment orlant-payment--{{ alignment }}">
+    {%- if heading != blank -%}
+      <span class="orlant-payment__heading">{{ heading }}</span>
+    {%- else -%}
+      <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
+    {%- endif -%}
+
+    <ul class="orlant-payment__list list-unstyled" role="list">
+      {%- if show_native -%}
+        {%- for type in shop.enabled_payment_types -%}
+          <li class="orlant-payment__item">
+            {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+
+      {%- for icon in manual_icons -%}
+        {%- liquid
+          case icon
+            when 'paynow'
+              assign icon_image = settings.orlant_paynow_icon
+              assign icon_label = 'PayNow'
+            when 'atome'
+              assign icon_image = settings.orlant_atome_icon
+              assign icon_label = 'Atome'
+            when 'shopback'
+              assign icon_image = settings.orlant_shopback_icon
+              assign icon_label = 'ShopBack'
+          endcase
+        -%}
+        <li class="orlant-payment__item">
+          {{
+            icon_image
+            | image_url: height: 50
+            | image_tag:
+              loading: 'lazy',
+              width: icon_image.width,
+              height: icon_image.height,
+              class: 'orlant-payment__image',
+              alt: icon_label
+          }}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}

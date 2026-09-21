@@ -132,3 +132,54 @@
     transition: none;
   }
 }
+
+/* Payment icon row — see snippets/orlant-payment-icons.liquid */
+.orlant-payment {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--orlant-space-xs);
+}
+
+.orlant-payment--center {
+  justify-content: center;
+}
+
+.orlant-payment--end {
+  justify-content: flex-end;
+}
+
+.orlant-payment__heading {
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.orlant-payment__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.orlant-payment__item {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+}
+
+.orlant-payment__item svg {
+  width: auto;
+  height: 100%;
+}
+
+/* Uploaded icons vary in aspect ratio; cap height and let width follow. */
+.orlant-payment__image {
+  width: auto;
+  height: 2.5rem;
+  max-width: 6rem;
+  object-fit: contain;
+  border-radius: 0.3rem;
+}
