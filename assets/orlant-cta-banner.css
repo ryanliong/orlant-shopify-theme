@@ -1,0 +1,11 @@
+/* Final CTA banner — see sections/orlant-cta-banner.liquid */
+.orlant-cta__inner { max-width: 66rem; margin-inline: auto; text-align: center; }
+.orlant-cta__heading { margin: 0 0 var(--orlant-space-sm); font-size: clamp(2.6rem, 4vw, 4.2rem); line-height: 1.15; }
+.orlant-cta__body { margin: 0 0 var(--orlant-space-md); color: rgba(var(--color-foreground), 0.85); line-height: 1.7; }
+.orlant-cta__body > p:last-child { margin-bottom: 0; }
+.orlant-cta__buttons { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
+.orlant-cta__buttons .button { margin: 0; }
+
+@media screen and (max-width: 749px) {
+  .orlant-cta__buttons .button { flex: 1 1 100%; }
+}

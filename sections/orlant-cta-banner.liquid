@@ -1,0 +1,60 @@
+{%- comment -%}
+  Final CTA banner — dark plum, champagne rule, two buttons (brief 4.1.11).
+  The second button is the WhatsApp link, which hides itself when no number is
+  configured, so the layout falls back to a single centred CTA.
+{%- endcomment -%}
+
+{{ 'orlant-cta-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="orlant-cta page-width section-{{ section.id }}-padding">
+    <div class="orlant-cta__inner">
+      <hr class="orlant-rule orlant-rule--center">
+
+      {%- if section.settings.heading != blank -%}
+        <h2 class="orlant-cta__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="orlant-cta__body rte">{{ section.settings.body }}</div>
+      {%- endif -%}
+
+      <div class="orlant-cta__buttons">
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link | default: '#' }}" class="button button--primary">
+            {{ section.settings.button_label }}
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.show_whatsapp -%}
+          {%- render 'orlant-whatsapp-button', style: 'secondary' -%}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Orlant: CTA banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Ready to reclaim your service yard?" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Free delivery and on-site installation across Singapore, with a two-year warranty on every model.</p>" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop now" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    {
+      "type": "checkbox",
+      "id": "show_whatsapp",
+      "default": true,
+      "label": "Show WhatsApp button",
+      "info": "Hidden automatically until a number is set in Theme settings > Orlant."
+    },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-3", "label": "Colour scheme" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 64 }
+  ],
+  "presets": [{ "name": "Orlant: CTA banner" }]
+}
+{% endschema %}

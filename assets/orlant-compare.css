@@ -1,0 +1,125 @@
+/* Model comparison — see sections/orlant-compare.liquid */
+
+.orlant-compare__header {
+  margin-bottom: var(--orlant-space-md);
+  max-width: 60rem;
+}
+
+.orlant-compare__heading {
+  margin: 0 0 0.8rem;
+}
+
+.orlant-compare__subheading {
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+/* Wide tables scroll inside their own container; the page never scrolls
+   sideways. tabindex makes the scroll region keyboard-reachable. */
+.orlant-compare__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.orlant-compare__scroll:focus-visible {
+  outline: 0.2rem solid var(--orlant-focus);
+  outline-offset: 0.4rem;
+}
+
+.orlant-compare__table {
+  width: 100%;
+  min-width: 64rem;
+  border-collapse: collapse;
+  text-align: left;
+  background: rgb(var(--color-background));
+}
+
+.orlant-compare__corner {
+  width: 26%;
+  background: transparent;
+}
+
+.orlant-compare__model {
+  padding: var(--orlant-space-sm) 1.2rem;
+  vertical-align: bottom;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.14);
+  font-weight: 400;
+}
+
+.orlant-compare__model--current {
+  background: rgba(var(--color-foreground), 0.04);
+  box-shadow: inset 0 0.3rem 0 0 var(--orlant-champagne);
+}
+
+.orlant-compare__current-flag {
+  display: block;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orlant-plum-500);
+  margin-bottom: 0.4rem;
+}
+
+.orlant-compare__model-link {
+  display: block;
+  font-family: var(--font-heading-family);
+  font-size: 1.8rem;
+  line-height: 1.25;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+}
+
+.orlant-compare__model-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.orlant-compare__series {
+  display: block;
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.6);
+  margin-top: 0.2rem;
+}
+
+.orlant-compare__price {
+  display: block;
+  margin-top: 0.6rem;
+  font-weight: 600;
+}
+
+.orlant-compare__label {
+  padding: 1.4rem 1.2rem 1.4rem 0;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.75);
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.1);
+}
+
+.orlant-compare__cell {
+  padding: 1.4rem 1.2rem;
+  font-size: 1.5rem;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.1);
+}
+
+.orlant-compare__cell--current {
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.orlant-compare__table tbody tr:last-child .orlant-compare__label,
+.orlant-compare__table tbody tr:last-child .orlant-compare__cell {
+  border-bottom: 0;
+}
+
+.orlant-compare__yes {
+  display: inline-flex;
+  color: var(--orlant-plum-700);
+}
+
+.orlant-compare__yes .orlant-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.orlant-compare__no {
+  color: rgba(var(--color-foreground), 0.35);
+}

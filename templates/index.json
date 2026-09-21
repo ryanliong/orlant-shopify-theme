@@ -1,75 +1,322 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero": {
+      "type": "orlant-hero",
+      "settings": {
+        "eyebrow": "Smart drying, made for Singapore homes",
+        "heading": "Dry a full load overnight, whatever the weather",
+        "subheading": "<p>Ceiling-mounted smart drying racks with heating, sterilisation and app control. Installed by our own technicians across Singapore.</p>",
+        "text_position": "left",
+        "button_1_label": "Shop models",
+        "button_1_link": "/collections/all-models",
+        "button_2_label": "Find your fit",
+        "button_2_link": "/pages/compatibility",
+        "height": "large",
+        "overlay_header": true,
+        "overlay_opacity": 40,
+        "color_scheme": "scheme-3"
+      }
+    },
+    "trust_bar": {
+      "type": "orlant-trust-bar",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 32,
+        "padding_bottom": 32
+      },
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "item_0": {
+          "type": "item",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "icon": "truck",
+            "text": "Local stock, fast delivery",
+            "subtext": "Most orders installed within 5 working days"
           }
         },
-        "button": {
-          "type": "buttons",
+        "item_1": {
+          "type": "item",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "icon": "tool",
+            "text": "On-site installation",
+            "subtext": "Fitted and tested by our own technicians"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "text": "2-year warranty",
+            "subtext": "Motor, board, heating and lift mechanism"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "icon": "chat",
+            "text": "Singapore support",
+            "subtext": "Talk to a person, not a queue"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
-      ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+        "item_0",
+        "item_1",
+        "item_2",
+        "item_3"
+      ]
     },
-    "featured_collection": {
+    "featured_models": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
+        "title": "Featured models",
         "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
+        "collection": "all-models",
+        "products_to_show": 4,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
+        "columns_mobile": "2",
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
+        "image_ratio": "square",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "color_scheme": "scheme-1",
+        "padding_top": 52,
+        "padding_bottom": 52
+      }
+    },
+    "why_smart": {
+      "type": "orlant-feature-split",
+      "settings": {
+        "eyebrow": "Why smart drying",
+        "heading": "Built for humid weather and small service yards",
+        "body": "<p>Singapore washing takes days to dry in a closed yard. Heated airflow and UV-C sterilisation finish a full load overnight, then the rack lifts back to the ceiling and gives you the space back.</p>",
+        "media_position": "left",
+        "button_label": "See the range",
+        "button_link": "/collections/all-models",
+        "color_scheme": "scheme-1",
+        "padding_top": 52,
+        "padding_bottom": 52
+      },
+      "blocks": {
+        "benefit_0": {
+          "type": "benefit",
+          "settings": {
+            "icon": "check",
+            "heading": "Dries through the night",
+            "text": "Heated airflow works when the weather will not."
+          }
+        },
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "heading": "Sterilises bedding",
+            "text": "A UV-C cycle for towels, bedding and baby clothes."
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "tool",
+            "heading": "Gives the yard back",
+            "text": "Lifts flush to the ceiling when you are done."
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "icon": "chat",
+            "heading": "App and voice control",
+            "text": "Start a cycle from the sofa or on the way home."
+          }
+        }
+      },
+      "block_order": [
+        "benefit_0",
+        "benefit_1",
+        "benefit_2",
+        "benefit_3"
+      ]
+    },
+    "compare": {
+      "type": "orlant-compare",
+      "settings": {
+        "heading": "Compare the range",
+        "subheading": "Four models, one installation standard.",
+        "color_scheme": "scheme-2",
+        "padding_top": 52,
+        "padding_bottom": 52
+      },
+      "blocks": {
+        "model_0": {
+          "type": "model",
+          "settings": {
+            "product": "orlant-e5-smart-drying-rack"
+          }
+        },
+        "model_1": {
+          "type": "model",
+          "settings": {
+            "product": "orlant-d3-smart-drying-rack"
+          }
+        },
+        "model_2": {
+          "type": "model",
+          "settings": {
+            "product": "orlant-m2-smart-drying-rack"
+          }
+        },
+        "model_3": {
+          "type": "model",
+          "settings": {
+            "product": "orlant-x1-smart-drying-rack"
+          }
+        }
+      },
+      "block_order": [
+        "model_0",
+        "model_1",
+        "model_2",
+        "model_3"
+      ]
+    },
+    "video": {
+      "type": "video",
+      "settings": {
+        "heading": "See it in a real flat",
+        "heading_size": "h2",
+        "description": "A two-minute walkthrough of installation and a full drying cycle.",
+        "cover_image": "",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "full_width": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "enable_video_looping": false
+      }
+    },
+    "testimonials": {
+      "type": "orlant-testimonials",
+      "settings": {
+        "heading": "What Singapore homes say",
+        "color_scheme": "scheme-1",
+        "padding_top": 52,
+        "padding_bottom": 52
+      },
+      "blocks": {
+        "quote_0": {
+          "type": "quote",
+          "settings": {
+            "quote": "Installed in under an hour and the yard finally feels usable again. The app means I can start it on the way home.",
+            "name": "Wei Lin",
+            "home_type": "4-room HDB, Punggol",
+            "rating": 5
+          }
+        },
+        "quote_1": {
+          "type": "quote",
+          "settings": {
+            "quote": "We dry two loads a day with a toddler in the house. The sterilise cycle is the reason we bought it.",
+            "name": "Priya S.",
+            "home_type": "5-room HDB, Tampines",
+            "rating": 5
+          }
+        },
+        "quote_2": {
+          "type": "quote",
+          "settings": {
+            "quote": "Condo service yard is tiny. It lifts out of the way completely, which nothing else we looked at did.",
+            "name": "Marcus Tan",
+            "home_type": "Condo, Bukit Timah",
+            "rating": 4
+          }
+        }
+      },
+      "block_order": [
+        "quote_0",
+        "quote_1",
+        "quote_2"
+      ]
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "settings": {
+        "caption": "FAQ",
+        "heading": "Common questions",
+        "heading_size": "h2",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": true,
+        "padding_top": 52,
+        "padding_bottom": 52
+      },
+      "blocks": {
+        "faq_0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will it work with a false ceiling?",
+            "row_content": "<p>Yes. False ceilings need a mounting plate anchored to the structural slab above. Our installer checks this on site before drilling.</p>",
+            "icon": "question_mark"
+          }
+        },
+        "faq_1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do I need HDB permission?",
+            "row_content": "<p>No permit is required for a ceiling-mounted drying rack in an HDB flat.</p>",
+            "icon": "question_mark"
+          }
+        },
+        "faq_2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How long does installation take?",
+            "row_content": "<p>Most installations take 60 to 90 minutes, including testing every function with you.</p>",
+            "icon": "question_mark"
+          }
+        },
+        "faq_3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What happens if something fails?",
+            "row_content": "<p>Two years of on-site warranty in Singapore, covering the motor, control board, heating element and lift mechanism.</p>",
+            "icon": "question_mark"
+          }
+        }
+      },
+      "block_order": [
+        "faq_0",
+        "faq_1",
+        "faq_2",
+        "faq_3"
+      ]
+    },
+    "final_cta": {
+      "type": "orlant-cta-banner",
+      "settings": {
+        "heading": "Ready to reclaim your service yard?",
+        "body": "<p>Free delivery and on-site installation across Singapore, with a two-year warranty on every model.</p>",
+        "button_label": "Shop now",
+        "button_link": "/collections/all-models",
+        "show_whatsapp": true,
+        "color_scheme": "scheme-3",
+        "padding_top": 64,
+        "padding_bottom": 64
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero",
+    "trust_bar",
+    "featured_models",
+    "why_smart",
+    "compare",
+    "video",
+    "testimonials",
+    "faq",
+    "final_cta"
   ]
 }

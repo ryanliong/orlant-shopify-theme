@@ -1,0 +1,205 @@
+{%- comment -%}
+  Hero — full-width image or background video with headline and two CTAs.
+
+  Video autoplays muted and looped with a poster image behind it. A separate
+  mobile image is used instead of the video on small screens: autoplaying video
+  on mobile burns data on a metered connection and is throttled or blocked
+  outright by several mobile browsers, so a still is both cheaper and more
+  reliable there.
+
+  Opting in to "Let the header overlay this hero" adds a marker class that the
+  header section's CSS looks for. See sections/header.liquid.
+{%- endcomment -%}
+
+{{ 'orlant-hero.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign has_video = false
+  if section.settings.video != blank
+    assign has_video = true
+  endif
+
+  assign poster = section.settings.image
+  assign mobile_image = section.settings.mobile_image | default: section.settings.image
+-%}
+
+<div
+  class="orlant-hero color-{{ section.settings.color_scheme }}{% if section.settings.overlay_header %} orlant-hero--overlays-header{% endif %} orlant-hero--{{ section.settings.height }} orlant-hero--text-{{ section.settings.text_position }}"
+  style="--orlant-hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
+>
+  <div class="orlant-hero__media">
+    {%- if has_video -%}
+      <video
+        class="orlant-hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        {% if poster != blank %}
+          poster="{{ poster | image_url: width: 1920 }}"
+        {% endif %}
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <source src="{{ section.settings.video }}" type="video/mp4">
+      </video>
+    {%- endif -%}
+
+    {%- if mobile_image != blank -%}
+      {{
+        mobile_image
+        | image_url: width: 1200
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          sizes: '100vw',
+          widths: '450, 700, 900, 1200',
+          class: 'orlant-hero__image orlant-hero__image--mobile',
+          alt: mobile_image.alt | default: section.settings.heading
+      }}
+    {%- endif -%}
+
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2400
+        | image_tag:
+          loading: 'eager',
+          fetchpriority: 'high',
+          sizes: '100vw',
+          widths: '900, 1200, 1600, 2000, 2400',
+          class: 'orlant-hero__image orlant-hero__image--desktop',
+          alt: section.settings.image.alt | default: section.settings.heading
+      }}
+    {%- elsif has_video == false and mobile_image == blank -%}
+      <div class="orlant-hero__placeholder">
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+
+    <div class="orlant-hero__overlay" aria-hidden="true"></div>
+  </div>
+
+  <div class="orlant-hero__content page-width">
+    <div class="orlant-hero__text">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="orlant-eyebrow orlant-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h1 class="orlant-hero__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.subheading != blank -%}
+        <div class="orlant-hero__subheading rte">{{ section.settings.subheading }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.button_1_label != blank or section.settings.button_2_label != blank -%}
+        <div class="orlant-hero__buttons">
+          {%- if section.settings.button_1_label != blank -%}
+            <a
+              href="{{ section.settings.button_1_link | default: '#' }}"
+              class="button button--primary"
+            >
+              {{ section.settings.button_1_label }}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.button_2_label != blank -%}
+            <a
+              href="{{ section.settings.button_2_link | default: '#' }}"
+              class="button button--secondary"
+            >
+              {{ section.settings.button_2_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Orlant: hero",
+  "tag": "section",
+  "class": "orlant-hero-section",
+  "settings": [
+    { "type": "header", "content": "Media" },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image",
+      "info": "Also used as the video poster. Around 2400px wide."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "Shown instead of the video on small screens. Falls back to the desktop image."
+    },
+    {
+      "type": "url",
+      "id": "video",
+      "label": "Background video URL",
+      "info": "Direct link to an MP4 (upload under Content > Files). Plays muted and looped on desktop only. Leave blank to use the image."
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 40,
+      "label": "Overlay darkness",
+      "info": "Dark plum wash behind the text. Raise it if the headline is hard to read."
+    },
+    { "type": "header", "content": "Text" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Smart drying, made for Singapore homes" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Dry a full load overnight, whatever the weather" },
+    { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Ceiling-mounted smart drying racks with heating, sterilisation and app control. Installed by our own technicians across Singapore.</p>" },
+    {
+      "type": "select",
+      "id": "text_position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Centre" }
+      ],
+      "default": "left",
+      "label": "Text position"
+    },
+    { "type": "header", "content": "Buttons" },
+    { "type": "text", "id": "button_1_label", "label": "First button", "default": "Shop models" },
+    { "type": "url", "id": "button_1_link", "label": "First button link" },
+    { "type": "text", "id": "button_2_label", "label": "Second button", "default": "Find your fit" },
+    { "type": "url", "id": "button_2_link", "label": "Second button link" },
+    { "type": "header", "content": "Layout" },
+    {
+      "type": "select",
+      "id": "height",
+      "options": [
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" },
+        { "value": "full", "label": "Full screen" }
+      ],
+      "default": "large",
+      "label": "Height"
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay_header",
+      "default": true,
+      "label": "Let the header overlay this hero",
+      "info": "Only works when this is the first section on the page and the header's own overlay setting is on."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "default": "scheme-3",
+      "label": "Colour scheme",
+      "info": "Sets the text colour over the image. Dark plum gives white text."
+    }
+  ],
+  "presets": [{ "name": "Orlant: hero" }]
+}
+{% endschema %}

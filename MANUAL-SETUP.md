@@ -23,6 +23,10 @@ Theme repo: <https://github.com/ryanliong/orlant-shopify-theme>
 
 ## 2. Needed before the theme can be finished
 
+- [ ] **Currency formatting** → Settings › General › Currency formatting.
+      Currently `${{amount}}`, so a S$1,299 rack renders as **$1,299.00** —
+      ambiguous with USD on a four-figure purchase. Change both fields to
+      `S${{amount}}` and `S${{amount}} SGD`.
 - [ ] **Search & Discovery filters** — Shopify's free app, install then
       Settings › Filters. Price and Availability work out of the box; the
       brief also wants:
@@ -41,9 +45,9 @@ Theme repo: <https://github.com/ryanliong/orlant-shopify-theme>
       racks — fine as a placeholder, wrong for launch. Create a collection of
       spare poles, remotes and mounting plates, then repoint the
       **Orlant: cart upsell** section at it in the theme editor.
-- [ ] **Delete the "Home page" (`frontpage`) collection** once the home page
-      is built and its featured section points at `all-models`. It is a
-      Shopify default and shows up as a meaningless tile on `/collections`.
+- [x] **Deleted the "Home page" (`frontpage`) collection** — a Shopify
+      default that showed as a meaningless tile on `/collections`. The home
+      page's featured section points at `all-models` instead.
 
 ## 3. Payments (start early — approval takes time)
 
@@ -76,6 +80,13 @@ Settings › Checkout › Customize. Not theme-editable — Shopify owns checkou
       crop set, so M2, D3 and E5 all show X1 imagery. Fine for layout review,
       wrong for a demo. Replace per product in Products › Media.
 - [ ] **Brand logo** (SVG or 2x PNG) → Theme settings › Logo
+- [ ] **Hero media** — the hero currently falls back to a Dawn placeholder.
+      It takes a desktop image, a separate mobile image, and optionally an MP4
+      background video (Content › Files, then paste the link into the section).
+- [ ] **Home page video** — the "See it in a real flat" section points at a
+      placeholder YouTube URL. Replace with the client's walkthrough.
+- [ ] **Testimonials** — three placeholder quotes are in the theme editor.
+      Replace with real customer words, with permission to publish them.
 - [ ] **Real copy** for About, Contact, FAQ, System Compatibility pages
 - [ ] **Policy pages** → Settings › Policies (refund, privacy, shipping, terms).
       Shopify generates templates; the client must review them.

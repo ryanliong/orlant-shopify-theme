@@ -1,0 +1,20 @@
+/* Feature split — see sections/orlant-feature-split.liquid */
+.orlant-split__grid { display: grid; gap: var(--orlant-space-lg); align-items: center; }
+.orlant-split__media img,
+.orlant-split__media svg,
+.orlant-split__video { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: var(--orlant-radius-media); }
+.orlant-split__heading { margin: 0 0 var(--orlant-space-sm); }
+.orlant-split__body { margin: 0 0 var(--orlant-space-md); color: rgba(var(--color-foreground), 0.82); line-height: 1.7; }
+.orlant-split__body > p:last-child { margin-bottom: 0; }
+.orlant-split__list { display: grid; gap: 1.4rem; margin: 0 0 var(--orlant-space-md); padding: 0; }
+.orlant-split__item { display: flex; gap: 1.2rem; align-items: flex-start; font-size: 1.5rem; line-height: 1.6; }
+.orlant-split__icon { flex: 0 0 auto; color: var(--orlant-plum-500); display: inline-flex; margin-top: 0.1rem; }
+.orlant-split__item-heading { display: block; color: rgb(var(--color-foreground)); }
+.orlant-split__button { margin: 0; }
+
+@media screen and (min-width: 750px) {
+  .orlant-split__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--orlant-space-xl); }
+  /* Source order keeps text first for screen readers; only the visual order flips. */
+  .orlant-split__grid--media-right .orlant-split__media { order: 2; }
+  .orlant-split__grid--media-right .orlant-split__text { order: 1; }
+}

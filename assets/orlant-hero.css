@@ -1,0 +1,159 @@
+/* Hero — see sections/orlant-hero.liquid */
+
+.orlant-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+  color: rgb(var(--color-foreground));
+  background-color: rgb(var(--color-background));
+}
+
+.orlant-hero--medium { min-height: 48rem; }
+.orlant-hero--large  { min-height: 62rem; }
+.orlant-hero--full   { min-height: 100svh; }
+
+.orlant-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.orlant-hero__image,
+.orlant-hero__video,
+.orlant-hero__placeholder svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.orlant-hero__placeholder {
+  width: 100%;
+  height: 100%;
+  background: var(--orlant-plum-900);
+}
+
+/*
+  Autoplaying video is desktop-only: on a phone it spends a metered connection
+  on decoration, and several mobile browsers throttle or block it anyway. The
+  mobile still is shown instead.
+*/
+.orlant-hero__video {
+  display: none;
+}
+
+.orlant-hero__image--desktop {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .orlant-hero__video {
+    display: block;
+  }
+
+  .orlant-hero__image--desktop {
+    display: block;
+  }
+
+  .orlant-hero__image--mobile {
+    display: none;
+  }
+
+  /* With a video present the poster image is only a fallback behind it. */
+  .orlant-hero:has(.orlant-hero__video) .orlant-hero__image--desktop {
+    display: none;
+  }
+}
+
+.orlant-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(42, 23, 64, calc(var(--orlant-hero-overlay, 0.4) + 0.25)) 0%,
+    rgba(42, 23, 64, var(--orlant-hero-overlay, 0.4)) 55%,
+    rgba(42, 23, 64, calc(var(--orlant-hero-overlay, 0.4) * 0.5)) 100%
+  );
+}
+
+.orlant-hero__content {
+  position: relative;
+  width: 100%;
+  padding-top: var(--orlant-space-2xl);
+  padding-bottom: var(--orlant-space-xl);
+}
+
+.orlant-hero__text {
+  max-width: 62rem;
+}
+
+.orlant-hero--text-center .orlant-hero__text {
+  max-width: 72rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.orlant-hero__eyebrow {
+  color: var(--orlant-champagne);
+  opacity: 1;
+}
+
+.orlant-hero__heading {
+  margin: 0 0 var(--orlant-space-sm);
+  font-size: clamp(3.2rem, 6vw, 6.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.orlant-hero__subheading {
+  margin: 0 0 var(--orlant-space-md);
+  font-size: clamp(1.6rem, 1.8vw, 1.9rem);
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+.orlant-hero__subheading > p {
+  margin: 0;
+}
+
+.orlant-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.orlant-hero--text-center .orlant-hero__buttons {
+  justify-content: center;
+}
+
+.orlant-hero__buttons .button {
+  margin: 0;
+}
+
+@media screen and (max-width: 749px) {
+  .orlant-hero--full {
+    min-height: 70svh;
+  }
+
+  .orlant-hero__content {
+    padding-top: var(--orlant-space-xl);
+    padding-bottom: var(--orlant-space-lg);
+  }
+
+  .orlant-hero__buttons .button {
+    flex: 1 1 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* A looping background video is motion the viewer did not ask for. */
+  .orlant-hero__video {
+    display: none;
+  }
+
+  .orlant-hero:has(.orlant-hero__video) .orlant-hero__image--desktop {
+    display: block;
+  }
+}

@@ -1,0 +1,185 @@
+{%- comment -%}
+  Model comparison table, driven by the orlant.compare_* product metafields so
+  it cannot fall out of step with the products themselves (brief 4.1.7).
+
+  Products are chosen as blocks rather than pulled from a collection: the order
+  of the columns is an editorial decision (cheapest to flagship), and a
+  collection's sort order is not.
+
+  On a product template the global `product` object identifies the current
+  model and its column is highlighted; on the home page `product` is nil and
+  nothing is highlighted. Sections cannot be passed variables the way snippets
+  can, so the global is the only way to know. A table is the right element
+  here — tabular data with row and column headers, announced as such.
+
+  Rows whose metafield is empty across every selected product are dropped, so
+  the table never shows a row of blanks.
+{%- endcomment -%}
+
+{{ 'orlant-compare.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign count = 0
+  for block in section.blocks
+    if block.settings.product != blank
+      assign count = count | plus: 1
+    endif
+  endfor
+-%}
+
+{%- if count > 0 -%}
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+    <div class="orlant-compare page-width section-{{ section.id }}-padding">
+      {%- if section.settings.heading != blank -%}
+        <div class="orlant-compare__header">
+          <hr class="orlant-rule">
+          <h2 class="orlant-compare__heading">{{ section.settings.heading }}</h2>
+          {%- if section.settings.subheading != blank -%}
+            <p class="orlant-compare__subheading">{{ section.settings.subheading }}</p>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <div class="orlant-compare__scroll" tabindex="0" role="region" aria-label="{{ section.settings.heading | default: 'Model comparison' | escape }}">
+        <table class="orlant-compare__table">
+          <thead>
+            <tr>
+              <th scope="col" class="orlant-compare__corner">
+                <span class="visually-hidden">Feature</span>
+              </th>
+              {%- for block in section.blocks -%}
+                {%- assign p = block.settings.product -%}
+                {%- if p != blank -%}
+                  {%- assign is_current = false -%}
+                  {%- if product != blank and product.id == p.id -%}
+                    {%- assign is_current = true -%}
+                  {%- endif -%}
+                  <th
+                    scope="col"
+                    class="orlant-compare__model{% if is_current %} orlant-compare__model--current{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
+                    {%- if is_current -%}
+                      <span class="orlant-compare__current-flag">This model</span>
+                    {%- endif -%}
+                    <a href="{{ p.url }}" class="orlant-compare__model-link">{{ p.title }}</a>
+                    {%- assign series = p.metafields.orlant.series.value -%}
+                    {%- if series != blank -%}
+                      <span class="orlant-compare__series">{{ series }}</span>
+                    {%- endif -%}
+                    <span class="orlant-compare__price">{{ p.price | money }}</span>
+                  </th>
+                {%- endif -%}
+              {%- endfor -%}
+            </tr>
+          </thead>
+          <tbody>
+            {%- comment -%}
+              Each row: a label, the metafield key, and how to render it.
+              "bool" prints a tick or a dash; "text" prints the value.
+            {%- endcomment -%}
+            {%- assign row_keys = 'compare_max_load,compare_drying_poles,compare_heating,compare_sterilisation,compare_lighting,compare_app_control' | split: ',' -%}
+            {%- assign row_labels = 'Max load,Drying poles,PTC heating,UV sterilisation,Lighting,App & voice control' | split: ',' -%}
+            {%- assign row_types = 'text,text,bool,bool,bool,bool' | split: ',' -%}
+
+            {%- for key in row_keys -%}
+              {%- liquid
+                assign label = row_labels[forloop.index0]
+                assign type = row_types[forloop.index0]
+
+                assign has_any = false
+                for block in section.blocks
+                  assign p = block.settings.product
+                  if p != blank
+                    assign mf = p.metafields.orlant[key]
+                    if type == 'bool'
+                      if mf != blank
+                        assign has_any = true
+                      endif
+                    elsif mf.value != blank
+                      assign has_any = true
+                    endif
+                  endif
+                endfor
+              -%}
+
+              {%- if has_any -%}
+                <tr>
+                  <th scope="row" class="orlant-compare__label">{{ label }}</th>
+                  {%- for block in section.blocks -%}
+                    {%- assign p = block.settings.product -%}
+                    {%- if p != blank -%}
+                      {%- liquid
+                        assign is_current = false
+                        if product != blank and product.id == p.id
+                          assign is_current = true
+                        endif
+                        assign mf = p.metafields.orlant[key]
+                      -%}
+                      <td class="orlant-compare__cell{% if is_current %} orlant-compare__cell--current{% endif %}">
+                        {%- if type == 'bool' -%}
+                          {%- if mf.value == true -%}
+                            <span class="orlant-compare__yes">
+                              {%- render 'orlant-icon', icon: 'check' -%}
+                              <span class="visually-hidden">Included</span>
+                            </span>
+                          {%- else -%}
+                            <span class="orlant-compare__no" aria-hidden="true">&ndash;</span>
+                            <span class="visually-hidden">Not included</span>
+                          {%- endif -%}
+                        {%- else -%}
+                          {{ mf.value | default: '&ndash;' }}
+                        {%- endif -%}
+                      </td>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </tr>
+              {%- endif -%}
+            {%- endfor -%}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Orlant: model comparison",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Values come from each product's orlant.compare_* metafields. A row is hidden when none of the chosen products has a value for it."
+    },
+    { "type": "text", "id": "heading", "default": "Compare the range", "label": "Heading" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Four models, one installation standard." },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-2", "label": "Colour scheme" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 52 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 52 }
+  ],
+  "blocks": [
+    {
+      "type": "model",
+      "name": "Model",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Product" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Orlant: model comparison",
+      "blocks": [
+        { "type": "model" },
+        { "type": "model" },
+        { "type": "model" },
+        { "type": "model" }
+      ]
+    }
+  ]
+}
+{% endschema %}

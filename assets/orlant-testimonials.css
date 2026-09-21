@@ -1,0 +1,14 @@
+/* Testimonials — see sections/orlant-testimonials.liquid */
+.orlant-quotes__header { margin-bottom: var(--orlant-space-md); }
+.orlant-quotes__heading { margin: 0; }
+.orlant-quotes__grid { display: grid; gap: var(--orlant-space-md); margin: 0; padding: 0; }
+.orlant-quotes__figure { margin: 0; height: 100%; display: flex; flex-direction: column; gap: 1.2rem; padding: var(--orlant-space-md); background: var(--orlant-lavender-100); border-radius: var(--orlant-radius-card); }
+.orlant-quotes__rating { color: var(--orlant-champagne); font-size: 1.6rem; letter-spacing: 0.15em; line-height: 1; }
+.orlant-quotes__quote { margin: 0; font-size: 1.6rem; line-height: 1.65; color: var(--orlant-ink); flex: 1 1 auto; }
+.orlant-quotes__caption { display: flex; flex-direction: column; gap: 0.2rem; }
+.orlant-quotes__name { font-weight: 600; color: var(--orlant-ink); }
+.orlant-quotes__home { font-size: 1.3rem; color: rgba(28, 24, 34, 0.7); }
+
+@media screen and (min-width: 750px) {
+  .orlant-quotes__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
