@@ -142,11 +142,71 @@
   endif
 %}
 
+{%- comment -%}
+  Transparent-over-hero.
+
+  The header only goes transparent when the section immediately after it is a
+  hero that opted in (.orlant-hero--overlays-header). That keeps the header
+  solid on collection, cart and page templates, where a transparent header
+  would be white-on-white. Once the sticky class lands the header goes solid
+  again, so the nav stays readable over scrolled content.
+
+  Colours come from the chosen overlay scheme rather than being hard-coded, so
+  the client can retune them in the editor.
+{%- endcomment -%}
+{%- comment -%}
+  Overlay needs --header-height, which Dawn only publishes from the
+  <sticky-header> element. With sticky set to "none" there is no height to
+  offset by, so the overlay is skipped rather than rendered broken.
+{%- endcomment -%}
+{%- if section.settings.orlant_allow_overlay and section.settings.sticky_header_type != 'none' -%}
+  {%- liquid
+    assign overlay_scheme = settings.color_schemes[section.settings.orlant_overlay_color_scheme]
+    assign overlay_fg = overlay_scheme.settings.text
+  -%}
+  {%- style -%}
+    {%- comment -%}
+      The hero is a descendant of <main>, not an adjacent sibling of the
+      header, and it must be the FIRST section in the template — a hero used
+      mid-page must not make the header transparent.
+    {%- endcomment -%}
+    .section-header:has(
+        ~ .content-for-layout > .shopify-section:first-child .orlant-hero--overlays-header
+      ):not(.shopify-section-header-sticky) {
+      position: relative;
+      z-index: 3;
+    }
+
+    .section-header:has(
+        ~ .content-for-layout > .shopify-section:first-child .orlant-hero--overlays-header
+      ):not(.shopify-section-header-sticky)
+      .orlant-header--can-overlay {
+      --color-foreground: {{ overlay_fg.red }}, {{ overlay_fg.green }}, {{ overlay_fg.blue }};
+      background: transparent;
+      border-bottom-color: transparent;
+    }
+
+    .orlant-header--can-overlay {
+      transition: background-color var(--orlant-duration, 180ms) var(--orlant-ease, ease);
+    }
+
+    {%- comment -%}
+      Pull the hero up under the in-flow header, then give the height back as
+      padding so the headline clears the nav. Negative margin rather than
+      absolute positioning, so the announcement bar above stays in flow.
+    {%- endcomment -%}
+    .content-for-layout > .shopify-section:first-child .orlant-hero--overlays-header {
+      margin-top: calc(-1 * var(--header-height, 0px));
+      padding-top: var(--header-height, 0px);
+    }
+  {%- endstyle -%}
+{%- endif -%}
+
 <{{ header_tag }}
   {% if header_tag == 'sticky-header' %}
     data-sticky-type="{{ section.settings.sticky_header_type }}"
   {% endif %}
-  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+  class="header-wrapper color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}{% if section.settings.orlant_allow_overlay %} orlant-header--can-overlay{% endif %}"
 >
   {%- liquid
     assign social_links = false
@@ -594,6 +654,24 @@
       ],
       "default": "on-scroll-up",
       "label": "t:sections.header.settings.sticky_header_type.label"
+    },
+    {
+      "type": "header",
+      "content": "Orlant"
+    },
+    {
+      "type": "checkbox",
+      "id": "orlant_allow_overlay",
+      "default": true,
+      "label": "Allow header to overlay the hero",
+      "info": "The header only turns transparent on pages whose first section is a hero with \"Let the header overlay this hero\" switched on. Everywhere else it stays solid."
+    },
+    {
+      "type": "color_scheme",
+      "id": "orlant_overlay_color_scheme",
+      "default": "scheme-3",
+      "label": "Colour scheme while overlaying",
+      "info": "Used only while the header sits over a hero. Pick a scheme whose text reads against the hero image — Dark plum gives white text."
     },
     {
       "type": "checkbox",
