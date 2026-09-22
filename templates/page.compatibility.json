@@ -1,0 +1,194 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 16
+      }
+    },
+    "split_0": {
+      "type": "orlant-feature-split",
+      "settings": {
+        "eyebrow": "Standard HDB and condo slab",
+        "heading": "Concrete ceilings",
+        "body": "<p>The most common case. The mounting plate fixes directly into the structural slab with chemical anchors. No preparation needed beyond clearing the area.</p>",
+        "media_position": "left",
+        "color_scheme": "scheme-1",
+        "padding_top": 44,
+        "padding_bottom": 44
+      },
+      "blocks": {
+        "b_0": {
+          "type": "benefit",
+          "settings": {
+            "icon": "check",
+            "heading": "Works with every model",
+            "text": ""
+          }
+        },
+        "b_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "tool",
+            "heading": "60-90 minute installation",
+            "text": ""
+          }
+        },
+        "b_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "shield",
+            "heading": "Rated to full load",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "b_0",
+        "b_1",
+        "b_2"
+      ]
+    },
+    "split_1": {
+      "type": "orlant-feature-split",
+      "settings": {
+        "eyebrow": "Bulkheads and boxed-in areas",
+        "heading": "False ceilings",
+        "body": "<p>A false ceiling cannot carry the load on its own. Our installer anchors a mounting plate through the false ceiling into the slab above, then makes good around the fixing.</p>",
+        "media_position": "right",
+        "color_scheme": "scheme-2",
+        "padding_top": 44,
+        "padding_bottom": 44
+      },
+      "blocks": {
+        "b_0": {
+          "type": "benefit",
+          "settings": {
+            "icon": "check",
+            "heading": "Survey done on site before drilling",
+            "text": ""
+          }
+        },
+        "b_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "tool",
+            "heading": "May need a longer drop rod",
+            "text": ""
+          }
+        },
+        "b_2": {
+          "type": "benefit",
+          "settings": {
+            "icon": "chat",
+            "heading": "We advise before you buy",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "b_0",
+        "b_1",
+        "b_2"
+      ]
+    },
+    "split_2": {
+      "type": "orlant-feature-split",
+      "settings": {
+        "eyebrow": "Short runs and narrow spaces",
+        "heading": "Service yards and balconies",
+        "body": "<p>Shorter balcony runs suit the D Series, which uses a slimmer housing and shorter poles. Send us a photo and a rough measurement and we will tell you which model fits.</p>",
+        "media_position": "left",
+        "color_scheme": "scheme-1",
+        "padding_top": 44,
+        "padding_bottom": 44
+      },
+      "blocks": {
+        "b_0": {
+          "type": "benefit",
+          "settings": {
+            "icon": "check",
+            "heading": "D Series for runs under 1.8m",
+            "text": ""
+          }
+        },
+        "b_1": {
+          "type": "benefit",
+          "settings": {
+            "icon": "star",
+            "heading": "X and M Series for full-width yards",
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "b_0",
+        "b_1"
+      ]
+    },
+    "compare": {
+      "type": "orlant-compare",
+      "settings": {
+        "heading": "Which model fits your home?",
+        "subheading": "Load capacity and features by model.",
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "model_0": {
+          "type": "model",
+          "settings": {
+            "product": "orlant-e5-smart-drying-rack"
+          }
+        },
+        "model_1": {
+          "type": "model",
+          "settings": {
+            "product": "orlant-d3-smart-drying-rack"
+          }
+        },
+        "model_2": {
+          "type": "model",
+          "settings": {
+            "product": "orlant-m2-smart-drying-rack"
+          }
+        },
+        "model_3": {
+          "type": "model",
+          "settings": {
+            "product": "orlant-x1-smart-drying-rack"
+          }
+        }
+      },
+      "block_order": [
+        "model_0",
+        "model_1",
+        "model_2",
+        "model_3"
+      ]
+    },
+    "cta": {
+      "type": "orlant-cta-banner",
+      "settings": {
+        "heading": "Not sure which one fits?",
+        "body": "<p>Send us a photo of your service yard and we will tell you which model suits it.</p>",
+        "button_label": "See all models",
+        "button_link": "/collections/all-models",
+        "show_whatsapp": true,
+        "color_scheme": "scheme-3",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": [
+    "main",
+    "split_0",
+    "split_1",
+    "split_2",
+    "compare",
+    "cta"
+  ]
+}

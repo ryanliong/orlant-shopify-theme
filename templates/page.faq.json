@@ -1,0 +1,157 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 16
+      }
+    },
+    "faq_0": {
+      "type": "collapsible-content",
+      "settings": {
+        "caption": "",
+        "heading": "Ordering & delivery",
+        "heading_size": "h2",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": true,
+        "padding_top": 24,
+        "padding_bottom": 24
+      },
+      "blocks": {
+        "row_0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How long is delivery?",
+            "row_content": "<p>Most orders are delivered and installed within five working days. We confirm a slot by phone once the order is placed.</p>",
+            "icon": "question_mark"
+          }
+        },
+        "row_1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do you deliver to every part of Singapore?",
+            "row_content": "<p>Yes, across the island. Some restricted-access developments need extra lead time.</p>",
+            "icon": "question_mark"
+          }
+        }
+      },
+      "block_order": [
+        "row_0",
+        "row_1"
+      ]
+    },
+    "faq_1": {
+      "type": "collapsible-content",
+      "settings": {
+        "caption": "",
+        "heading": "Installation",
+        "heading_size": "h2",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      },
+      "blocks": {
+        "row_0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Is installation included?",
+            "row_content": "<p>Yes. Every rack is installed by an Orlant technician at no extra cost.</p>",
+            "icon": "question_mark"
+          }
+        },
+        "row_1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will it work with a false ceiling?",
+            "row_content": "<p>Yes. A false ceiling needs a mounting plate anchored through to the structural slab above. Our installer checks this on site before drilling.</p>",
+            "icon": "question_mark"
+          }
+        },
+        "row_2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Do I need HDB permission?",
+            "row_content": "<p>No permit is required for a ceiling-mounted drying rack in an HDB flat.</p>",
+            "icon": "question_mark"
+          }
+        },
+        "row_3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What power supply is needed?",
+            "row_content": "<p>A standard 13A socket within two metres of the unit.</p>",
+            "icon": "question_mark"
+          }
+        }
+      },
+      "block_order": [
+        "row_0",
+        "row_1",
+        "row_2",
+        "row_3"
+      ]
+    },
+    "faq_2": {
+      "type": "collapsible-content",
+      "settings": {
+        "caption": "",
+        "heading": "Warranty & support",
+        "heading_size": "h2",
+        "layout": "section",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      },
+      "blocks": {
+        "row_0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How long is the warranty?",
+            "row_content": "<p>Two years from installation, covering the motor, control board, heating element and lift mechanism.</p>",
+            "icon": "question_mark"
+          }
+        },
+        "row_1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What is not covered?",
+            "row_content": "<p>Accidental damage, loading beyond the rated capacity, and unauthorised modification.</p>",
+            "icon": "question_mark"
+          }
+        }
+      },
+      "block_order": [
+        "row_0",
+        "row_1"
+      ]
+    },
+    "cta": {
+      "type": "orlant-cta-banner",
+      "settings": {
+        "heading": "Still have a question?",
+        "body": "<p>Message us on WhatsApp and a member of the Singapore team will answer.</p>",
+        "button_label": "Browse models",
+        "button_link": "/collections/all-models",
+        "show_whatsapp": true,
+        "color_scheme": "scheme-3",
+        "padding_top": 56,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq_0",
+    "faq_1",
+    "faq_2",
+    "cta"
+  ]
+}
