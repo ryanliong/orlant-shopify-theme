@@ -39,7 +39,12 @@
               alt: section.settings.image.alt | default: section.settings.heading
           }}
         {%- else -%}
-          {{ 'detailed-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- comment -%}
+            A brand-tinted panel rather than Dawn's apparel placeholder, which
+            is the wrong product category here and reads as unfinished. Keeps
+            the row presentable before the client's photography arrives.
+          {%- endcomment -%}
+          <div class="orlant-split__placeholder" role="img" aria-label="Product photography coming soon"></div>
         {%- endif -%}
       </div>
 

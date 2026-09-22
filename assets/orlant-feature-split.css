@@ -18,3 +18,26 @@
   .orlant-split__grid--media-right .orlant-split__media { order: 2; }
   .orlant-split__grid--media-right .orlant-split__text { order: 1; }
 }
+
+/* Media fallback — a brand panel, not a stock apparel silhouette. */
+.orlant-split__placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--orlant-radius-media);
+  background-color: var(--orlant-lavender-100);
+  background-image:
+    radial-gradient(40rem 30rem at 72% 22%, rgba(122, 82, 168, 0.28) 0%, rgba(122, 82, 168, 0) 64%),
+    linear-gradient(148deg, #f3eef9 0%, #e4d9f2 58%, #d5c6ea 100%);
+  position: relative;
+}
+
+.orlant-split__placeholder::after {
+  content: '';
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 2.4rem;
+  height: 0.1rem;
+  background: var(--orlant-champagne);
+  opacity: 0.55;
+}

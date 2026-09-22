@@ -21,10 +21,22 @@
 
   assign poster = section.settings.image
   assign mobile_image = section.settings.mobile_image | default: section.settings.image
+
+  comment
+    With no image and no video the hero paints a brand gradient instead of a
+    stock placeholder. Dawn's placeholders depict apparel, which is the wrong
+    product category for drying racks and reads as unfinished work. A gradient
+    reads as a deliberate design and needs no assets, so the page is
+    presentable before the client's photography arrives.
+  endcomment
+  assign has_media = false
+  if has_video or section.settings.image != blank or section.settings.mobile_image != blank
+    assign has_media = true
+  endif
 -%}
 
 <div
-  class="orlant-hero color-{{ section.settings.color_scheme }}{% if section.settings.overlay_header %} orlant-hero--overlays-header{% endif %} orlant-hero--{{ section.settings.height }} orlant-hero--text-{{ section.settings.text_position }}"
+  class="orlant-hero color-{{ section.settings.color_scheme }}{% unless has_media %} orlant-hero--no-media{% endunless %}{% if section.settings.overlay_header %} orlant-hero--overlays-header{% endif %} orlant-hero--{{ section.settings.height }} orlant-hero--text-{{ section.settings.text_position }}"
   style="--orlant-hero-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};"
 >
   <div class="orlant-hero__media">
@@ -71,13 +83,16 @@
           class: 'orlant-hero__image orlant-hero__image--desktop',
           alt: section.settings.image.alt | default: section.settings.heading
       }}
-    {%- elsif has_video == false and mobile_image == blank -%}
-      <div class="orlant-hero__placeholder">
-        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-      </div>
     {%- endif -%}
 
-    <div class="orlant-hero__overlay" aria-hidden="true"></div>
+    {%- comment -%}
+      The overlay exists to hold text off a photograph. The gradient fallback
+      is already dark enough, so stacking a second wash on it only muddies the
+      colour.
+    {%- endcomment -%}
+    {%- if has_media -%}
+      <div class="orlant-hero__overlay" aria-hidden="true"></div>
+    {%- endif -%}
   </div>
 
   <div class="orlant-hero__content page-width">

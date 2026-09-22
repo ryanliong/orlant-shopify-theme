@@ -187,9 +187,9 @@
       "settings": {
         "heading": "See it in a real flat",
         "heading_size": "h2",
-        "description": "A two-minute walkthrough of installation and a full drying cycle.",
+        "description": "Replace with the client walkthrough: installation and a full drying cycle.",
         "cover_image": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_url": "",
         "full_width": false,
         "color_scheme": "scheme-1",
         "padding_top": 52,
