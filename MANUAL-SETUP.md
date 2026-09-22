@@ -18,18 +18,13 @@ Theme repo: <https://github.com/ryanliong/orlant-shopify-theme>
       discount windows and every analytics report.
 - [x] **Custom app + Admin API token** for build tooling.
       Scopes: `read/write_products`, `read/write_metaobject_definitions`,
-      `read/write_metaobjects`.
+      `read/write_metaobjects`, `read/write_files`, `read/write_content`.
 - [x] **GitHub integration** → theme `orlant-shopify-theme/main` connected.
+- [x] **Supporting pages created** — About, Contact, FAQ and System
+      compatibility, each bound to its theme template. Copy is placeholder.
 
 ## 2. Needed before the theme can be finished
 
-- [ ] **Add `read_content` + `write_content` to the build app** so the four
-      supporting pages (About, Contact, FAQ, System compatibility) can be
-      created by script. Their theme templates are already built and committed;
-      without this scope the pages must be created by hand in Content › Pages,
-      each with its **Theme template** set to `about`, `contact`, `faq` or
-      `compatibility` respectively — that suffix is what binds a page to its
-      template.
 - [ ] **Currency formatting** → Settings › General › Currency formatting.
       Currently `${{amount}}`, so a S$1,299 rack renders as **$1,299.00** —
       ambiguous with USD on a four-figure purchase. Change both fields to
