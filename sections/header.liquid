@@ -161,8 +161,15 @@
 {%- endcomment -%}
 {%- if section.settings.orlant_allow_overlay and section.settings.sticky_header_type != 'none' -%}
   {%- liquid
-    assign overlay_scheme = settings.color_schemes[section.settings.orlant_overlay_color_scheme]
-    assign overlay_fg = overlay_scheme.settings.text
+    comment
+      A color_scheme setting already resolves to the scheme itself, so read its
+      text colour straight off it. Two earlier attempts failed silently:
+      indexing settings.color_schemes by id returns nothing, and matching
+      scheme.id against this setting compares a string to an object. Both
+      emitted "--color-foreground: , , ;", which browsers discard, leaving the
+      header on its own dark text over a dark hero — invisible navigation.
+    endcomment
+    assign overlay_fg = section.settings.orlant_overlay_color_scheme.settings.text
   -%}
   {%- style -%}
     {%- comment -%}
@@ -181,7 +188,9 @@
         ~ .content-for-layout > .shopify-section:first-child .orlant-hero--overlays-header
       ):not(.shopify-section-header-sticky)
       .orlant-header--can-overlay {
-      --color-foreground: {{ overlay_fg.red }}, {{ overlay_fg.green }}, {{ overlay_fg.blue }};
+      {%- if overlay_fg != blank %}
+        --color-foreground: {{ overlay_fg.red }}, {{ overlay_fg.green }}, {{ overlay_fg.blue }};
+      {%- endif %}
       background: transparent;
       border-bottom-color: transparent;
     }
