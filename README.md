@@ -1,99 +1,234 @@
-# Dawn
+# Orlant — Shopify theme
 
-[![Build status](https://github.com/shopify/dawn/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Shopify/dawn/actions/workflows/ci.yml?query=branch%3Amain)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?color=informational)](/.github/CONTRIBUTING.md)
+Custom Online Store 2.0 theme for **Orlant International Pte Ltd** (Singapore),
+selling ceiling-mounted smart drying racks. Built on **Shopify Dawn 16.0.0**.
 
-[Getting started](#getting-started) |
-[Staying up to date with Dawn changes](#staying-up-to-date-with-dawn-changes) |
-[Developer tools](#developer-tools) |
-[Contributing](#contributing) |
-[Code of conduct](#code-of-conduct) |
-[Theme Store submission](#theme-store-submission) |
-[License](#license)
+- **Store:** `orlant-gujfiai0.myshopify.com`
+- **Theme:** connected to this repo's `main` branch via Shopify's GitHub integration
 
-Dawn represents a HTML-first, JavaScript-only-as-needed approach to theme development. It's Shopify's first source available theme with performance, flexibility, and [Online Store 2.0 features](https://www.shopify.com/partners/blog/shopify-online-store) built-in and acts as a reference for building Shopify themes.
+> **The GitHub connection is two-way.** Edits made in the Shopify theme editor
+> commit straight back to `main`. Pull before you push, or you will hit
+> conflicts.
 
-* **Web-native in its purest form:** Themes run on the [evergreen web](https://www.w3.org/2001/tag/doc/evergreen-web/). We leverage the latest web browsers to their fullest, while maintaining support for the older ones through progressive enhancement—not polyfills.
-* **Lean, fast, and reliable:** Functionality and design defaults to “no” until it meets this requirement. Code ships on quality. Themes must be built with purpose. They shouldn’t support each and every feature in Shopify.
-* **Server-rendered:** HTML must be rendered by Shopify servers using Liquid. Business logic and platform primitives such as translations and money formatting don’t belong on the client. Async and on-demand rendering of parts of the page is OK, but we do it sparingly as a progressive enhancement.
-* **Functional, not pixel-perfect:** The Web doesn’t require each page to be rendered pixel-perfect by each browser engine. Using semantic markup, progressive enhancement, and clever design, we ensure that themes remain functional regardless of the browser.
+---
 
-You can find a more detailed version of our theme code principles in the [contribution guide](https://github.com/Shopify/dawn/blob/main/.github/CONTRIBUTING.md#theme-code-principles).
+## Contents
 
-## Getting started
-We recommend using Dawn as a starting point for theme development. [Learn more on Shopify.dev](https://shopify.dev/themes/getting-started/create).
+1. [Getting set up](#getting-set-up)
+2. [Sections](#sections)
+3. [Metafields](#metafields)
+4. [Theme settings](#theme-settings)
+5. [Adding a product](#adding-a-product)
+6. [Scripts](#scripts)
+7. [Checkout and payments](#checkout-and-payments)
+8. [Quality bar](#quality-bar)
+9. [Conventions](#conventions)
 
-> If you're building a theme for the Shopify Theme Store, then you can use Dawn as a starting point. However, the theme that you submit needs to be [substantively different from Dawn](https://shopify.dev/themes/store/requirements#uniqueness) so that it provides added value for merchants. Learn about the [ways that you can use Dawn](https://shopify.dev/themes/tools/dawn#ways-to-use-dawn).
+---
 
-Please note that the main branch may include code for features not yet released. The "stable" version of Dawn is available in the theme store.
-
-## Staying up to date with Dawn changes
-
-Say you're building a new theme off Dawn but you still want to be able to pull in the latest changes, you can add a remote `upstream` pointing to this Dawn repository.
-
-1. Navigate to your local theme folder.
-2. Verify the list of remotes and validate that you have both an `origin` and `upstream`:
-```sh
-git remote -v
-```
-3. If you don't see an `upstream`, you can add one that points to Shopify's Dawn repository:
-```sh
-git remote add upstream https://github.com/Shopify/dawn.git
-```
-4. Pull in the latest Dawn changes into your repository:
-```sh
-git fetch upstream
-git pull upstream main
-```
-
-## Developer tools
-
-There are a number of really useful tools that the Shopify Themes team uses during development. Dawn is already set up to work with these tools.
-
-### Shopify CLI
-
-[Shopify CLI](https://github.com/Shopify/shopify-cli) helps you build Shopify themes faster and is used to automate and enhance your local development workflow. It comes bundled with a suite of commands for developing Shopify themes—everything from working with themes on a Shopify store (e.g. creating, publishing, deleting themes) or launching a development server for local theme development.
-
-You can follow this [quick start guide for theme developers](https://shopify.dev/docs/themes/tools/cli) to get started.
-
-### Theme Check
-
-We recommend using [Theme Check](https://github.com/shopify/theme-check) as a way to validate and lint your Shopify themes.
-
-We've added Theme Check to Dawn's [list of VS Code extensions](/.vscode/extensions.json) so if you're using Visual Studio Code as your code editor of choice, you'll be prompted to install the [Theme Check VS Code](https://marketplace.visualstudio.com/items?itemName=Shopify.theme-check-vscode) extension upon opening VS Code after you've forked and cloned Dawn.
-
-You can also run it from a terminal with the following Shopify CLI command:
+## Getting set up
 
 ```bash
-shopify theme check
+npm i -g @shopify/cli
+git clone https://github.com/ryanliong/orlant-shopify-theme.git
+cd orlant-shopify-theme
+shopify theme dev --store orlant-gujfiai0.myshopify.com   # live preview
+shopify theme check                                        # lint
+python3 .orlant-validate.py                                # see Conventions
 ```
 
-### Continuous Integration
+The store is password-protected until launch (Online Store › Preferences).
 
-Dawn uses [GitHub Actions](https://github.com/features/actions) to maintain the quality of the theme. [This is a starting point](https://github.com/Shopify/dawn/blob/main/.github/workflows/ci.yml) and what we suggest to use in order to ensure you're building better themes. Feel free to build off of it!
+---
 
-#### Shopify/lighthouse-ci-action
+## Sections
 
-We love fast websites! Which is why we created [Shopify/lighthouse-ci-action](https://github.com/Shopify/lighthouse-ci-action). This runs a series of [Google Lighthouse](https://developers.google.com/web/tools/lighthouse) audits for the home, product and collections pages on a store to ensure code that gets added doesn't degrade storefront performance over time.
+Custom sections are prefixed `orlant-` so they sort together in the editor and
+are obvious against Dawn's own files.
 
-#### Shopify/theme-check-action
+| Section | Used on | Notes |
+|---|---|---|
+| `orlant-hero` | Home | Image or muted looping video. Video is desktop-only; a separate mobile image is used instead. Falls back to a plum gradient when no media is set. |
+| `orlant-trust-bar` | Home, About, Contact | 3–4 icon + text items |
+| `orlant-feature-split` | Home, Compatibility, About | Media one side, text and bullets the other. Side flips per instance; stack two with the toggle reversed for alternating rows. |
+| `orlant-compare` | Home, Product, Compatibility | Table driven by the `orlant.compare_*` metafields. On a product page the current model's column is highlighted automatically. |
+| `orlant-testimonials` | Home | Quote, name, home type, star rating. Static until a reviews app is added. |
+| `orlant-cta-banner` | Home, FAQ, Compatibility, About, Contact | Dark plum close with the champagne rule and a WhatsApp button |
+| `orlant-product-tabs` | Product | Six metafield-fed panels. Tabs on desktop, accordions on mobile. |
+| `orlant-cart-upsell` | Cart | "You may also need", from a chosen collection |
 
-Dawn runs [Theme Check](#Theme-Check) on every commit via [Shopify/theme-check-action](https://github.com/Shopify/theme-check-action).
+Reused from Dawn unchanged: `featured-collection`, `video`,
+`collapsible-content`, `contact-form`, `main-*`.
 
-## Contributing
+**Product buy-box blocks** (reorderable in the editor): `orlant_series`,
+`orlant_highlights`, `orlant_reassurance`, `orlant_whatsapp`.
 
-Want to make commerce better for everyone by contributing to Dawn? We'd love your help! Please read our [contributing guide](https://github.com/Shopify/dawn/blob/main/.github/CONTRIBUTING.md) to learn about our development process, how to propose bug fixes and improvements, and how to build for Dawn.
+---
 
-## Code of conduct
+## Metafields
 
-All developers who wish to contribute through code or issues, please first read our [Code of Conduct](https://github.com/Shopify/dawn/blob/main/.github/CODE_OF_CONDUCT.md).
+All in the **`orlant`** namespace, on **Products**. Created by
+`scripts/setup-metafields.py`.
 
-## Theme Store submission
+| Key | Type | Used for |
+|---|---|---|
+| `series` | single line text | Label above the product title, e.g. "X Series" |
+| `card_tagline` | single line text | One-line spec on listing cards |
+| `badge` | single line text | Card badge, e.g. "New". Suppressed while the product is on sale, so it never stacks with Dawn's Sale badge. |
+| `highlights` | list of single line text | Bullets under the buy box |
+| `overview` | rich text | Overview tab |
+| `specs` | list of `orlant_spec_row` | Specification table |
+| `in_the_box` | rich text | What's in the box tab |
+| `installation` | rich text | Installation & compatibility tab |
+| `warranty` | rich text | Warranty tab |
+| `faq` | list of `orlant_faq_item` | Product FAQ tab |
+| `compare_max_load` | single line text | Comparison row, e.g. "35 kg" |
+| `compare_drying_poles` | integer | Comparison row |
+| `compare_heating` | boolean | Comparison row |
+| `compare_sterilisation` | boolean | Comparison row |
+| `compare_lighting` | boolean | Comparison row |
+| `compare_app_control` | boolean | Comparison row |
 
-The [Shopify Theme Store](https://themes.shopify.com/) is the place where Shopify merchants find the themes that they'll use to showcase and support their business. As a theme partner, you can create themes for the Shopify Theme Store and reach an international audience of an ever-growing number of entrepreneurs.
+**Metaobjects:** `orlant_spec_row` (label, value) and `orlant_faq_item`
+(question, answer). Specs and FAQs are metaobjects rather than JSON so the
+client edits labelled fields in admin instead of hand-writing JSON, where one
+missing brace breaks the table. Spec rows are reusable across products.
 
-Ensure that you follow the list of [theme store requirements](https://shopify.dev/themes/store/requirements) if you're interested in becoming a [Shopify Theme Partner](https://themes.shopify.com/services/themes/guidelines) and building themes for the Shopify platform.
+**Every tab hides itself when its metafield is empty**, so a half-filled
+product shows fewer tabs rather than empty ones.
 
-## License
+> **Storefront access matters.** Definitions created through the Admin API
+> default to `storefront: NONE`, which makes them invisible to Liquid — tabs
+> render blank with no error to explain why. `setup-metafields.py` sets
+> `PUBLIC_READ` and repairs any definition that is still `NONE`.
 
-Copyright (c) 2021-present Shopify Inc. See [LICENSE](/LICENSE.md) for further details.
+---
+
+## Theme settings
+
+**Theme settings › Orlant:**
+
+- **WhatsApp number** — international format, digits only (`6591234567`). Blank
+  hides every WhatsApp button. The product name and URL are appended to the
+  message automatically.
+- **Delivery message** — shown in the cart drawer, cart page and buy box
+- **Reassurance row** — four icon + text items under every product
+- **Payment icons** — Shopify draws icons for methods it processes. PayNow,
+  Atome and ShopBack must be uploaded here as images.
+
+**Colour schemes** (Theme settings › Colors):
+
+| Scheme | Background | Text | Buttons | Use |
+|---|---|---|---|---|
+| 1 Light | white | ink | plum-700 | Default |
+| 2 Lavender | `#F3EEF9` | ink | plum-700 | Soft bands |
+| 3 Dark plum | `#2A1740` | white | champagne | Footer, CTA |
+| 4 Plum solid | `#4B2A73` | white | white | Announcement bar |
+| 5 Ink | `#1C1822` | white | champagne | Highest contrast |
+
+Palette: plum-900 `#2A1740` · plum-700 `#4B2A73` · plum-500 `#7A52A8` ·
+lavender `#F3EEF9` · champagne `#C9A86A` · ink `#1C1822`.
+
+All pairs meet WCAG AA. Champagne is an accent only — rules, badges, small
+highlights — never a large fill or body text.
+
+> Focus rings are plum-500 on light schemes and **champagne on dark schemes**:
+> plum-500 only reaches 2.78:1 on plum-900, below the 3:1 minimum for non-text
+> UI. If you add more dark schemes, add their ids to the dark-scheme rule in
+> `assets/orlant-tokens.css`.
+
+---
+
+## Adding a product
+
+1. **Products › Add product** — title, description, price, images (first image
+   is the listing thumbnail; a second enables hover-swap on cards).
+2. **Tag it with its series** (`X Series`, `M Series`, …) plus
+   `Smart Drying Rack`. Collections are automated on these tags, so a correctly
+   tagged product files itself.
+3. **Fill the `orlant` metafields** at the bottom of the product page. At
+   minimum: `series`, `card_tagline`, `highlights`, `overview`.
+4. **Specs and FAQs** — create `orlant_spec_row` / `orlant_faq_item` entries in
+   Content › Metaobjects, then reference them from the product.
+5. **Comparison table** — fill `compare_*` to have the product appear usefully
+   in the comparison, then add it as a block in the **Orlant: model comparison**
+   section.
+6. **Check it is published** to the Online Store sales channel, or it 404s.
+
+---
+
+## Scripts
+
+Python 3, no dependencies. All read the Admin API token from
+`~/.orlant-admin-token` (never commit it — `.gitignore` guards it) and all are
+idempotent.
+
+```bash
+SHOP=orlant-gujfiai0.myshopify.com python3 scripts/setup-metafields.py
+SHOP=orlant-gujfiai0.myshopify.com python3 scripts/setup-collections.py
+SHOP=orlant-gujfiai0.myshopify.com python3 scripts/setup-pages.py
+SHOP=… MEDIA_DIR=/tmp/orlant-media python3 scripts/upload-placeholder-media.py
+SHOP=… FILE=path/to/logo.svg      python3 scripts/upload-brand-files.py
+SHOP=… python3 scripts/setup-sample-data.py   # test products — do not run on production
+```
+
+Required scopes: `read/write_products`, `read/write_metaobjects`,
+`read/write_metaobject_definitions`, `read/write_files`, `read/write_content`.
+
+---
+
+## Checkout and payments
+
+The theme's job ends at the cart. Checkout is Shopify's and is configured in
+admin — see [MANUAL-SETUP.md](MANUAL-SETUP.md) for the full list, including:
+
+- **Shopify Payments** for cards, Apple Pay and Google Pay
+- **HitPay** for **PayNow** — Shopify Payments does not support PayNow in
+  Singapore, and PayNow is what most Singapore buyers expect for a four-figure
+  purchase. HitPay needs the client's UEN and approval is not instant, so start
+  it early.
+- **Checkout branding** — Settings › Checkout, with the exact values to enter
+
+---
+
+## Quality bar
+
+`shopify theme check`: **0 errors**. Nine warnings remain, all in untouched
+Dawn files.
+
+Lighthouse, mobile, median of three runs (targets 80 / 90 / 90 / 90):
+
+| Page | Performance | Accessibility | Best Practices | SEO |
+|---|---|---|---|---|
+| Home | 90 ✅ | 94 ✅ | 77 ❌ | 92 ✅ |
+| Product | 82 ✅ | 93 ✅ | 77 ❌ | 100 ✅ |
+
+**Best Practices cannot reach 90 from the theme.** The remaining failures are
+Shopify's own Shop Pay integration setting third-party cookies, plus the
+preview bar's untitled iframe. Neither is theme code.
+
+Two further caveats on these numbers:
+
+- They were measured against an **unpublished theme in preview**, where
+  Shopify's preview bar adds ~367 KB (18% of page weight). Expect better once
+  published. For scale: **this theme's own assets are 67 KB of a 1,995 KB page
+  — about 3%.** The rest is Shopify platform code.
+- Performance is noisy on a shared preview; individual product runs ranged
+  59–89. Re-measure after launch on the published theme.
+
+---
+
+## Conventions
+
+- **Prefix** custom sections, snippets and assets with `orlant-`.
+- **No new dependencies.** Vanilla JS and Dawn's existing web-component
+  patterns. No jQuery, no frameworks.
+- **Nothing client-facing is hard-coded.** Text, images, colours and section
+  order are all editable in the theme editor.
+- **Extend Dawn, don't fork it.** `orlant-product-card.liquid` holds only the
+  Orlant additions and is rendered from inside Dawn's `card-product.liquid`;
+  duplicating that 600-line file would mean re-fixing every upstream bug twice.
+- **Run `.orlant-validate.py` after editing any `templates/*.json` or
+  `sections/*-group.json`.** Theme Check does not catch setting ids that no
+  longer exist or range values off their step — Shopify silently drops both.
+  This script catches them, and has already caught several.
