@@ -190,7 +190,8 @@
             "color_scheme": "scheme-1"
           }
         }
-      }
+      },
+      "favicon": "shopify://shop_images/orlant-favicon.png"
     }
   }
 }

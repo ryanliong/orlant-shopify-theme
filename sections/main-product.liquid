@@ -295,11 +295,19 @@
                             {{- 'icon-minus.svg' | inline_asset_content -}}
                           </span>
                         </button>
+                        {%- comment -%}
+                          The <label for> above resolves to an empty accessible
+                          name: every span inside it is aria-hidden, so the
+                          input reads as unlabelled and axe flags it. Point the
+                          input at the visually-hidden span that already holds
+                          the correct text, including the "n in cart" variant.
+                        {%- endcomment -%}
                         <input
                           class="quantity__input"
                           type="number"
                           name="quantity"
                           id="Quantity-{{ section.id }}"
+                          aria-labelledby="quantity-label-{{ section.id }}"
                           data-cart-quantity="{{ cart_qty }}"
                           data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
                           min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
