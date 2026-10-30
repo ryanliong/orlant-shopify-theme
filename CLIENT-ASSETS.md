@@ -1,5 +1,8 @@
 # What we need from Orlant
 
+> Assets have now been received. Open questions arising from them are tracked
+> in [CLIENT-QUESTIONS.md](CLIENT-QUESTIONS.md).
+
 Everything the new Shopify store needs before it can go live, in the order it
 unblocks work. Derived from what the built theme actually reads — nothing here
 is optional decoration unless marked so.
