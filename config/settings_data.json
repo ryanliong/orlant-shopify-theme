@@ -191,7 +191,16 @@
           }
         }
       },
-      "favicon": "shopify://shop_images/orlant-favicon.png"
+      "favicon": "shopify://shop_images/orlant-favicon.png",
+      "orlant_delivery_message": "Local stock with fast delivery and on-site technical support.",
+      "orlant_reassurance_1_text": "Local stock, fast delivery",
+      "orlant_reassurance_1_icon": "truck",
+      "orlant_reassurance_2_text": "On-site technical support",
+      "orlant_reassurance_2_icon": "tool",
+      "orlant_reassurance_3_text": "5-year motor warranty",
+      "orlant_reassurance_3_icon": "shield",
+      "orlant_reassurance_4_text": "Secure payment",
+      "orlant_reassurance_4_icon": "lock"
     }
   }
 }

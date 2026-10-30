@@ -1504,7 +1504,7 @@
         "type": "text",
         "id": "orlant_delivery_message",
         "label": "Message",
-        "default": "Free delivery and on-site installation across Singapore."
+        "default": "Local stock with fast delivery and on-site technical support."
       },
       {
         "type": "checkbox",
@@ -1524,7 +1524,7 @@
         "type": "text",
         "id": "orlant_reassurance_1_text",
         "label": "Item 1 text",
-        "default": "Free delivery"
+        "default": "Local stock, fast delivery"
       },
       {
         "type": "select",
@@ -1570,7 +1570,7 @@
         "type": "text",
         "id": "orlant_reassurance_2_text",
         "label": "Item 2 text",
-        "default": "On-site installation"
+        "default": "On-site technical support"
       },
       {
         "type": "select",
@@ -1616,7 +1616,7 @@
         "type": "text",
         "id": "orlant_reassurance_3_text",
         "label": "Item 3 text",
-        "default": "2-year warranty"
+        "default": "5-year motor warranty"
       },
       {
         "type": "select",

@@ -15,7 +15,7 @@
         "padding_bottom": 28
       },
       "blocks": {
-        "i_0": {
+        "item_0": {
           "type": "item",
           "settings": {
             "icon": "chat",
@@ -23,7 +23,7 @@
             "subtext": "Fastest way to reach us"
           }
         },
-        "i_1": {
+        "item_1": {
           "type": "item",
           "settings": {
             "icon": "truck",
@@ -31,28 +31,28 @@
             "subtext": "Order status and slots"
           }
         },
-        "i_2": {
+        "item_2": {
           "type": "item",
           "settings": {
             "icon": "tool",
-            "text": "Installation support",
-            "subtext": "Before and after fitting"
+            "text": "Installation and site surveys",
+            "subtext": "Every ceiling type"
           }
         },
-        "i_3": {
+        "item_3": {
           "type": "item",
           "settings": {
             "icon": "shield",
-            "text": "Warranty claims",
-            "subtext": "Two years, on site"
+            "text": "Warranty",
+            "subtext": "5 years on the motor, 2 on parts"
           }
         }
       },
       "block_order": [
-        "i_0",
-        "i_1",
-        "i_2",
-        "i_3"
+        "item_0",
+        "item_1",
+        "item_2",
+        "item_3"
       ]
     },
     "form": {

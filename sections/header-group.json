@@ -17,21 +17,21 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Free delivery and on-site installation across Singapore",
+            "text": "Local stock, fast delivery and on-site technical support",
             "link": ""
           }
         },
         "announcement-bar-1": {
           "type": "announcement",
           "settings": {
-            "text": "2-year warranty on every smart drying rack",
+            "text": "5-year motor warranty · 2 years on parts and on-site servicing",
             "link": ""
           }
         },
         "announcement-bar-2": {
           "type": "announcement",
           "settings": {
-            "text": "Local stock — most orders installed within 5 working days",
+            "text": "Singapore's trusted partner since 2005",
             "link": ""
           }
         }

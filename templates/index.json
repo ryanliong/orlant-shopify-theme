@@ -4,8 +4,8 @@
       "type": "orlant-hero",
       "settings": {
         "eyebrow": "Smart drying, made for Singapore homes",
-        "heading": "Dry a full load overnight, whatever the weather",
-        "subheading": "<p>Ceiling-mounted smart drying racks with heating, sterilisation and app control. Installed by our own technicians across Singapore.</p>",
+        "heading": "Built to dry more",
+        "subheading": "<p>Ceiling-mounted smart drying racks with heated airflow and sterilisation. Local stock, fast delivery and on-site technical support.</p>",
         "text_position": "left",
         "button_1_label": "Shop models",
         "button_1_link": "/collections/all-models",
@@ -29,32 +29,32 @@
           "type": "item",
           "settings": {
             "icon": "truck",
-            "text": "Local stock, fast delivery",
-            "subtext": "Most orders installed within 5 working days"
+            "text": "Local stock",
+            "subtext": "Fast delivery across Singapore"
           }
         },
         "item_1": {
           "type": "item",
           "settings": {
             "icon": "tool",
-            "text": "On-site installation",
-            "subtext": "Fitted and tested by our own technicians"
+            "text": "On-site technical support",
+            "subtext": "Site surveys for every ceiling type"
           }
         },
         "item_2": {
           "type": "item",
           "settings": {
             "icon": "shield",
-            "text": "2-year warranty",
-            "subtext": "Motor, board, heating and lift mechanism"
+            "text": "5-year motor warranty",
+            "subtext": "2 years on parts and on-site servicing"
           }
         },
         "item_3": {
           "type": "item",
           "settings": {
             "icon": "chat",
-            "text": "Singapore support",
-            "subtext": "Talk to a person, not a queue"
+            "text": "Since 2005",
+            "subtext": "Singapore's trusted partner"
           }
         }
       },
@@ -90,8 +90,8 @@
       "type": "orlant-feature-split",
       "settings": {
         "eyebrow": "Why smart drying",
-        "heading": "Built for humid weather and small service yards",
-        "body": "<p>Singapore washing takes days to dry in a closed yard. Heated airflow and UV-C sterilisation finish a full load overnight, then the rack lifts back to the ceiling and gives you the space back.</p>",
+        "heading": "Dries in fewer cycles, then lifts out of the way",
+        "body": "<p>Everyday T-shirts dry in a single cycle; blankets in two or three. Heated airflow and sterilisation work while the rack hangs, and it lifts back to the ceiling when you are done.</p>",
         "media_position": "left",
         "button_label": "See the range",
         "button_link": "/collections/all-models",
@@ -104,24 +104,24 @@
           "type": "benefit",
           "settings": {
             "icon": "check",
-            "heading": "Dries through the night",
-            "text": "Heated airflow works when the weather will not."
+            "heading": "One cycle for everyday clothes",
+            "text": "Thicker items such as blankets take two to three."
           }
         },
         "benefit_1": {
           "type": "benefit",
           "settings": {
             "icon": "shield",
-            "heading": "Sterilises bedding",
-            "text": "A UV-C cycle for towels, bedding and baby clothes."
+            "heading": "Sterilises as it dries",
+            "text": "Plasma or UV-C sterilisation, depending on the model."
           }
         },
         "benefit_2": {
           "type": "benefit",
           "settings": {
             "icon": "tool",
-            "heading": "Gives the yard back",
-            "text": "Lifts flush to the ceiling when you are done."
+            "heading": "Gives the space back",
+            "text": "Lifts back up to the ceiling when the load is done."
           }
         },
         "benefit_3": {
@@ -129,7 +129,7 @@
           "settings": {
             "icon": "chat",
             "heading": "App and voice control",
-            "text": "Start a cycle from the sofa or on the way home."
+            "text": "App and voice on the X6S and M6; app on the M5."
           }
         }
       },
@@ -264,32 +264,32 @@
         "faq_0": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Will it work with a false ceiling?",
-            "row_content": "<p>Yes. False ceilings need a mounting plate anchored to the structural slab above. Our installer checks this on site before drilling.</p>",
+            "heading": "How long does it take to dry clothes?",
+            "row_content": "<p>It depends on how thick they are. Everyday T-shirts usually dry in one cycle; thicker items such as blankets take two to three cycles.</p>",
             "icon": "question_mark"
           }
         },
         "faq_1": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "Do I need HDB permission?",
-            "row_content": "<p>No permit is required for a ceiling-mounted drying rack in an HDB flat.</p>",
+            "heading": "How do you install on a false ceiling?",
+            "row_content": "<p>The installer drills through the false ceiling and fixes the rack to the concrete ceiling above. We advise a site survey first, to check how deep the false ceiling is and whether there is piping or wiring.</p>",
             "icon": "question_mark"
           }
         },
         "faq_2": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "How long does installation take?",
-            "row_content": "<p>Most installations take 60 to 90 minutes, including testing every function with you.</p>",
+            "heading": "What is the load capacity?",
+            "row_content": "<p>It depends on the model. Current models carry 45 kg or 55 kg.</p>",
             "icon": "question_mark"
           }
         },
         "faq_3": {
           "type": "collapsible_row",
           "settings": {
-            "heading": "What happens if something fails?",
-            "row_content": "<p>Two years of on-site warranty in Singapore, covering the motor, control board, heating element and lift mechanism.</p>",
+            "heading": "How does the warranty work?",
+            "row_content": "<p>Five years on the motor, two years on parts and on-site servicing, and one year on the remote control. This covers manufacturing defects.</p>",
             "icon": "question_mark"
           }
         }
@@ -305,7 +305,7 @@
       "type": "orlant-cta-banner",
       "settings": {
         "heading": "Ready to reclaim your service yard?",
-        "body": "<p>Free delivery and on-site installation across Singapore, with a two-year warranty on every model.</p>",
+        "body": "<p>Local stock, fast delivery and on-site technical support, with a five-year warranty on the motor.</p>",
         "button_label": "Shop now",
         "button_link": "/collections/all-models",
         "show_whatsapp": true,

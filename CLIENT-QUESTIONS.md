@@ -113,6 +113,9 @@ Last updated: 30 Oct 2026
 
 - [ ] **20. Warranty terms.** Length, what is covered, and whether service is on
       site. Not in the brochure.
+      *Interim: the site now uses the terms on your current FAQ page — 5 years
+      on the motor, 2 years on parts and on-site servicing, 1 year on the
+      remote. See also 31.*
 
 - [ ] **21. What is in the box** for each model. Not in the brochure.
 
@@ -165,6 +168,13 @@ Raised while loading the real catalogue (31 Oct 2026).
       installation folder is a screenshot of the brochure page, so we have no
       photos of the D6L at all. For now its product page uses crops of the D6L
       homepage banners.
+
+- [ ] **31. Lifetime parts warranty?** Your current FAQ says parts are covered
+      for 2 years, but the answer under "Orlant Voice Control Command?" mentions
+      "a complimentary lifetime warranty for parts (only pay $100 workman fee)".
+      That answer also looks like it belongs to a different question. Which
+      terms are current? The new site shows "5-year motor warranty, 2 years on
+      parts" on every product page.
 
 ---
 

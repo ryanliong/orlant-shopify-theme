@@ -23,16 +23,16 @@
           "type": "benefit",
           "settings": {
             "icon": "tool",
-            "heading": "Our own installers",
-            "text": "Not subcontracted."
+            "heading": "On-site technical support",
+            "text": "Site surveys for every ceiling type."
           }
         },
         "b_1": {
           "type": "benefit",
           "settings": {
             "icon": "shield",
-            "heading": "Two-year warranty",
-            "text": "Serviced on site in Singapore."
+            "heading": "5-year motor warranty",
+            "text": "2 years on parts and on-site servicing."
           }
         }
       },
@@ -49,44 +49,44 @@
         "padding_bottom": 36
       },
       "blocks": {
-        "i_0": {
+        "item_0": {
           "type": "item",
           "settings": {
             "icon": "truck",
             "text": "Local stock",
-            "subtext": "Held in Singapore, not shipped to order"
+            "subtext": "Fast delivery across Singapore"
           }
         },
-        "i_1": {
+        "item_1": {
           "type": "item",
           "settings": {
             "icon": "tool",
-            "text": "On-site installation",
-            "subtext": "Fitted and tested by our technicians"
+            "text": "On-site technical support",
+            "subtext": "Site surveys for every ceiling type"
           }
         },
-        "i_2": {
+        "item_2": {
           "type": "item",
           "settings": {
             "icon": "shield",
-            "text": "2-year warranty",
-            "subtext": "Motor, board, heating and lift"
+            "text": "5-year motor warranty",
+            "subtext": "2 years on parts and on-site servicing"
           }
         },
-        "i_3": {
+        "item_3": {
           "type": "item",
           "settings": {
             "icon": "chat",
-            "text": "Singapore support",
-            "subtext": "Talk to a person, not a queue"
+            "text": "Since 2005",
+            "subtext": "Singapore's trusted partner"
           }
         }
       },
       "block_order": [
-        "i_0",
-        "i_1",
-        "i_2",
-        "i_3"
+        "item_0",
+        "item_1",
+        "item_2",
+        "item_3"
       ]
     },
     "cta": {
