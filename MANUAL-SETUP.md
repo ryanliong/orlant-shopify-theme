@@ -53,6 +53,13 @@ Theme repo: <https://github.com/ryanliong/orlant-shopify-theme>
 
 ## 3. Payments (start early — approval takes time)
 
+> **30 Oct 2026:** Ryan now has access to the company's own Shopify account,
+> which the site will move into. Check there first — payments may already be
+> configured. Note Shopify Payments is set up per store, not per login: if
+> this store is transferred rather than the theme being installed into the
+> company's existing store, payments still need setting up here, in the
+> company's name.
+
 - [ ] **Shopify Payments** → Settings › Payments. Covers Visa, Mastercard,
       Amex, Apple Pay, Google Pay.
 - [ ] **HitPay** (Shopify App Store) → for **PayNow**, which Shopify Payments

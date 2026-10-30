@@ -7,6 +7,10 @@ forwarded as-is. Kept up to date as answers come in.
 `[i]` our decision, shared for visibility — no reply needed unless you disagree
 **Blocks** = what we cannot finish until it is answered.
 
+**Sent to the client on 30 Oct 2026 (questions 1–27).** Numbers are now
+fixed: new questions take the next free number so the client's copy stays
+valid.
+
 Last updated: 30 Oct 2026
 
 ---
@@ -136,21 +140,18 @@ Last updated: 30 Oct 2026
 - [ ] **27. Social media.** Keep facebook.com/OrlantSG and instagram.com/orlantsg,
       or will there be new ASTRA accounts?
 
-- [ ] **28. Customer reviews.** The reviews on your current product pages show
-      sample text from the website template. Do you have real customer reviews
-      we could use, with the customers' permission?
+---
 
-- [ ] **29. Dealers, stores, installation booking and distributor pages.**
-      Your current site has "Our Dealers", "Stores", "Schedule Installation" and
-      a distributor recruitment banner. Which of these should the new store
-      have? (A store locator was listed as a later phase in the brief.)
+## Not sent — held back
 
-## Payments
+Removed from the list before it went to the client on 30 Oct 2026. Kept here
+so they are not lost. If raised later, they take the next free number.
 
-- [ ] **30. Company details for payments.** Card payments (Shopify Payments) and
-      PayNow (through HitPay) must be registered to the company, not to us.
-      Please have a director set them up, or authorise us in writing to do it on
-      the company's behalf. HitPay needs the UEN, ACRA business profile,
-      directors' ID and the company bank account. Approval takes 1–3 business
-      days once documents are in.
-      *Blocks: checkout, launch.*
+- **Customer reviews.** The reviews on the current product pages show sample
+  text from the website template. Real reviews, with permission? *Held: beyond
+  current scope.*
+- **Dealers, stores, installation booking and distributor pages** from the
+  current site. *Held: beyond current scope; store locator is a later phase.*
+- **Company details for payments.** *Not needed from the client: Ryan has
+  access to the company's own Shopify account, which the site will move into,
+  and payments may already be set up there. To check on that account.*
