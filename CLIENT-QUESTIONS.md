@@ -3,8 +3,12 @@
 Running list of things only the client can confirm. Phrased so it can be
 forwarded as-is. Kept up to date as answers come in.
 
-`[ ]` open · `[x]` answered (answer noted underneath)
+`[ ]` open · `[x]` answered (answer noted underneath) ·
+`[i]` our decision, shared for visibility — no reply needed unless you disagree
 **Blocks** = what we cannot finish until it is answered.
+
+Numbers are stable: new questions take the next number rather than
+renumbering, so earlier references stay valid.
 
 Last updated: 30 Oct 2026
 
@@ -44,10 +48,13 @@ Last updated: 30 Oct 2026
 - [ ] **6. What do "S" and "L" stand for, and what should customers see?**
       From the specs it looks like short and long frames. We would like to label
       them clearly, e.g. "M6S — compact" and "M6L — long".
+      *Blocks: size labels, and the link between each S and L pair on the
+      product pages.*
 
-- [ ] **7. Confirm S and L stay as separate products, as on your current site.**
-      Each size has different dimensions, pole lengths and prices, so we propose
-      one product page per size, with a link between the pair.
+- [i] **7. S and L stay as separate products, as on your current site.**
+      Each size has different dimensions, pole lengths and prices, so each gets
+      its own product page, with a link to switch to the other size. The only
+      model with a colour choice on its page is the M5 (see 10).
 
 - [ ] **8. Prices for the new M5L and M5S.** They are not on your current site.
 
@@ -58,13 +65,26 @@ Last updated: 30 Oct 2026
 - [ ] **10. M5 colours.** The brochure lists Titanium Grey and Bright White. We
       only have Titanium Grey images. Is Bright White available at launch, and
       at the same price?
+      *Blocks: the colour option on the M5L and M5S pages.*
 
 - [ ] **11. Colour names.** The brochure says "Gray", "Grey", "Silver-gray" and
       "Titanium Grey"; the current site says "Metal grey". Which names should
       customers see?
+      *Blocks: colour labels on product pages, and the M5 colour option.*
 
 - [ ] **12. E13EL and X7 appear in the installation photos.** Should they be
       sold on the new store?
+
+- [i] **29. Product names.** We will name products by model, e.g. "M6L Smart
+      Drying Rack", without the brand name in front. Your current site uses
+      "ORLANT M-series M6L". Model-only names stay correct through the rebrand
+      and match how your banners refer to each model.
+
+- [ ] **30. SKU codes and stock.** Each size, and each M5 colour, is a separate
+      stock item. Please send the SKU code for each, and tell us whether you
+      want the store to track stock and show "Sold out" — your current site
+      does — or always show models as available.
+      *Blocks: inventory setup, "Sold out" badges.*
 
 ## Specifications
 
