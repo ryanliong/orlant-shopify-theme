@@ -47,6 +47,19 @@ def gql(query, variables=None):
 
 METAOBJECTS = [
     {
+        'name': 'Feature',
+        'type': 'orlant_feature',
+        'description': 'One product feature with its icon, e.g. "PTC heater x4".',
+        'displayNameKey': 'label',
+        'fieldDefinitions': [
+            {'name': 'Label', 'key': 'label', 'type': 'single_line_text_field',
+             'required': True, 'description': 'Shown under the icon.'},
+            {'name': 'Icon', 'key': 'icon', 'type': 'file_reference',
+             'required': True, 'description': 'White-on-transparent PNG. The theme tints it.',
+             'validations': [{'name': 'file_type_options', 'value': '["Image"]'}]},
+        ],
+    },
+    {
         'name': 'Spec row',
         'type': 'orlant_spec_row',
         'description': 'One row of a product specification table.',
@@ -140,15 +153,33 @@ METAFIELDS = [
     d('faq', 'Product FAQ', 'list.metaobject_reference',
       'Product-specific questions, in display order. Hidden if empty.',
       [{'name': 'metaobject_definition_id', 'value': mo_ids['orlant_faq_item']}]),
-    # Comparison table columns (brief 4.1.7)
-    d('compare_heating', 'Compare: heating', 'boolean', 'Comparison table — PTC heating.'),
-    d('compare_sterilisation', 'Compare: sterilisation', 'boolean', 'Comparison table — UV sterilisation.'),
-    d('compare_lighting', 'Compare: lighting', 'boolean', 'Comparison table — integrated lighting.'),
-    d('compare_app_control', 'Compare: app control', 'boolean', 'Comparison table — app and voice control.'),
-    d('compare_max_load', 'Compare: max load', 'single_line_text_field',
-      'Comparison table — max load with unit, e.g. "35 kg".'),
-    d('compare_drying_poles', 'Compare: drying poles', 'number_integer',
-      'Comparison table — number of drying poles.'),
+    d('features', 'Features', 'list.metaobject_reference',
+      'Feature icons shown on the product page, in display order.',
+      [{'name': 'metaobject_definition_id', 'value': mo_ids['orlant_feature']}]),
+    # --- Structured specifications ------------------------------------------
+    # One source for the spec tab, the comparison table and search filters,
+    # so the three cannot drift apart. Numbers are stored bare; the theme adds
+    # units.
+    d('size', 'Size', 'single_line_text_field', 'S or L.'),
+    d('size_sibling', 'Other size', 'product_reference',
+      'The same model in the other size, e.g. M6S on the M6L page.'),
+    d('colour', 'Colour', 'single_line_text_field',
+      'Finish, for models sold in one colour. Models with a colour choice use a variant instead.'),
+    d('host_length_mm', 'Unit length (mm)', 'number_integer', 'Length of the ceiling unit.'),
+    d('host_width_mm', 'Unit width (mm)', 'number_integer', 'Width of the ceiling unit.'),
+    d('host_height_mm', 'Unit height (mm)', 'number_integer', 'Height of the ceiling unit.'),
+    d('pole_min_mm', 'Pole length, retracted (mm)', 'number_integer', 'Shortest pole length.'),
+    d('pole_max_mm', 'Pole length, extended (mm)', 'number_integer', 'Longest pole length.'),
+    d('lifting_height_mm', 'Lifting height (mm)', 'number_integer', 'How far the rack lowers.'),
+    d('load_kg', 'Load capacity (kg)', 'number_integer', 'Maximum load.'),
+    d('power_w', 'Power consumption (W)', 'number_integer', 'Total power draw.'),
+    d('led_power_w', 'LED power (W)', 'number_integer', 'Light panel power.'),
+    d('ec_blowers', 'EC blowers', 'number_integer', 'Number of EC blowers.'),
+    d('ptc_heaters', 'PTC heaters', 'number_integer', 'Number of PTC heaters.'),
+    d('sterilisation', 'Sterilisation', 'single_line_text_field', 'e.g. "Plasma" or "UV".'),
+    d('voice_control', 'Voice control', 'boolean', 'Works with voice commands.'),
+    d('app_control', 'App control', 'boolean', 'Controllable from the phone app.'),
+    d('eco_mode', 'Eco mode', 'boolean', 'Has an energy-saving mode.'),
 ]
 
 MF_CREATE = '''
@@ -205,5 +236,35 @@ for node in nodes:
     repaired += 1
 if not repaired:
     print('  all definitions already PUBLIC_READ')
+
+
+# --- Retired definitions ---------------------------------------------------
+# Placeholder comparison fields from the first build, replaced by the
+# structured specs above. Heating and lighting are on every real model, so as
+# comparison rows they were a column of ticks. Deleting a definition also
+# deletes its values, so this only ever lists fields known to be obsolete.
+RETIRED = ['compare_heating', 'compare_sterilisation', 'compare_lighting',
+           'compare_app_control', 'compare_max_load', 'compare_drying_poles']
+
+MF_DELETE = '''
+mutation($id: ID!) {
+  metafieldDefinitionDelete(id: $id, deleteAllAssociatedMetafields: true) {
+    deletedDefinitionId
+    userErrors { field message code }
+  }
+}'''
+
+print('\nRetired definitions')
+print('-' * 62)
+all_defs = gql('''query { metafieldDefinitions(first: 100, ownerType: PRODUCT, namespace: "orlant") {
+  nodes { id key } } }''')['metafieldDefinitions']['nodes']
+by_key = {n['key']: n['id'] for n in all_defs}
+for key in RETIRED:
+    if key not in by_key:
+        print(f'  gone     orlant.{key}'); continue
+    res = gql(MF_DELETE, {'id': by_key[key]})['metafieldDefinitionDelete']
+    if res['userErrors']:
+        sys.exit(f'  FAILED   orlant.{key}: {res["userErrors"]}')
+    print(f'  deleted  orlant.{key}')
 
 print(f'\n{created} created, {exists} already present, {len(METAFIELDS)} total.')

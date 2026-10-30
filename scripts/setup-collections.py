@@ -32,21 +32,19 @@ def gql(query, variables=None):
 
 
 COLLECTIONS = [
+    # Descriptions state only what the brochure supports. The first build's
+    # copy ("the flagship range", "slimmer housing") was invented and is gone.
     ('all-models', 'All models',
-     'Every Orlant smart drying rack, from the entry-level E5 to the flagship X1.',
+     'Every Orlant smart drying rack, in short (S) and long (L) sizes.',
      'Smart Drying Rack'),
-    ('x-series', 'X Series',
-     'The flagship range. Highest airflow, PTC heating and UV-C sterilisation, '
-     'for households drying a full load every day.', 'X Series'),
     ('m-series', 'M Series',
-     'Heating and sterilisation for everyday family loads, sized for a typical '
-     'four-room flat.', 'M Series'),
+     'The M5 and M6. App control and eco mode across the series; the M6 adds '
+     'voice control and a 55 kg load.', 'M Series'),
+    ('x-series', 'X Series',
+     'The X6. A 304 stainless steel double-layer frame.', 'X Series'),
     ('d-series', 'D Series',
-     'Heated drying and app control in a slimmer housing, for shorter balcony '
-     'runs and two-bedroom homes.', 'D Series'),
-    ('e-series', 'E Series',
-     'Motorised lift and LED lighting without a heating element — for airy '
-     'service yards.', 'E Series'),
+     'The D6. Four EC blowers, four PTC heaters and plasma sterilisation, '
+     'with a drying indicator light.', 'D Series'),
 ]
 
 BY_HANDLE = '{ collectionByHandle(handle: "%s") { id handle } }'
@@ -62,8 +60,11 @@ mutation($input: CollectionInput!) {
 print('Collections')
 print('-' * 62)
 for handle, title, description, tag in COLLECTIONS:
-    if gql(BY_HANDLE % handle)['collectionByHandle']:
-        print(f'  exists   {handle}')
+    found = gql(BY_HANDLE % handle)['collectionByHandle']
+    if found:
+        gql('''mutation($i:CollectionInput!){collectionUpdate(input:$i){userErrors{message}}}''',
+            {'i': {'id': found['id'], 'title': title, 'descriptionHtml': f'<p>{description}</p>'}})
+        print(f'  updated  {handle}')
         continue
     res = gql(CREATE, {'input': {
         'handle': handle,
