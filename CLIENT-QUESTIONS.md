@@ -142,6 +142,32 @@ Last updated: 30 Oct 2026
 
 ---
 
+## Follow-up — not yet sent
+
+Raised while loading the real catalogue (31 Oct 2026).
+
+- [ ] **28. Missing and mislabelled feature icons.**
+      - The icon file named "Aluminium" actually reads "304 Stainless Steel".
+        Could you send the aluminium version? The M5, M6 and D6 brochure pages
+        use it.
+      - There is no "Plasma sterilisation" icon in the folder, though the M6
+        and D6 brochure pages show one.
+      - There are no pole-extend icons matching the M5 ("x4+5") or the X6S
+        ("x6").
+      Until then we leave those icons off the product pages rather than show
+      the wrong one.
+
+- [ ] **29. Spelling in the "Double layer frame" icon.** The artwork reads
+      "Double laryer frame", and the same spelling appears on the D6 brochure
+      pages. A corrected icon would let us show it without the typo.
+
+- [ ] **30. D6L photos.** Further to question 23: the one D6L image in the
+      installation folder is a screenshot of the brochure page, so we have no
+      photos of the D6L at all. For now its product page uses crops of the D6L
+      homepage banners.
+
+---
+
 ## Not sent — held back
 
 Removed from the list before it went to the client on 30 Oct 2026. Kept here
