@@ -15,14 +15,20 @@
 
 {%- liquid
   assign overview = product.metafields.orlant.overview
-  assign specs = product.metafields.orlant.specs.value
   assign in_the_box = product.metafields.orlant.in_the_box
   assign installation = product.metafields.orlant.installation
   assign warranty = product.metafields.orlant.warranty
   assign faq = product.metafields.orlant.faq.value
 
+  comment
+    Rendered once up front: the tab shows only if at least one row came out,
+    so its visibility can never disagree with its content.
+  endcomment
+  capture spec_rows
+    render 'orlant-spec-rows', product: product
+  endcapture
   assign has_specs = false
-  if specs != blank and specs.size > 0
+  if spec_rows != blank
     assign has_specs = true
   endif
 
@@ -116,12 +122,7 @@
           >
             <table class="orlant-specs">
               <tbody>
-                {%- for row in specs -%}
-                  <tr class="orlant-specs__row">
-                    <th class="orlant-specs__label" scope="row">{{ row.label.value }}</th>
-                    <td class="orlant-specs__value">{{ row.value.value }}</td>
-                  </tr>
-                {%- endfor -%}
+                {{- spec_rows -}}
               </tbody>
             </table>
           </div>

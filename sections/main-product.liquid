@@ -102,6 +102,17 @@
                   {%- if series != blank -%}
                     <p class="orlant-eyebrow" {{ block.shopify_attributes }}>{{ series }}</p>
                   {%- endif -%}
+                {%- when 'orlant_size_switcher' -%}
+                  <div {{ block.shopify_attributes }}>
+                    {%- render 'orlant-size-switcher', product: product -%}
+                  </div>
+                {%- when 'orlant_features' -%}
+                  <div class="orlant-features-block" {{ block.shopify_attributes }}>
+                    {%- if block.settings.heading != blank -%}
+                      <p class="orlant-features-block__heading">{{ block.settings.heading }}</p>
+                    {%- endif -%}
+                    {%- render 'orlant-features', product: product, color_scheme: block.settings.color_scheme -%}
+                  </div>
                 {%- when 'orlant_highlights' -%}
                   <div {{ block.shopify_attributes }}>
                     {%- render 'orlant-highlights', product: product -%}
@@ -813,6 +824,31 @@
           "type": "paragraph",
           "content": "Shows the product's orlant.series metafield above the title. Hidden when that metafield is empty."
         }
+      ]
+    },
+    {
+      "type": "orlant_size_switcher",
+      "name": "Orlant: size switcher",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Links this product to the same model in the other size, set in the product's orlant.size_sibling metafield. Hidden when there is none."
+        }
+      ]
+    },
+    {
+      "type": "orlant_features",
+      "name": "Orlant: feature icons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Shows the icons listed in the product's orlant.features metafield. The icons are white with built-in labels, so they sit on a dark tile."
+        },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Features" },
+        { "type": "color_scheme", "id": "color_scheme", "label": "Tile colour scheme", "default": "scheme-3",
+          "info": "Use a dark scheme — the icons are white." }
       ]
     },
     {

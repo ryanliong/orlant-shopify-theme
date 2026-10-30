@@ -1,0 +1,118 @@
+{% comment %}
+  Specification table rows built from the structured spec metafields.
+
+  The same fields feed the comparison table and search filters, so the spec
+  tab cannot disagree with them. Rows with no value are skipped. Extra rows
+  the client adds as orlant.specs entries follow these.
+
+  Accepts:
+  - product: {Object} Required.
+
+  Usage:
+  <tbody>{% render 'orlant-spec-rows', product: product %}</tbody>
+{% endcomment %}
+
+{%- liquid
+  assign o = product.metafields.orlant
+
+  assign colour = o.colour.value
+  if colour == blank
+    for option in product.options_with_values
+      if option.name == 'Colour' or option.name == 'Color'
+        assign colour = option.values | join: ', '
+      endif
+    endfor
+  endif
+
+  assign steril = o.sterilisation.value
+  if steril == 'UV'
+    assign steril = 'UV disinfection'
+  elsif steril != blank
+    assign steril = steril | append: ' sterilisation'
+  endif
+-%}
+
+{%- if o.host_length_mm != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Unit size (L × W × H)</th>
+    <td class="orlant-specs__value">{{ o.host_length_mm.value }} × {{ o.host_width_mm.value }} × {{ o.host_height_mm.value }} mm</td>
+  </tr>
+{%- endif -%}
+{%- if o.pole_max_mm != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Pole length</th>
+    <td class="orlant-specs__value">{{ o.pole_min_mm.value }}–{{ o.pole_max_mm.value }} mm</td>
+  </tr>
+{%- endif -%}
+{%- if o.lifting_height_mm != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Lifting height</th>
+    <td class="orlant-specs__value">{{ o.lifting_height_mm.value }} mm</td>
+  </tr>
+{%- endif -%}
+{%- if o.load_kg != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Load capacity</th>
+    <td class="orlant-specs__value">{{ o.load_kg.value }} kg</td>
+  </tr>
+{%- endif -%}
+{%- if o.power_w != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Power consumption</th>
+    <td class="orlant-specs__value">{{ o.power_w.value }} W</td>
+  </tr>
+{%- endif -%}
+{%- if o.led_power_w != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">LED power</th>
+    <td class="orlant-specs__value">{{ o.led_power_w.value }} W</td>
+  </tr>
+{%- endif -%}
+{%- if o.ec_blowers != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">EC blowers</th>
+    <td class="orlant-specs__value">{{ o.ec_blowers.value }}</td>
+  </tr>
+{%- endif -%}
+{%- if o.ptc_heaters != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">PTC heaters</th>
+    <td class="orlant-specs__value">{{ o.ptc_heaters.value }}</td>
+  </tr>
+{%- endif -%}
+{%- if steril != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Sterilisation</th>
+    <td class="orlant-specs__value">{{ steril }}</td>
+  </tr>
+{%- endif -%}
+{%- if o.voice_control != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Voice control</th>
+    <td class="orlant-specs__value">{%- if o.voice_control.value -%}Yes{%- else -%}No{%- endif -%}</td>
+  </tr>
+{%- endif -%}
+{%- if o.app_control != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">App control</th>
+    <td class="orlant-specs__value">{%- if o.app_control.value -%}Yes{%- else -%}No{%- endif -%}</td>
+  </tr>
+{%- endif -%}
+{%- if o.eco_mode != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Eco mode</th>
+    <td class="orlant-specs__value">{%- if o.eco_mode.value -%}Yes{%- else -%}No{%- endif -%}</td>
+  </tr>
+{%- endif -%}
+{%- if colour != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Colour</th>
+    <td class="orlant-specs__value">{{ colour }}</td>
+  </tr>
+{%- endif -%}
+{%- for extra in o.specs.value -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">{{ extra.label.value }}</th>
+    <td class="orlant-specs__value">{{ extra.value.value }}</td>
+  </tr>
+{%- endfor -%}

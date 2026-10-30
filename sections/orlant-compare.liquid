@@ -1,5 +1,5 @@
 {%- comment -%}
-  Model comparison table, driven by the orlant.compare_* product metafields so
+  Model comparison table, driven by the structured spec metafields so
   it cannot fall out of step with the products themselves (brief 4.1.7).
 
   Products are chosen as blocks rather than pulled from a collection: the order
@@ -75,30 +75,32 @@
           </thead>
           <tbody>
             {%- comment -%}
-              Each row: a label, the metafield key, and how to render it.
-              "bool" prints a tick or a dash; "text" prints the value.
-            {%- endcomment -%}
-            {%- assign row_keys = 'compare_max_load,compare_drying_poles,compare_heating,compare_sterilisation,compare_lighting,compare_app_control' | split: ',' -%}
-            {%- assign row_labels = 'Max load,Drying poles,PTC heating,UV sterilisation,Lighting,App & voice control' | split: ',' -%}
-            {%- assign row_types = 'text,text,bool,bool,bool,bool' | split: ',' -%}
+              Rows are the specs that actually separate the models. Heating
+              and lighting are left out: every model has both, so they would
+              be a row of ticks. A row is hidden when no chosen product has a
+              value for it.
 
-            {%- for key in row_keys -%}
+              Each row is "key:type". Types: mm (bare number + mm),
+              range (pole_min_mm to pole_max_mm), kg, count, steril, bool.
+            {%- endcomment -%}
+            {%- assign rows = 'host_length_mm:mm,pole_range:range,load_kg:kg,ec_blowers:count,sterilisation:steril,voice_control:bool,app_control:bool,eco_mode:bool' | split: ',' -%}
+            {%- assign labels = 'Unit length,Pole reach,Load capacity,EC blowers,Sterilisation,Voice control,App control,Eco mode' | split: ',' -%}
+
+            {%- for row in rows -%}
               {%- liquid
-                assign label = row_labels[forloop.index0]
-                assign type = row_types[forloop.index0]
+                assign parts = row | split: ':'
+                assign key = parts[0]
+                assign type = parts[1]
+                assign label = labels[forloop.index0]
+                if type == 'range'
+                  assign key = 'pole_max_mm'
+                endif
 
                 assign has_any = false
                 for block in section.blocks
                   assign p = block.settings.product
-                  if p != blank
-                    assign mf = p.metafields.orlant[key]
-                    if type == 'bool'
-                      if mf != blank
-                        assign has_any = true
-                      endif
-                    elsif mf.value != blank
-                      assign has_any = true
-                    endif
+                  if p != blank and p.metafields.orlant[key] != blank
+                    assign has_any = true
                   endif
                 endfor
               -%}
@@ -114,21 +116,35 @@
                         if product != blank and product.id == p.id
                           assign is_current = true
                         endif
-                        assign mf = p.metafields.orlant[key]
+                        assign v = p.metafields.orlant[key].value
                       -%}
                       <td class="orlant-compare__cell{% if is_current %} orlant-compare__cell--current{% endif %}">
-                        {%- if type == 'bool' -%}
-                          {%- if mf.value == true -%}
-                            <span class="orlant-compare__yes">
-                              {%- render 'orlant-icon', icon: 'check' -%}
-                              <span class="visually-hidden">Included</span>
-                            </span>
-                          {%- else -%}
-                            <span class="orlant-compare__no" aria-hidden="true">&ndash;</span>
-                            <span class="visually-hidden">Not included</span>
-                          {%- endif -%}
+                        {%- if p.metafields.orlant[key] == blank -%}
+                          <span class="orlant-compare__no" aria-hidden="true">&ndash;</span>
+                          <span class="visually-hidden">Not stated</span>
                         {%- else -%}
-                          {{ mf.value | default: '&ndash;' }}
+                          {%- case type -%}
+                            {%- when 'bool' -%}
+                              {%- if v == true -%}
+                                <span class="orlant-compare__yes">
+                                  {%- render 'orlant-icon', icon: 'check' -%}
+                                  <span class="visually-hidden">Yes</span>
+                                </span>
+                              {%- else -%}
+                                <span class="orlant-compare__no" aria-hidden="true">&ndash;</span>
+                                <span class="visually-hidden">No</span>
+                              {%- endif -%}
+                            {%- when 'mm' -%}
+                              {{ v }} mm
+                            {%- when 'range' -%}
+                              {{ p.metafields.orlant.pole_min_mm.value }}&ndash;{{ v }} mm
+                            {%- when 'kg' -%}
+                              {{ v }} kg
+                            {%- when 'steril' -%}
+                              {%- if v == 'UV' -%}UV disinfection{%- else -%}{{ v }} sterilisation{%- endif -%}
+                            {%- else -%}
+                              {{ v }}
+                          {%- endcase -%}
                         {%- endif -%}
                       </td>
                     {%- endif -%}
@@ -148,14 +164,14 @@
   "name": "Orlant: model comparison",
   "tag": "section",
   "class": "section",
-  "max_blocks": 5,
+  "max_blocks": 8,
   "settings": [
     {
       "type": "paragraph",
-      "content": "Values come from each product's orlant.compare_* metafields. A row is hidden when none of the chosen products has a value for it."
+      "content": "Values come from each product's structured spec metafields (orlant.load_kg, orlant.voice_control and so on). A row is hidden when none of the chosen products has a value for it."
     },
     { "type": "text", "id": "heading", "default": "Compare the range", "label": "Heading" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Four models, one installation standard." },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Every model, side by side." },
     { "type": "color_scheme", "id": "color_scheme", "default": "scheme-2", "label": "Colour scheme" },
     { "type": "header", "content": "Padding" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 52 },

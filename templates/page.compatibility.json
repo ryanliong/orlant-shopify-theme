@@ -131,7 +131,7 @@
       "type": "orlant-compare",
       "settings": {
         "heading": "Which model fits your home?",
-        "subheading": "Load capacity and features by model.",
+        "subheading": "Unit length, pole reach and load by model.",
         "color_scheme": "scheme-1",
         "padding_top": 48,
         "padding_bottom": 48
@@ -140,25 +140,31 @@
         "model_0": {
           "type": "model",
           "settings": {
-            "product": "orlant-e5-smart-drying-rack"
+            "product": "d6s"
           }
         },
         "model_1": {
           "type": "model",
           "settings": {
-            "product": "orlant-d3-smart-drying-rack"
+            "product": "d6l"
           }
         },
         "model_2": {
           "type": "model",
           "settings": {
-            "product": "orlant-m2-smart-drying-rack"
+            "product": "x6s"
           }
         },
         "model_3": {
           "type": "model",
           "settings": {
-            "product": "orlant-x1-smart-drying-rack"
+            "product": "m6s"
+          }
+        },
+        "model_4": {
+          "type": "model",
+          "settings": {
+            "product": "m6l"
           }
         }
       },
@@ -166,7 +172,8 @@
         "model_0",
         "model_1",
         "model_2",
-        "model_3"
+        "model_3",
+        "model_4"
       ]
     },
     "cta": {

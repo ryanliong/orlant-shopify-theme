@@ -1,0 +1,39 @@
+{% comment %}
+  Feature icon grid from orlant.features.
+
+  The client's icons have their labels baked into the artwork and some use
+  colour (speed gauge, LED dots, alarm), so they are shown as designed on a
+  dark tile instead of being tinted. The tile takes its colour from the chosen
+  colour scheme, so it follows a rebrand. Each entry's label becomes the alt
+  text, since the visible label is part of the image.
+
+  Accepts:
+  - product: {Object} Required.
+  - color_scheme: {String} Scheme id for the tiles, e.g. "scheme-3".
+
+  Usage:
+  {% render 'orlant-features', product: product, color_scheme: 'scheme-3' %}
+{% endcomment %}
+
+{%- assign features = product.metafields.orlant.features.value -%}
+{%- if features != blank and features.size > 0 -%}
+  <ul class="orlant-features list-unstyled" role="list">
+    {%- for feature in features -%}
+      {%- assign icon = feature.icon.value -%}
+      {%- if icon != blank -%}
+        <li class="orlant-features__item color-{{ color_scheme | default: 'scheme-3' }}">
+          {{
+            icon
+            | image_url: width: 200
+            | image_tag:
+              loading: 'lazy',
+              widths: '120, 200',
+              sizes: '(min-width: 750px) 8rem, 22vw',
+              class: 'orlant-features__icon',
+              alt: feature.label.value
+          }}
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+  </ul>
+{%- endif -%}

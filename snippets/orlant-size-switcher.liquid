@@ -1,0 +1,59 @@
+{% comment %}
+  Size switcher — links a model's S and L products.
+
+  Each size is its own product (different dimensions, pole reach and price),
+  joined through orlant.size_sibling. This renders both as a pair, short size
+  first, the current one marked and the other a link. Unit length is shown
+  under each name because that is what decides whether it fits the space.
+
+  Renders nothing when there is no sibling, or the sibling is not published
+  (an unpublished product reference resolves to nothing on the storefront).
+
+  Accepts:
+  - product: {Object} Required.
+
+  Usage:
+  {% render 'orlant-size-switcher', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign sibling = product.metafields.orlant.size_sibling.value
+  if sibling == blank
+    break
+  endif
+-%}
+
+{%- if sibling != blank -%}
+  {%- liquid
+    if product.metafields.orlant.size.value == 'L'
+      assign first = sibling
+      assign second = product
+    else
+      assign first = product
+      assign second = sibling
+    endif
+  -%}
+  <nav class="orlant-size" aria-label="{{ 'Size' }}">
+    <p class="orlant-size__label">Size</p>
+    <ul class="orlant-size__list list-unstyled" role="list">
+      {%- for p in (1..2) -%}
+        {%- if forloop.first -%}{%- assign item = first -%}{%- else -%}{%- assign item = second -%}{%- endif -%}
+        {%- assign name = item.title | split: ' ' | first -%}
+        {%- assign length = item.metafields.orlant.host_length_mm.value -%}
+        <li>
+          {%- if item.id == product.id -%}
+            <span class="orlant-size__option orlant-size__option--current" aria-current="page">
+              <span class="orlant-size__name">{{ name }}</span>
+              {%- if length != blank -%}<span class="orlant-size__detail">{{ length }} mm unit</span>{%- endif -%}
+            </span>
+          {%- else -%}
+            <a class="orlant-size__option" href="{{ item.url }}">
+              <span class="orlant-size__name">{{ name }}</span>
+              {%- if length != blank -%}<span class="orlant-size__detail">{{ length }} mm unit</span>{%- endif -%}
+            </a>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+{%- endif -%}

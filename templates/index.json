@@ -144,7 +144,7 @@
       "type": "orlant-compare",
       "settings": {
         "heading": "Compare the range",
-        "subheading": "Four models, one installation standard.",
+        "subheading": "Every model, side by side.",
         "color_scheme": "scheme-2",
         "padding_top": 52,
         "padding_bottom": 52
@@ -153,25 +153,31 @@
         "model_0": {
           "type": "model",
           "settings": {
-            "product": "orlant-e5-smart-drying-rack"
+            "product": "d6s"
           }
         },
         "model_1": {
           "type": "model",
           "settings": {
-            "product": "orlant-d3-smart-drying-rack"
+            "product": "d6l"
           }
         },
         "model_2": {
           "type": "model",
           "settings": {
-            "product": "orlant-m2-smart-drying-rack"
+            "product": "x6s"
           }
         },
         "model_3": {
           "type": "model",
           "settings": {
-            "product": "orlant-x1-smart-drying-rack"
+            "product": "m6s"
+          }
+        },
+        "model_4": {
+          "type": "model",
+          "settings": {
+            "product": "m6l"
           }
         }
       },
@@ -179,7 +185,8 @@
         "model_0",
         "model_1",
         "model_2",
-        "model_3"
+        "model_3",
+        "model_4"
       ]
     },
     "video": {

@@ -38,9 +38,6 @@
             "button_style": "secondary"
           }
         },
-        "orlant_highlights": {
-          "type": "orlant_highlights"
-        },
         "orlant_reassurance": {
           "type": "orlant_reassurance",
           "settings": {
@@ -52,18 +49,29 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "orlant_size_switcher": {
+          "type": "orlant_size_switcher"
+        },
+        "orlant_features": {
+          "type": "orlant_features",
+          "settings": {
+            "heading": "Features",
+            "color_scheme": "scheme-3"
+          }
         }
       },
       "block_order": [
         "orlant_series",
         "title",
         "price",
+        "orlant_size_switcher",
         "description",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
         "orlant_whatsapp",
-        "orlant_highlights",
+        "orlant_features",
         "orlant_reassurance",
         "share"
       ],
@@ -117,11 +125,61 @@
         "padding_top": 48,
         "padding_bottom": 48
       }
+    },
+    "compare": {
+      "type": "orlant-compare",
+      "settings": {
+        "heading": "Compare the range",
+        "subheading": "Where this model sits in the range.",
+        "color_scheme": "scheme-2",
+        "padding_top": 48,
+        "padding_bottom": 48
+      },
+      "blocks": {
+        "model_0": {
+          "type": "model",
+          "settings": {
+            "product": "d6s"
+          }
+        },
+        "model_1": {
+          "type": "model",
+          "settings": {
+            "product": "d6l"
+          }
+        },
+        "model_2": {
+          "type": "model",
+          "settings": {
+            "product": "x6s"
+          }
+        },
+        "model_3": {
+          "type": "model",
+          "settings": {
+            "product": "m6s"
+          }
+        },
+        "model_4": {
+          "type": "model",
+          "settings": {
+            "product": "m6l"
+          }
+        }
+      },
+      "block_order": [
+        "model_0",
+        "model_1",
+        "model_2",
+        "model_3",
+        "model_4"
+      ]
     }
   },
   "order": [
     "main",
     "orlant_tabs",
+    "compare",
     "disclosures",
     "related-products"
   ]
