@@ -177,6 +177,7 @@ METAFIELDS = [
     d('ec_blowers', 'EC blowers', 'number_integer', 'Number of EC blowers.'),
     d('ptc_heaters', 'PTC heaters', 'number_integer', 'Number of PTC heaters.'),
     d('sterilisation', 'Sterilisation', 'single_line_text_field', 'e.g. "Plasma" or "UV".'),
+    d('ionizer', 'Ioniser', 'boolean', 'Has a negative-ion ioniser.'),
     d('voice_control', 'Voice control', 'boolean', 'Works with voice commands.'),
     d('app_control', 'App control', 'boolean', 'Controllable from the phone app.'),
     d('eco_mode', 'Eco mode', 'boolean', 'Has an energy-saving mode.'),

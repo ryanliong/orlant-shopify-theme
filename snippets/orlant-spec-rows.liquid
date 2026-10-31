@@ -86,6 +86,12 @@
     <td class="orlant-specs__value">{{ steril }}</td>
   </tr>
 {%- endif -%}
+{%- if o.ionizer != blank -%}
+  <tr class="orlant-specs__row">
+    <th class="orlant-specs__label" scope="row">Ioniser</th>
+    <td class="orlant-specs__value">{%- if o.ionizer.value -%}Yes{%- else -%}No{%- endif -%}</td>
+  </tr>
+{%- endif -%}
 {%- if o.voice_control != blank -%}
   <tr class="orlant-specs__row">
     <th class="orlant-specs__label" scope="row">Voice control</th>

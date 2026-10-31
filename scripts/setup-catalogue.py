@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Load the real Orlant catalogue: one product per model and size.
 
-Reads specs from the brochure sheet and images from the prepared web folder.
+Reads specs from 00-docs/specs.csv (H2 catalogue, authoritative; brochure fills gaps) and images from the prepared web folder.
 Replaces the invented sample products from the first build.
 
   * One product per size (M6S and M6L separate), linked through
@@ -49,7 +49,7 @@ def rest(method, path, payload=None):
         return json.load(r)
 
 
-SPECS = {r['model']: r for r in csv.DictReader(open(f'{ASSETS}/00-docs/specs-from-brochure.csv'))}
+SPECS = {r['model']: r for r in csv.DictReader(open(f'{ASSETS}/00-docs/specs.csv'))}
 
 # Feature icons per model, in display order. Omitted on purpose:
 #   * "Plasma sterilisation" (M6, D6): no icon supplied; the UV icon would be wrong.
@@ -57,27 +57,33 @@ SPECS = {r['model']: r for r in csv.DictReader(open(f'{ASSETS}/00-docs/specs-fro
 #   * Pole-extend icons where none matches the spec, or the figure is disputed
 #     (M6S, X6S — client questions 16 and 17; M5 "x4+5" has no icon).
 COMMON_LIFT = ['lifting-height-control', 'one-touch-rising']
+# Per the H2 catalogue (authoritative, client-confirmed 31 Oct 2026). Eco mode
+# is not listed for any model in the catalogue, so its icon is not shown.
+# M6 poles are "x6", which no pole-extend icon matches, so none is shown.
 FEATURES = {
-    'M6L': ['ec-blowers-high-speed', 'ec-blowers-4', 'cross-flow-wind', 'poles-2-3m-4-plus-3', 'ptc-heater-4',
-            'double-layer-frame', *COMMON_LIFT, 'eco-mode', 'overweight-alarm-55kg', 'voice-control',
+    'M6L': ['ec-blowers-high-speed', 'ec-blowers-6', 'cross-flow-wind', 'ptc-heater-4', 'double-layer-frame',
+            'uv-disinfection', 'negative-oxygen-anion', *COMMON_LIFT, 'overweight-alarm-55kg', 'voice-control',
             'app-monitoring', 'led-panel-light-3-tone'],
-    'M6S': ['ec-blowers-high-speed', 'ec-blowers-4', 'cross-flow-wind', 'ptc-heater-4',
-            'double-layer-frame', *COMMON_LIFT, 'eco-mode', 'overweight-alarm-55kg', 'voice-control',
+    'M6S': ['ec-blowers-high-speed', 'ec-blowers-4', 'cross-flow-wind', 'ptc-heater-4', 'double-layer-frame',
+            'uv-disinfection', 'negative-oxygen-anion', *COMMON_LIFT, 'overweight-alarm-55kg', 'voice-control',
             'app-monitoring', 'led-panel-light-3-tone'],
+    'M5L': ['ec-blowers-high-speed', 'ec-blowers-6', 'cross-flow-wind', 'ptc-heater-4', 'double-layer-frame',
+            'uv-disinfection', 'negative-oxygen-anion', *COMMON_LIFT, 'overweight-alarm-45kg', 'app-monitoring',
+            'led-panel-light'],
+    'M5S': ['ec-blowers-high-speed', 'ec-blowers-4', 'cross-flow-wind', 'ptc-heater-4', 'double-layer-frame',
+            'uv-disinfection', 'negative-oxygen-anion', *COMMON_LIFT, 'overweight-alarm-45kg', 'app-monitoring',
+            'led-panel-light'],
+    'D6L': ['ec-blowers-high-speed', 'ec-blowers-4', 'cross-flow-wind', 'poles-2-3m-4-plus-3', 'ptc-heater-4',
+            'double-layer-frame', 'negative-oxygen-anion', *COMMON_LIFT, 'overweight-alarm-45kg',
+            'drying-indicator-light', 'led-panel-light'],
+    'D6S': ['ec-blowers-high-speed', 'ec-blowers-4', 'cross-flow-wind', 'poles-2-0m-4-plus-3', 'ptc-heater-4',
+            'double-layer-frame', 'negative-oxygen-anion', *COMMON_LIFT, 'overweight-alarm-45kg',
+            'drying-indicator-light', 'led-panel-light'],
+    # Not in the H2 catalogue (client question 5); brochure data kept for now.
     'X6S': ['ec-blowers-high-speed', 'ec-blowers-6', 'double-layer-frame', 'cross-flow-wind',
             'stainless-steel-304', 'ptc-heater-4', 'negative-oxygen-anion', 'uv-disinfection', *COMMON_LIFT,
             'eco-mode', 'overweight-alarm-45kg', 'voice-control', 'app-monitoring', 'led-panel-light'],
-    # X6L has no brochure spec page; only what the p18 case study states.
     'X6L': ['ec-blowers-4', 'ptc-heater-4', 'stainless-steel-304', 'double-layer-frame'],
-    'D6L': ['ec-blowers-high-speed', 'ec-blowers-4', 'cross-flow-wind', 'poles-2-3m-4-plus-3', 'ptc-heater-4',
-            'double-layer-frame', *COMMON_LIFT, 'overweight-alarm-45kg', 'drying-indicator-light', 'led-panel-light'],
-    # 2.0 m matches the D6S spec table (poles to 2000 mm) though the brochure icon row is blank.
-    'D6S': ['ec-blowers-high-speed', 'ec-blowers-4', 'cross-flow-wind', 'poles-2-0m-4-plus-3', 'ptc-heater-4',
-            'double-layer-frame', *COMMON_LIFT, 'overweight-alarm-45kg', 'drying-indicator-light', 'led-panel-light'],
-    'M5L': ['ec-blowers-high-speed', 'ec-blowers-6', 'cross-flow-wind', 'ptc-heater-4', 'double-layer-frame',
-            'uv-disinfection', *COMMON_LIFT, 'eco-mode', 'overweight-alarm-45kg', 'app-monitoring', 'led-panel-light-3-tone'],
-    'M5S': ['ec-blowers-high-speed', 'ec-blowers-4', 'cross-flow-wind', 'ptc-heater-4', 'double-layer-frame',
-            'uv-disinfection', *COMMON_LIFT, 'eco-mode', 'overweight-alarm-45kg', 'app-monitoring', 'led-panel-light-3-tone'],
 }
 # Merchandising badges, in the client's own words from their current site.
 BADGES = {'D6L': 'New', 'D6S': 'New', 'X6L': 'Space-saving', 'X6S': 'Space-saving',
@@ -101,7 +107,8 @@ def tagline(m, s):
     if num(s['ec_blowers']): parts.append(f"{s['ec_blowers']} EC blowers")
     if yes(s['voice_control']) and yes(s['app_control']): parts.append('voice and app control')
     elif yes(s['app_control']): parts.append('app control')
-    elif short_steril(s['sterilisation']): parts.append(f"{short_steril(s['sterilisation']).lower()} sterilisation")
+    elif short_steril(s['sterilisation']): parts.append('UV disinfection' if short_steril(s['sterilisation']) == 'UV' else 'plasma sterilisation')
+    elif yes(s.get('ionizer')): parts.append('ioniser')
     if m == 'X6L': parts = ['4 EC blowers', '4 PTC heaters', '304 stainless frame']
     return ' · '.join(parts)
 
@@ -112,6 +119,8 @@ def description(m, s):
     ctrl = ('Control it by voice or from the app.' if yes(s['voice_control']) and yes(s['app_control'])
             else 'Control it from the app.' if yes(s['app_control']) else 'Controlled by remote.')
     steril = {'Plasma': 'plasma sterilisation', 'UV': 'UV disinfection'}.get(short_steril(s['sterilisation']), '')
+    if yes(s.get('ionizer')):
+        steril = f'{steril} and an ioniser' if steril else 'an ioniser'
     return (f"<p>Ceiling-mounted smart drying rack with a double-layer frame. "
             f"Poles extend from {s['pole_min_mm']} to {s['pole_max_mm']} mm and the rack carries up to "
             f"{s['load_kg']} kg.</p>"
@@ -134,8 +143,8 @@ def metafields(m, s, feature_ids):
         add(key, 'number_integer', num(s[key]))
     add('power_w', 'number_integer', num(s['power_w']))
     add('sterilisation', 'single_line_text_field', short_steril(s['sterilisation']))
-    if s['voice_control']:
-        for key in ('voice_control', 'app_control', 'eco_mode'):
+    for key in ('voice_control', 'app_control', 'eco_mode', 'ionizer'):
+        if s.get(key):
             add(key, 'boolean', 'true' if yes(s[key]) else 'false')
     add('features', 'list.metaobject_reference', json.dumps([feature_ids[h] for h in FEATURES[m]]))
     return out
@@ -192,8 +201,10 @@ ids = {}
 for m, s in SPECS.items():
     handle = m.lower()
     title = f'{m} Smart Drying Rack'
-    price = s['price_sgd_live_site']
-    compare = s['compare_at_sgd_live_site']
+    # Retail price from the H2 catalogue. Whether to show the roadshow
+    # promotional price as a sale is client question 32, so no compare-at yet.
+    price = s['price_retail_catalogue'] or s['price_sgd_live_site']
+    compare = '' if s['price_retail_catalogue'] else s['compare_at_sgd_live_site']
     priced = bool(price) and float(price) > 0
     colours = COLOUR_VARIANTS.get(m)
     if colours:
@@ -205,8 +216,7 @@ for m, s in SPECS.items():
     for v in variants:
         v['price'] = price or '0.00'
         v['inventoryItem'] = {'tracked': False}   # stock tracking pending client question 14
-        if compare and price and float(compare) > float(price):
-            v['compareAtPrice'] = compare
+        v['compareAtPrice'] = compare if (compare and price and float(compare) > float(price)) else None
     res = gql(PRODUCT_SET, {'id': {'handle': handle}, 'input': {
         'handle': handle, 'title': title,
         'status': 'ACTIVE' if priced else 'DRAFT',
@@ -219,6 +229,15 @@ for m, s in SPECS.items():
     if res['userErrors']:
         sys.exit(f'  FAILED {m}: {res["userErrors"]}')
     pid = res['product']['id']; ids[m] = pid
+
+    # productSet adds and updates metafields but never removes them, so clear
+    # any spec this model no longer has a value for (e.g. eco mode, which the
+    # catalogue does not list, or D6 sterilisation).
+    stale = [k for k in ('sterilisation', 'eco_mode', 'voice_control', 'app_control', 'ionizer')
+             if not s.get(k)]
+    if stale:
+        gql('''mutation($m:[MetafieldIdentifierInput!]!){metafieldsDelete(metafields:$m){userErrors{message}}}''',
+            {'m': [{'ownerId': pid, 'namespace': 'orlant', 'key': k} for k in stale]})
 
     media_dir = f'{ASSETS}/web/{handle}'
     files = sorted(os.listdir(media_dir)) if os.path.isdir(media_dir) else []

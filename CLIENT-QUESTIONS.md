@@ -21,7 +21,10 @@ Last updated: 31 Oct 2026 (H2 catalogue reviewed)
       We received the ASTRA logo, but the 2026 brochure and the current website
       both still say ORLANT. Will the domain change too?
       *Blocks: logo, store name, footer, email and checkout branding.*
-      *H2 catalogue (23 Sep 2026):* cover, brand page and contact details still say ORLANT. "ASTAR" appears only after the M6L and M6S names ("M-series M6L ASTAR"), which suggests it is a name for the M6 line rather than a company rebrand. Also: the logo file is spelled **ASTRA**, the catalogue **ASTAR** — which is correct?
+      *Status (31 Oct): waiting on the client. They may keep trading as Orlant
+      for now — the new site is a future plan — so the site stays ORLANT until
+      they confirm. Spelling to confirm too: the logo file says ASTRA, the H2
+      catalogue says "M6L ASTAR".*
 
 - [ ] **2. Should the website colours follow the ASTRA logo?**
       The ASTRA logo is black and red. The preview we shared uses purple. If the
@@ -61,7 +64,7 @@ Last updated: 31 Oct 2026 (H2 catalogue reviewed)
       model with a colour choice on its page is the M5 (see 10).
 
 - [x] **8. Prices for the new M5L and M5S.** They are not on your current site.
-      *H2 catalogue (23 Sep 2026):* M5L retail $1,099, promotional $859. M5S retail $999, promotional $759.
+      *H2 catalogue (23 Sep 2026):* M5L retail $1,099, promotional $859. M5S retail $999, promotional $759. Now live at retail (see 32).
 
 - [ ] **9. Are current-site prices still correct, and is the higher figure the
       regular price?** Current site: D6S $699 (was $899), D6L $799 (was $999),
@@ -195,7 +198,7 @@ Raised while loading the real catalogue (31 Oct 2026).
       price, at retail, or at retail shown with a sale price?
       *Blocks: final prices on every product.*
 
-- [ ] **33. The catalogue and brochure disagree on some specs.** The brochure
+- [x] **33. The catalogue and brochure disagree on some specs.** The brochure
       is dated 29 Sep and the catalogue 23 Sep. Which is correct?
       - **M6L EC blowers:** 6 in the catalogue, 4 in the brochure (the site shows 4).
       - **M6 sterilisation:** "UV + ionizer" in the catalogue, plasma in the
@@ -208,6 +211,9 @@ Raised while loading the real catalogue (31 Oct 2026).
         in the brochure.
       - **D6:** "ionizer" in the catalogue, plasma sterilisation in the brochure.
       *Blocks: spec tabs and the comparison table for these models.*
+      **Answered 31 Oct: the H2 catalogue is the latest, despite its date.
+      Applied — catalogue figures now on the site; the brochure only fills
+      gaps the catalogue leaves (power, lifting height, LED wattage).**
 
 - [ ] **34. Editing note printed in the catalogue.** Page 3, under "Baby-Safe
       PVC Accessory Clamp Set", the text includes: *"replacing the overly

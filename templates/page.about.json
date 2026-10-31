@@ -32,7 +32,7 @@
           "settings": {
             "icon": "shield",
             "heading": "5-year motor warranty",
-            "text": "2 years on parts and on-site servicing."
+            "text": "2 years on structural parts."
           }
         }
       },
@@ -70,7 +70,7 @@
           "settings": {
             "icon": "shield",
             "text": "5-year motor warranty",
-            "subtext": "2 years on parts and on-site servicing"
+            "subtext": "2 years on structural parts"
           }
         },
         "item_3": {

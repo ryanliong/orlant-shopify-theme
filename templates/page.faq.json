@@ -169,7 +169,7 @@
           "type": "collapsible_row",
           "settings": {
             "heading": "How does the warranty work?",
-            "row_content": "<p>Five years on the motor, two years on parts and on-site servicing, and one year on the remote control. This covers manufacturing defects.</p>",
+            "row_content": "<p>Five years on the core DC drive motor, two years on all hardware structural components, and one year on the wireless remote and smart control panels.</p>",
             "icon": "question_mark"
           }
         },
