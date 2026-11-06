@@ -14,8 +14,8 @@
         "heading": "Drying and features",
         "heading_size": "h2",
         "layout": "section",
-        "container_color_scheme": "scheme-2",
-        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
         "open_first_collapsible_row": true,
         "padding_top": 24,
         "padding_bottom": 24
@@ -86,8 +86,8 @@
         "heading": "Installation",
         "heading_size": "h2",
         "layout": "section",
-        "container_color_scheme": "scheme-2",
-        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
         "open_first_collapsible_row": false,
         "padding_top": 24,
         "padding_bottom": 24
@@ -158,8 +158,8 @@
         "heading": "Warranty and support",
         "heading_size": "h2",
         "layout": "section",
-        "container_color_scheme": "scheme-2",
-        "color_scheme": "scheme-1",
+        "container_color_scheme": "scheme-5",
+        "color_scheme": "scheme-5",
         "open_first_collapsible_row": false,
         "padding_top": 24,
         "padding_bottom": 24

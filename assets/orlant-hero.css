@@ -32,7 +32,7 @@
 .orlant-hero__placeholder {
   width: 100%;
   height: 100%;
-  background: var(--orlant-plum-900);
+  background: var(--orlant-black);
 }
 
 /*
@@ -72,9 +72,9 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(42, 23, 64, calc(var(--orlant-hero-overlay, 0.4) + 0.25)) 0%,
-    rgba(42, 23, 64, var(--orlant-hero-overlay, 0.4)) 55%,
-    rgba(42, 23, 64, calc(var(--orlant-hero-overlay, 0.4) * 0.5)) 100%
+    rgba(5, 5, 6, calc(var(--orlant-hero-overlay, 0.4) + 0.25)) 0%,
+    rgba(5, 5, 6, var(--orlant-hero-overlay, 0.4)) 55%,
+    rgba(5, 5, 6, calc(var(--orlant-hero-overlay, 0.4) * 0.5)) 100%
   );
 }
 
@@ -96,7 +96,7 @@
 }
 
 .orlant-hero__eyebrow {
-  color: var(--orlant-champagne);
+  color: var(--orlant-accent);
   opacity: 1;
 }
 
@@ -161,28 +161,21 @@
 /*
   No-media fallback.
 
-  A deep plum field rather than a stock placeholder: Dawn's placeholders depict
-  apparel, which is the wrong category for this brand and reads as unfinished.
-  This reads as an intentional design, so the page is presentable before the
-  client's photography lands — and stays graceful if a hero is ever left
-  imageless later.
+  A black field with a soft gold glow, echoing the catalogue's black pages with
+  gold light streaks, rather than a stock placeholder: Dawn's placeholders
+  depict apparel, which is the wrong category for this brand and reads as
+  unfinished. The hero is deeper black than the gold announcement bar above,
+  so the two bands have a clear edge. Text: off-white 17:1, gold 9.5:1.
 */
 .orlant-hero--no-media .orlant-hero__media {
-  /*
-    Deep aubergine, deliberately darker than the plum-700 announcement bar
-    above it. The first version ended on #4b2a73 — the announcement bar's exact
-    colour — so the two bands ran together with no edge between them. These
-    stops hold 1.6:1 against that bar at the top of the hero, which reads as a
-    distinct band, while giving white text 18:1 and the champagne accent 8:1.
-  */
-  background-color: #1b0f2b;
+  background-color: #050506;
   background-image:
-    radial-gradient(90rem 60rem at 78% 18%, rgba(122, 82, 168, 0.38) 0%, rgba(122, 82, 168, 0) 62%),
-    radial-gradient(70rem 50rem at 12% 92%, rgba(58, 33, 89, 0.9) 0%, rgba(58, 33, 89, 0) 64%),
-    linear-gradient(152deg, #1b0f2b 0%, #2a1740 48%, #3a2159 100%);
+    radial-gradient(90rem 60rem at 78% 18%, rgba(211, 176, 92, 0.16) 0%, rgba(211, 176, 92, 0) 62%),
+    radial-gradient(70rem 50rem at 12% 92%, rgba(30, 23, 20, 0.95) 0%, rgba(30, 23, 20, 0) 64%),
+    linear-gradient(152deg, #050506 0%, #0b0b0c 48%, #1e1714 100%);
 }
 
-/* One champagne hairline across the foot — the brand's premium accent,
+/* One gold hairline across the foot — the brand's premium accent,
    used as a rule rather than a fill, per the palette notes. */
 .orlant-hero--no-media .orlant-hero__media::after {
   content: '';
@@ -193,9 +186,9 @@
   height: 0.1rem;
   background: linear-gradient(
     to right,
-    rgba(201, 168, 106, 0) 0%,
-    rgba(201, 168, 106, 0.7) 22%,
-    rgba(201, 168, 106, 0.7) 78%,
-    rgba(201, 168, 106, 0) 100%
+    rgba(211, 176, 92, 0) 0%,
+    rgba(211, 176, 92, 0.7) 22%,
+    rgba(211, 176, 92, 0.7) 78%,
+    rgba(211, 176, 92, 0) 100%
   );
 }

@@ -7,63 +7,63 @@
       "color_schemes": {
         "scheme-1": {
           "settings": {
-            "background": "#FFFFFF",
+            "background": "#0B0B0C",
             "background_gradient": "",
-            "text": "#1C1822",
-            "button": "#4B2A73",
-            "button_label": "#FFFFFF",
-            "secondary_button_label": "#4B2A73",
-            "shadow": "#2A1740"
+            "text": "#F2EFEA",
+            "button": "#D3B05C",
+            "button_label": "#0B0B0C",
+            "secondary_button_label": "#D3B05C",
+            "shadow": "#000000"
           }
         },
         "scheme-2": {
           "settings": {
-            "background": "#F3EEF9",
+            "background": "#1E1714",
             "background_gradient": "",
-            "text": "#1C1822",
-            "button": "#4B2A73",
-            "button_label": "#FFFFFF",
-            "secondary_button_label": "#4B2A73",
-            "shadow": "#2A1740"
+            "text": "#F2EFEA",
+            "button": "#D3B05C",
+            "button_label": "#0B0B0C",
+            "secondary_button_label": "#D3B05C",
+            "shadow": "#000000"
           }
         },
         "scheme-3": {
           "settings": {
-            "background": "#2A1740",
+            "background": "#050506",
             "background_gradient": "",
-            "text": "#FFFFFF",
-            "button": "#C9A86A",
-            "button_label": "#2A1740",
-            "secondary_button_label": "#FFFFFF",
-            "shadow": "#2A1740"
+            "text": "#F2EFEA",
+            "button": "#D3B05C",
+            "button_label": "#0B0B0C",
+            "secondary_button_label": "#D3B05C",
+            "shadow": "#000000"
           }
         },
         "scheme-4": {
           "settings": {
-            "background": "#4B2A73",
-            "background_gradient": "",
-            "text": "#FFFFFF",
-            "button": "#FFFFFF",
-            "button_label": "#4B2A73",
-            "secondary_button_label": "#FFFFFF",
-            "shadow": "#2A1740"
+            "background": "#D3B05C",
+            "background_gradient": "linear-gradient(90deg, rgba(187, 140, 23, 1) 0%, rgba(211, 176, 92, 1) 22%, rgba(243, 226, 186, 1) 50%, rgba(211, 176, 92, 1) 78%, rgba(187, 140, 23, 1) 100%)",
+            "text": "#0B0B0C",
+            "button": "#0B0B0C",
+            "button_label": "#F3E2BA",
+            "secondary_button_label": "#0B0B0C",
+            "shadow": "#000000"
           }
         },
         "scheme-5": {
           "settings": {
-            "background": "#1C1822",
+            "background": "#F7F4EE",
             "background_gradient": "",
-            "text": "#FFFFFF",
-            "button": "#C9A86A",
-            "button_label": "#1C1822",
-            "secondary_button_label": "#FFFFFF",
-            "shadow": "#2A1740"
+            "text": "#1C1822",
+            "button": "#0B0B0C",
+            "button_label": "#F3E2BA",
+            "secondary_button_label": "#1C1822",
+            "shadow": "#000000"
           }
         }
       },
-      "type_header_font": "playfair_display_n4",
-      "heading_scale": 110,
-      "type_body_font": "work_sans_n4",
+      "type_header_font": "saira_n7",
+      "heading_scale": 100,
+      "type_body_font": "saira_n4",
       "body_scale": 100,
       "page_width": 1400,
       "spacing_sections": 40,
@@ -95,7 +95,7 @@
       "card_style": "standard",
       "card_image_padding": 0,
       "card_text_alignment": "left",
-      "card_color_scheme": "scheme-1",
+      "card_color_scheme": "scheme-2",
       "card_border_thickness": 0,
       "card_border_opacity": 10,
       "card_corner_radius": 12,
@@ -191,7 +191,7 @@
           }
         }
       },
-      "favicon": "shopify://shop_images/orlant-favicon.png",
+      "favicon": "shopify://shop_images/orlant-favicon-gold.png",
       "orlant_delivery_message": "Local stock with fast delivery and on-site technical support.",
       "orlant_reassurance_1_text": "Local stock, fast delivery",
       "orlant_reassurance_1_icon": "truck",

@@ -8,7 +8,7 @@ Status: `ready` = can start · `blocked` = waiting on an input
 
 | # | Change | Status | Blocked on | Size |
 |---|---|---|---|---|
-| A | Black and gold colour scheme + sans-serif fonts | **ready** | Confirmed by client 7 Nov. Palette taken from the H2 catalogue | Large |
+| A | Black and gold colour scheme + sans-serif fonts | **done** | Built; awaiting client approval of home and product page | Large |
 | B | Logo in the header | blocked | Vector logo (round 2 Q13) | Small |
 | C | "Products" menu with series dropdown | **done** | Ryan, in admin | Small |
 | D | Floating WhatsApp button | **done** | Built and checked by Ryan on the live store; number still the placeholder until round 2 Q15 | Small |
@@ -38,6 +38,32 @@ Rules for everything in F–J:
 
 ## A. Black and gold colour scheme, and sans-serif fonts
 
+> **Built.** Waiting on the client's approval of the home page and one product
+> page. What was done:
+> - **Fonts: Saira** (bold headings, regular body), the closest match in
+>   Shopify's font library to the catalogue's lettering (compared against
+>   Titillium Web, Chakra Petch, Rajdhani and Barlow). The client can still
+>   change it in Theme settings → Typography.
+> - **Schemes:** 1 Black (default), 2 Brown panel, 3 Deep black (hero, CTA,
+>   footer), 4 Gold (brushed-gold gradient: announcement bar, sale badge),
+>   5 Ivory (FAQ page). README has the table.
+> - **Accent colour follows the scheme** (`--orlant-accent`): gold on dark,
+>   black on gold, dark gold on ivory. No purple left in the theme.
+> - **Favicon** redrawn in black and gold (a ceiling rack mark), still a
+>   placeholder until the logo arrives.
+> - **Policy pages stay dark**: Shopify renders them with the default scheme,
+>   and off-white text on black is 17:1, so they read fine. Only the FAQ page
+>   uses ivory.
+> - Fixed on the way: the comparison table made home and product pages 555px
+>   wide on phones (now fits 390px).
+> - Checks: theme check (same 9 Dawn warnings), Lighthouse accessibility 97
+>   on home and product page.
+>
+> **Noticed, not fixed:** the product renders have white backgrounds, which
+> stand out as white boxes on the black pages. The catalogue shows the same
+> renders on black. Options: ask the client for transparent PNGs, or cut out
+> the backgrounds ourselves.
+>
 > **Confirmed by the client 7 Nov**, reversing the 6 Nov purple decision.
 > **Colour reference: the H2 catalogue** (Ryan's call, instead of an AI
 > image). The palette below is taken from the catalogue's own artwork.

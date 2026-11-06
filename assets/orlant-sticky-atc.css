@@ -9,7 +9,7 @@
   display: block;
   background: rgb(var(--color-background));
   border-top: 0.1rem solid rgba(var(--color-foreground), 0.12);
-  box-shadow: 0 -0.4rem 1.6rem rgba(var(--orlant-plum-900-rgb, 42, 23, 64), 0.08);
+  box-shadow: 0 -0.4rem 1.6rem rgba(0, 0, 0, 0.4);
   /* Clear the iOS home indicator. */
   padding-bottom: env(safe-area-inset-bottom, 0);
   animation: orlant-sticky-in var(--orlant-duration) var(--orlant-ease);

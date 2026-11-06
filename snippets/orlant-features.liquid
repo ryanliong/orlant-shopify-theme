@@ -9,10 +9,10 @@
 
   Accepts:
   - product: {Object} Required.
-  - color_scheme: {String} Scheme id for the tiles, e.g. "scheme-3".
+  - color_scheme: {String} Scheme id for the tiles, e.g. "scheme-2".
 
   Usage:
-  {% render 'orlant-features', product: product, color_scheme: 'scheme-3' %}
+  {% render 'orlant-features', product: product, color_scheme: 'scheme-2' %}
 {% endcomment %}
 
 {%- assign features = product.metafields.orlant.features.value -%}
@@ -21,7 +21,7 @@
     {%- for feature in features -%}
       {%- assign icon = feature.icon.value -%}
       {%- if icon != blank -%}
-        <li class="orlant-features__item color-{{ color_scheme | default: 'scheme-3' }}">
+        <li class="orlant-features__item color-{{ color_scheme | default: 'scheme-2' }}">
           {{
             icon
             | image_url: width: 200

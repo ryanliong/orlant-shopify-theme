@@ -8,7 +8,7 @@
 .orlant-split__body > p:last-child { margin-bottom: 0; }
 .orlant-split__list { display: grid; gap: 1.4rem; margin: 0 0 var(--orlant-space-md); padding: 0; }
 .orlant-split__item { display: flex; gap: 1.2rem; align-items: flex-start; font-size: 1.5rem; line-height: 1.6; }
-.orlant-split__icon { flex: 0 0 auto; color: var(--orlant-plum-500); display: inline-flex; margin-top: 0.1rem; }
+.orlant-split__icon { flex: 0 0 auto; color: var(--orlant-accent); display: inline-flex; margin-top: 0.1rem; }
 .orlant-split__item-heading { display: block; color: rgb(var(--color-foreground)); }
 .orlant-split__button { margin: 0; }
 
@@ -24,10 +24,10 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: var(--orlant-radius-media);
-  background-color: var(--orlant-lavender-100);
+  background-color: var(--orlant-brown);
   background-image:
-    radial-gradient(40rem 30rem at 72% 22%, rgba(122, 82, 168, 0.28) 0%, rgba(122, 82, 168, 0) 64%),
-    linear-gradient(148deg, #f3eef9 0%, #e4d9f2 58%, #d5c6ea 100%);
+    radial-gradient(40rem 30rem at 72% 22%, rgba(211, 176, 92, 0.18) 0%, rgba(211, 176, 92, 0) 64%),
+    linear-gradient(148deg, #1e1714 0%, #15110f 58%, #0b0b0c 100%);
   position: relative;
 }
 
@@ -38,6 +38,6 @@
   right: 12%;
   bottom: 2.4rem;
   height: 0.1rem;
-  background: var(--orlant-champagne);
+  background: var(--orlant-gold);
   opacity: 0.55;
 }

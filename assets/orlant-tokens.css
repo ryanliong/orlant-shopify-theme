@@ -6,21 +6,34 @@
 
   Colour *schemes* live in config/settings_data.json (editable by the client
   in the theme editor). The raw brand values below are the source of truth for
-  accents that are not part of a Dawn scheme — champagne rules, badges, icons.
+  accents that are not part of a Dawn scheme — gold rules, badges, icons.
+
+  Palette taken from the client's H2 catalogue: black pages, warm brown
+  panels, and brushed-gold title bars (deep gold at the ends, pale gold in the
+  middle).
 */
 
 :root {
   /* Brand palette */
-  --orlant-plum-900: #2a1740;
-  --orlant-plum-700: #4b2a73;
-  --orlant-plum-500: #7a52a8;
-  --orlant-lavender-100: #f3eef9;
-  --orlant-champagne: #c9a86a;
+  --orlant-black: #0b0b0c;
+  --orlant-black-deep: #050506;
+  --orlant-brown: #1e1714;
+  --orlant-gold: #d3b05c;
+  --orlant-gold-deep: #bb8c17;
+  --orlant-gold-pale: #f3e2ba;
+  --orlant-gold-dark: #8a6510; /* gold for light backgrounds: 4.84:1 on ivory */
+  --orlant-ivory: #f7f4ee;
   --orlant-ink: #1c1822;
   --orlant-white: #ffffff;
+  --orlant-gold-gradient: linear-gradient(90deg, #bb8c17 0%, #d3b05c 22%, #f3e2ba 50%, #d3b05c 78%, #bb8c17 100%);
 
-  /* Focus ring. plum-500 clears 3:1 on white (5.83) and lavender (5.11). */
-  --orlant-focus: var(--orlant-plum-500);
+  /*
+    Accent: icons, hairlines, eyebrows, active tabs. Scheme-aware, because the
+    catalogue gold that reads 9.5:1 on black is only 3.05:1 on white.
+    Default (and schemes 1–3, all dark) is gold.
+  */
+  --orlant-accent: var(--orlant-gold);
+  --orlant-focus: var(--orlant-accent);
 
   /* Spacing scale */
   --orlant-space-xs: 0.8rem;
@@ -41,15 +54,26 @@
 }
 
 /*
-  Dark schemes: plum-500 only reaches 2.78:1 against plum-900, which fails the
-  3:1 non-text minimum. Champagne reaches 7.18:1, so dark schemes ring in
-  champagne instead. Scheme ids are the three dark schemes shipped in
-  settings_data.json — see README if the client adds more.
+  Per-scheme accent. Scheme ids match settings_data.json:
+  1 Black, 2 Brown panel, 3 Deep black (gold accent, the default above);
+  4 Gold (black accent: 9.49:1 on #d3b05c); 5 Ivory (dark gold: 4.84:1).
+  See README if the client adds schemes.
 */
-.color-scheme-3,
-.color-scheme-4,
+.color-scheme-1,
+.color-scheme-2,
+.color-scheme-3 {
+  --orlant-accent: var(--orlant-gold);
+  --orlant-focus: var(--orlant-gold);
+}
+
+.color-scheme-4 {
+  --orlant-accent: var(--orlant-black);
+  --orlant-focus: var(--orlant-black);
+}
+
 .color-scheme-5 {
-  --orlant-focus: var(--orlant-champagne);
+  --orlant-accent: var(--orlant-gold-dark);
+  --orlant-focus: var(--orlant-gold-dark);
 }
 
 /* Focus: override Dawn's low-contrast 50%-alpha foreground ring. */
@@ -93,10 +117,10 @@
   transform: translateY(-0.1rem);
 }
 
-/* Champagne hairline — the premium accent. Never a fill, never body text. */
+/* Gold hairline — the premium accent. Never a fill, never body text. */
 .orlant-rule {
   border: 0;
-  border-top: 0.1rem solid var(--orlant-champagne);
+  border-top: 0.1rem solid var(--orlant-accent);
   width: 6rem;
   margin: 0 0 var(--orlant-space-sm);
 }
@@ -206,7 +230,7 @@
   width: 2rem;
   height: 2rem;
   margin-top: 0.15rem;
-  color: var(--orlant-plum-500);
+  color: var(--orlant-accent);
 }
 
 .orlant-reassurance {
@@ -236,7 +260,7 @@
 .orlant-reassurance__icon {
   flex: 0 0 auto;
   display: inline-flex;
-  color: var(--orlant-plum-500);
+  color: var(--orlant-accent);
 }
 
 .orlant-icon {
@@ -286,14 +310,16 @@
 }
 
 /*
-  Champagne is the premium accent and is reserved for small highlights, so the
-  merchandising badge is the one place it acts as a fill. Ink text on champagne
-  is 7.72:1, comfortably past AA.
+  Gold is the premium accent and is reserved for small highlights, so the
+  merchandising badge is one of the few places it acts as a fill, in the
+  catalogue's brushed-gold gradient. Black text on it is 6.44:1 at the darkest
+  stop, past AA.
 */
 .orlant-card__badge {
-  background-color: var(--orlant-champagne);
-  color: var(--orlant-ink);
-  border-color: var(--orlant-champagne);
+  background-color: var(--orlant-gold);
+  background-image: var(--orlant-gold-gradient);
+  color: var(--orlant-black);
+  border-color: var(--orlant-gold-deep);
   font-size: 1.1rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -340,7 +366,7 @@
 .orlant-cart-extras__icon {
   flex: 0 0 auto;
   display: inline-flex;
-  color: var(--orlant-plum-500);
+  color: var(--orlant-accent);
 }
 
 /* The installation note is the one field that changes what the installer
@@ -391,6 +417,7 @@ a.orlant-size__option:hover { border-color: rgb(var(--color-foreground)); }
 .orlant-features__item {
   /* Tile colour comes from the block's colour scheme, so it follows a rebrand. */
   background: rgb(var(--color-background));
+  border: 0.1rem solid rgba(211, 176, 92, 0.22);
   border-radius: var(--orlant-radius-media);
   padding: 0.6rem;
   display: flex; align-items: center; justify-content: center;

@@ -16,12 +16,11 @@ model (`x1-front.jpg`, `m2-installed.jpg`) saves us a round trip.
 
 These are approvals, not assets. Everything else can proceed once these land.
 
-1. **Brand colours.** The store is built on a purple palette:
-   deep plum `#2A1740`, brand purple `#4B2A73`, light purple `#7A52A8`,
-   soft lavender `#F3EEF9`, champagne gold accent `#C9A86A`.
-   *Approve, or send brand guidelines / existing hex values.*
-2. **Typography.** Headings in Playfair Display (elegant serif), body in
-   Work Sans. *Approve, or name preferred fonts.*
+1. **Brand colours.** ~~Purple~~ — *decided 7 Nov: black and gold*, taken
+   from the H2 catalogue (black `#0B0B0C`, brown `#1E1714`, gold `#D3B05C`,
+   brushed-gold gradient `#BB8C17 → #F3E2BA`).
+2. **Typography.** *Decided: Saira*, the closest Shopify font to the
+   catalogue's lettering, for headings and body.
 3. **Brand name presentation** — "Orlant", "Orlant International", or
    something else in the header and footer?
 4. **Do they have a brand guideline document?** If so, send it and items 1–3
@@ -67,7 +66,7 @@ yes/no for PTC heating, UV sterilisation, lighting, app & voice control.
 - Landscape, **at least 2400px wide**. Lifestyle over studio — a rack in a real
   home reads better than a product cut-out.
 - A separate **portrait** version for phones (roughly 1200×1500).
-- *Currently a purple gradient. It looks deliberate, so this is not urgent —
+- *Currently a black field with a soft gold glow. It looks deliberate, so this is not urgent —
   but a real photograph will sell better.*
 
 **Feature section images** — 2–4 images or short clips illustrating benefits

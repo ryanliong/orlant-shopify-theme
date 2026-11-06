@@ -75,7 +75,7 @@
 
   .orlant-tabs__trigger--active {
     color: rgb(var(--color-foreground));
-    border-bottom-color: var(--orlant-champagne);
+    border-bottom-color: var(--orlant-accent);
   }
 
   .orlant-tabs__chevron {

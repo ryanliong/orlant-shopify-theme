@@ -77,10 +77,10 @@ Theme repo: <https://github.com/ryanliong/orlant-shopify-theme>
 Settings › Checkout › Customize. Not theme-editable — Shopify owns checkout.
 
 - [ ] Logo: Orlant logo, left-aligned
-- [ ] Accent / primary button colour: `#4B2A73` (plum-700)
-- [ ] Button label colour: `#FFFFFF`
+- [ ] Accent / primary button colour: `#0B0B0C` (black) — checkout is light, and gold buttons on white fail contrast
+- [ ] Button label colour: `#F3E2BA` (pale gold)
 - [ ] Error colour: leave Shopify default
-- [ ] Heading font: Playfair Display · Body font: Work Sans
+- [ ] Heading font: Saira · Body font: Saira
 - [ ] Background: `#FFFFFF`
 
 ## 5. Content the client must supply

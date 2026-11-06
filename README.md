@@ -48,12 +48,12 @@ are obvious against Dawn's own files.
 
 | Section | Used on | Notes |
 |---|---|---|
-| `orlant-hero` | Home | Image or muted looping video. Video is desktop-only; a separate mobile image is used instead. Falls back to a plum gradient when no media is set. |
+| `orlant-hero` | Home | Image or muted looping video. Video is desktop-only; a separate mobile image is used instead. Falls back to a black field with a soft gold glow when no media is set. |
 | `orlant-trust-bar` | Home, About, Contact | 3–4 icon + text items |
 | `orlant-feature-split` | Home, Compatibility, About | Media one side, text and bullets the other. Side flips per instance; stack two with the toggle reversed for alternating rows. |
 | `orlant-compare` | Home, Product, Compatibility | Table driven by the `orlant.compare_*` metafields. On a product page the current model's column is highlighted automatically. |
 | `orlant-testimonials` | Home | Quote, name, home type, star rating. Static until a reviews app is added. |
-| `orlant-cta-banner` | Home, FAQ, Compatibility, About, Contact | Dark plum close with the champagne rule and a WhatsApp button |
+| `orlant-cta-banner` | Home, FAQ, Compatibility, About, Contact | Black close with the gold rule and a WhatsApp button |
 | `orlant-product-tabs` | Product | Six metafield-fed panels. Tabs on desktop, accordions on mobile. |
 | `orlant-cart-upsell` | Cart | "You may also need", from a chosen collection |
 
@@ -120,22 +120,24 @@ product shows fewer tabs rather than empty ones.
 
 | Scheme | Background | Text | Buttons | Use |
 |---|---|---|---|---|
-| 1 Light | white | ink | plum-700 | Default |
-| 2 Lavender | `#F3EEF9` | ink | plum-700 | Soft bands |
-| 3 Dark plum | `#2A1740` | white | champagne | Footer, CTA |
-| 4 Plum solid | `#4B2A73` | white | white | Announcement bar |
-| 5 Ink | `#1C1822` | white | champagne | Highest contrast |
+| 1 Black | `#0B0B0C` | off-white `#F2EFEA` | gold, black label | Default: header, most sections |
+| 2 Brown panel | `#1E1714` | off-white | gold, black label | Bands and cards: trust bar, comparison, product cards, feature tiles |
+| 3 Deep black | `#050506` | off-white | gold, black label | Hero, CTA, footer, header over the hero, WhatsApp button |
+| 4 Gold | brushed-gold gradient | black | black, pale gold label | Announcement bar, sale badge |
+| 5 Ivory | `#F7F4EE` | ink `#1C1822` | black, pale gold label | Long text: FAQ page |
 
-Palette: plum-900 `#2A1740` · plum-700 `#4B2A73` · plum-500 `#7A52A8` ·
-lavender `#F3EEF9` · champagne `#C9A86A` · ink `#1C1822`.
+Palette (from the client's H2 catalogue): black `#0B0B0C` · brown `#1E1714` ·
+gold `#D3B05C` · deep gold `#BB8C17` · pale gold `#F3E2BA` · dark gold
+`#8A6510` (on light backgrounds only) · ivory `#F7F4EE` · ink `#1C1822`.
+Fonts: Saira bold headings, Saira regular body.
 
-All pairs meet WCAG AA. Champagne is an accent only — rules, badges, small
-highlights — never a large fill or body text.
+All pairs meet WCAG AA: gold on black 9.5:1, gold on brown 8.5:1, black on
+gold buttons 9.5:1. Catalogue gold on white is only 3.05:1, so gold text is
+never used on light backgrounds; scheme 5 uses dark gold instead.
 
-> Focus rings are plum-500 on light schemes and **champagne on dark schemes**:
-> plum-500 only reaches 2.78:1 on plum-900, below the 3:1 minimum for non-text
-> UI. If you add more dark schemes, add their ids to the dark-scheme rule in
-> `assets/orlant-tokens.css`.
+> Icons, hairlines, eyebrows and focus rings use `--orlant-accent`, which is
+> set per scheme in `assets/orlant-tokens.css`: gold on schemes 1–3, black on
+> 4, dark gold on 5. If you add a scheme, add its id there too.
 
 ---
 
