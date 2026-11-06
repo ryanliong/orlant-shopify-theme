@@ -146,6 +146,12 @@ def metafields(m, s, feature_ids):
     for key in ('voice_control', 'app_control', 'eco_mode', 'ionizer'):
         if s.get(key):
             add(key, 'boolean', 'true' if yes(s[key]) else 'false')
+    add('pole_count', 'single_line_text_field', s.get('pole_count'))
+    add('led_panel', 'single_line_text_field', s.get('led_panel'))
+    add('ultra_thin_cm', 'number_integer', num(s.get('ultra_thin_cm')))
+    for key in ('bidirectional_protection', 'function_display', 'multiple_support'):
+        if yes(s.get(key)):
+            add(key, 'boolean', 'true')
     add('features', 'list.metaobject_reference', json.dumps([feature_ids[h] for h in FEATURES[m]]))
     return out
 

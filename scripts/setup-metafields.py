@@ -181,6 +181,13 @@ METAFIELDS = [
     d('voice_control', 'Voice control', 'boolean', 'Works with voice commands.'),
     d('app_control', 'App control', 'boolean', 'Controllable from the phone app.'),
     d('eco_mode', 'Eco mode', 'boolean', 'Has an energy-saving mode.'),
+    # Catalogue feature rows, for the point-form feature list (round 2, I).
+    d('pole_count', 'Number of poles', 'single_line_text_field', 'As the catalogue writes it, e.g. "6" or "4+3".'),
+    d('bidirectional_protection', 'Bidirectional resistance protection', 'boolean', 'Catalogue row "Bidirectional resistance protection".'),
+    d('function_display', 'Function display', 'boolean', 'Catalogue row "Function display".'),
+    d('multiple_support', 'Multiple support', 'boolean', 'Catalogue row "Multiple support" (meaning to be confirmed by the client).'),
+    d('led_panel', 'LED panel light', 'single_line_text_field', 'e.g. "LED panel light" or "3-tone LED panel light". Blank if none.'),
+    d('ultra_thin_cm', 'Ultra-thin body (cm)', 'number_integer', 'Retracted body depth, for models sold as ultra-thin.'),
 ]
 
 MF_CREATE = '''

@@ -49,13 +49,27 @@ are obvious against Dawn's own files.
 | Section | Used on | Notes |
 |---|---|---|
 | `orlant-hero` | Home | Image or muted looping video. Video is desktop-only; a separate mobile image is used instead. Falls back to a black field with a soft gold glow when no media is set. |
-| `orlant-trust-bar` | Home, About, Contact | 3–4 icon + text items |
+| `orlant-trust-bar` | Home, About, Contact | 3–4 icon + text items, optional heading |
+| `orlant-capabilities` | Home | Up to 4 headline figures over a grid of icon cards (GoodLiving style) |
+| `orlant-functions` | Home, Product | One row per function: image (required), optional Shopify-hosted video, heading, text, up to 3 figures; sides alternate. On the product page "Only show functions this model has" hides rows whose spec the model lacks (each block's "Show only if the model has"). |
 | `orlant-feature-split` | Home, Compatibility, About | Media one side, text and bullets the other. Side flips per instance; stack two with the toggle reversed for alternating rows. |
-| `orlant-compare` | Home, Product, Compatibility | Table driven by the `orlant.compare_*` metafields. On a product page the current model's column is highlighted automatically. |
+| `orlant-compare` | Home, Product, Compatibility | Table driven by the structured spec metafields, with a product image above each name. On a product page the current model's column is highlighted automatically. |
 | `orlant-testimonials` | Home | Quote, name, home type, star rating. Static until a reviews app is added. |
 | `orlant-cta-banner` | Home, FAQ, Compatibility, About, Contact | Black close with the gold rule and a WhatsApp button |
 | `orlant-product-tabs` | Product | Six metafield-fed panels. Tabs on desktop, accordions on mobile. |
 | `orlant-cart-upsell` | Cart | "You may also need", from a chosen collection |
+
+Every Orlant section applies its padding settings through
+`snippets/orlant-section-padding.liquid`.
+
+Site-wide snippets rendered from `layout/theme.liquid`: the floating WhatsApp
+button (`orlant-whatsapp-float`) and the mailing list pop-up
+(`orlant-newsletter-popup`), both configured in Theme settings › Orlant.
+
+On the product page, the **Orlant: feature list** block
+(`snippets/orlant-feature-points.liquid`) replaces the description: a
+point-form list built from the catalogue spec metafields, in the same order
+on every model.
 
 Reused from Dawn unchanged: `featured-collection`, `video`,
 `collapsible-content`, `contact-form`, `main-*`.
@@ -169,6 +183,7 @@ idempotent.
 SHOP=orlant-gujfiai0.myshopify.com python3 scripts/setup-metafields.py
 SHOP=orlant-gujfiai0.myshopify.com python3 scripts/setup-collections.py
 SHOP=orlant-gujfiai0.myshopify.com python3 scripts/setup-pages.py
+SHOP=orlant-gujfiai0.myshopify.com python3 scripts/setup-feature-points.py  # catalogue feature fields for the point-form list
 SHOP=… MEDIA_DIR=/tmp/orlant-media python3 scripts/upload-placeholder-media.py
 SHOP=… FILE=path/to/logo.svg      python3 scripts/upload-brand-files.py
 SHOP=… python3 scripts/setup-sample-data.py   # test products — do not run on production

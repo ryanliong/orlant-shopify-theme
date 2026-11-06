@@ -1,0 +1,93 @@
+{%- comment -%}
+  Mailing list pop-up (round 2 change E). Rendered once in layout/theme.liquid.
+
+  Uses Shopify's customer form with the "newsletter" tag, so a sign-up creates
+  (or updates) a customer marked as subscribed to email marketing — no app.
+
+  Behaviour lives in assets/orlant-popup.js:
+  - opens after the configured delay or halfway down the page, not on arrival;
+  - once closed, stays away for the configured number of days; never again
+    after a sign-up, and not for visitors arriving from an email link;
+  - not on the cart or password pages;
+  - centred card on desktop, bottom sheet on phones (Google penalises pop-ups
+    that cover the content on mobile).
+{%- endcomment -%}
+
+{%- liquid
+  if settings.orlant_popup_enable == false
+    break
+  endif
+  if template.name == 'cart' or template.name == 'password' or template.name == 'gift_card'
+    break
+  endif
+-%}
+
+{{ 'orlant-popup.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'orlant-popup.js' | asset_url }}" defer="defer"></script>
+
+<orlant-popup
+  data-delay="{{ settings.orlant_popup_delay | default: 10 }}"
+  data-snooze-days="{{ settings.orlant_popup_snooze_days | default: 30 }}"
+>
+  <dialog
+    class="orlant-popup color-{{ settings.orlant_popup_color_scheme | default: 'scheme-2' }}"
+    aria-labelledby="OrlantPopupHeading"
+    aria-describedby="OrlantPopupText"
+  >
+    <button type="button" class="orlant-popup__close" data-popup-close aria-label="Close">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+
+    {%- form 'customer', id: 'OrlantPopupForm', class: 'orlant-popup__form', novalidate: 'novalidate' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter,popup">
+
+      {%- if settings.orlant_popup_eyebrow != blank -%}
+        <p class="orlant-popup__eyebrow">{{ settings.orlant_popup_eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="orlant-popup__heading" id="OrlantPopupHeading">{{ settings.orlant_popup_heading }}</h2>
+
+      {%- if form.posted_successfully? -%}
+        <p class="orlant-popup__text orlant-popup__success" id="OrlantPopupText" role="status" data-popup-state="success">
+          {{ settings.orlant_popup_success }}
+        </p>
+      {%- else -%}
+        <p class="orlant-popup__text" id="OrlantPopupText">{{ settings.orlant_popup_text }}</p>
+
+        <div class="orlant-popup__field">
+          <label class="visually-hidden" for="OrlantPopupEmail">Email</label>
+          <input
+            id="OrlantPopupEmail"
+            class="orlant-popup__input"
+            type="email"
+            name="contact[email]"
+            autocomplete="email"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            placeholder="Enter your email"
+            required
+            {% if form.errors %}
+              aria-invalid="true" aria-describedby="OrlantPopupError"
+            {% endif %}
+          >
+        </div>
+        {%- if form.errors -%}
+          <p class="orlant-popup__error" id="OrlantPopupError" role="alert" data-popup-state="error">
+            {{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}
+          </p>
+        {%- endif -%}
+
+        <button type="submit" class="button orlant-popup__submit">{{ settings.orlant_popup_button | default: 'Subscribe' }}</button>
+
+        {%- if settings.orlant_popup_consent != blank -%}
+          <p class="orlant-popup__consent">
+            {{ settings.orlant_popup_consent }}
+            {%- if shop.privacy_policy != blank %}
+              <a href="{{ shop.privacy_policy.url }}">Privacy policy</a>
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+      {%- endif -%}
+    {%- endform -%}
+  </dialog>
+</orlant-popup>

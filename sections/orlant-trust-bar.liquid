@@ -1,6 +1,8 @@
 {%- comment -%}
   Trust bar — three or four icon + text reassurance items (brief 4.1.4).
   Editable blocks; the section hides itself when every block is empty.
+  Round 2 (H): optional heading, icon above centred text, and real padding,
+  after the client found the single-line strip squashed.
 {%- endcomment -%}
 
 {{ 'orlant-trust-bar.css' | asset_url | stylesheet_tag }}
@@ -17,6 +19,9 @@
 {%- if filled > 0 -%}
   <div class="color-{{ section.settings.color_scheme }} gradient">
     <div class="orlant-trust page-width section-{{ section.id }}-padding">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="orlant-trust__heading h3">{{ section.settings.heading }}</h2>
+      {%- endif -%}
       <ul class="orlant-trust__list list-unstyled" role="list">
         {%- for block in section.blocks -%}
           {%- if block.settings.text != blank -%}
@@ -38,6 +43,8 @@
   </div>
 {%- endif -%}
 
+{% render 'orlant-section-padding', section: section %}
+
 {% schema %}
 {
   "name": "Orlant: trust bar",
@@ -45,9 +52,10 @@
   "class": "section",
   "max_blocks": 4,
   "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "info": "Optional. Shown centred above the items." },
     { "type": "color_scheme", "id": "color_scheme", "default": "scheme-2", "label": "Colour scheme" },
-    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 32 },
-    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 32 }
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 56 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 56 }
   ],
   "blocks": [
     {

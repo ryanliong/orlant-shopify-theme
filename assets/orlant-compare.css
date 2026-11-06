@@ -64,6 +64,21 @@
   margin-bottom: 0.4rem;
 }
 
+.orlant-compare__thumb {
+  display: block;
+  width: 7.2rem;
+  aspect-ratio: 1;
+  margin-bottom: 1rem;
+  border-radius: var(--orlant-radius-media);
+  overflow: hidden;
+  background: #fff;
+}
+.orlant-compare__thumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+@media screen and (min-width: 750px) {
+  .orlant-compare__thumb { width: 12rem; }
+}
+
 .orlant-compare__model-link {
   display: block;
   font-family: var(--font-heading-family);

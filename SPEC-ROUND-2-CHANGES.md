@@ -12,12 +12,12 @@ Status: `ready` = can start · `blocked` = waiting on an input
 | B | Logo in the header | blocked | Vector logo (round 2 Q13) | Small |
 | C | "Products" menu with series dropdown | **done** | Ryan, in admin | Small |
 | D | Floating WhatsApp button | **done** | Built and checked by Ryan on the live store; number still the placeholder until round 2 Q15 | Small |
-| E | Mailing list pop-up | ready | Simple sign-up, no discount. Privacy policy assumed to exist | Small–medium |
-| F | Home page: function blocks (image slot, video optional) | ready | Nereos screenshots received. Image or video decided per block later | Large |
-| G | Capabilities showcase (GoodLiving style) | ready | — | Medium |
-| H | Trust bar: more room | ready | — | Small |
-| I | Product page: point-form features, video slots, bigger price | ready* | *Sale price display depends on round 2 Q3 | Medium |
-| J | Comparison table thumbnails | ready | — | Small |
+| E | Mailing list pop-up | **done** | Theme pop-up, Nereos layout; Shopify Forms not needed | Small–medium |
+| F | Home page: function blocks (image slot, video optional) | **done** | Videos added later by Ryan, per block | Large |
+| G | Capabilities showcase (GoodLiving style) | **done** | — | Medium |
+| H | Trust bar: more room | **done** | — | Small |
+| I | Product page: point-form features, video slots, bigger price | **done** | "Multiple support" wording waits on the client | Medium |
+| J | Comparison table thumbnails | **done** | — | Small |
 
 **Order (updated 7 Nov):** A first — colours and fonts change the look of
 everything else, so building F–J against purple would mean judging them
@@ -267,6 +267,16 @@ from WhatsApp).
 
 ## E. Mailing list pop-up
 
+> **Built** as a theme pop-up rather than Shopify Forms, so it matches the
+> Nereos layout exactly. Uses Shopify's customer form with the `newsletter`
+> tag: sign-ups land in Customers as subscribed to email marketing, with the
+> PDPA consent line and privacy policy link under the button. Opens after
+> 10 s or halfway down the page; hidden for 30 days after closing and for
+> good after a sign-up; not on the cart page or for visitors from an email
+> link; bottom sheet on phones. All wording and timings are in Theme
+> settings → Orlant → Mailing list pop-up, where it can also be switched off
+> if the client later prefers Shopify Forms.
+
 **Request:** a "join our mailing list" pop-up when people arrive.
 
 **Decided 6 Nov:** a simple "join our mailing list for updates" sign-up. No
@@ -333,6 +343,13 @@ accessibility checks, and Lighthouse SEO and accessibility hold their scores.
 ---
 
 ## F. Home page: function blocks with video slots
+
+> **Built:** section `orlant-functions`, 10 blocks, each with one of the
+> client's installation photos (uploaded to Files as `orlant-fn-*.jpg`). Copy
+> is from the H2 catalogue; its comparative claims ("3 times faster", "40%
+> higher") are left out until round 2 Q12. Replaces the "Why smart drying"
+> split and the Dawn video placeholder. The same blocks run on the product
+> page, filtered to the model's functions (I.2).
 
 **Request:** more blocks of information on the home page, following nereos.sg.
 **One function per block.** Image slots never left blank or white.
@@ -411,6 +428,9 @@ screen, Lighthouse performance stays at or above 80).
 
 ## G. Capabilities showcase (GoodLiving style)
 
+> **Built:** section `orlant-capabilities`, after Featured models: 4 figures
+> (55 kg, 15 cm, 62 dB(A), 5 years) and 8 cards with gold icon tiles.
+
 **Request:** show specs and capabilities the way goodliving.sg does.
 
 GoodLiving uses an **icon grid**: 8 cards, each with an icon, a bold title
@@ -433,6 +453,12 @@ blocks: the grid gives the summary, the blocks give the detail.
 
 ## H. Trust bar: give it more room
 
+> **Built.** Root cause found on the way: none of the Orlant sections applied
+> their padding settings, so the brown band had no vertical padding at all.
+> Fixed for every Orlant section (`snippets/orlant-section-padding.liquid`).
+> The bar now has a heading, larger icons above centred text, and 56px
+> padding.
+
 **Request:** the "Local stock … Since 2005" strip looks squashed.
 
 **Reference:** Nereos' "Trusted Support From Purchase to Installation" row:
@@ -448,6 +474,13 @@ from 2×2 to a single column if the 2×2 still feels tight.
 ---
 
 ## I. Product page
+
+> **Built.** Feature list block replaces the description, from six new
+> catalogue fields (`scripts/setup-feature-points.py`). "Multiple support"
+> (D6) is stored but hidden until the client explains it. Function blocks
+> below the buy box, filtered per model. Price 30px; on sale, struck retail,
+> gold sale price and "Save $X" (visible now on the X6S, which has a
+> compare-at price).
 
 **1. Features as point form, in a fixed order.** Replace the paragraph
 description with a bullet list generated from the product's spec data, so
@@ -494,6 +527,9 @@ price is set.
 ---
 
 ## J. Comparison table thumbnails
+
+> **Built:** product image above each model name (120px desktop, 72px
+> phones), toggle in the section settings.
 
 **Request:** small product images in "Compare the range", because names alone
 make it hard to tell what is being compared.

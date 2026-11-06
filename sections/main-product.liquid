@@ -113,6 +113,16 @@
                     {%- endif -%}
                     {%- render 'orlant-features', product: product, color_scheme: block.settings.color_scheme -%}
                   </div>
+                {%- when 'orlant_feature_points' -%}
+                  <div class="orlant-points-block" {{ block.shopify_attributes }}>
+                    {%- if block.settings.heading != blank -%}
+                      <h2 class="orlant-points-block__heading">{{ block.settings.heading }}</h2>
+                    {%- endif -%}
+                    {%- render 'orlant-feature-points',
+                      product: product,
+                      multiple_support_label: block.settings.multiple_support_label
+                    -%}
+                  </div>
                 {%- when 'orlant_highlights' -%}
                   <div {{ block.shopify_attributes }}>
                     {%- render 'orlant-highlights', product: product -%}
@@ -148,6 +158,11 @@
                       show_badges: true,
                       price_class: 'price--large'
                     -%}
+                    {%- comment -%} Inside #price-{{ section.id }} so Dawn re-renders it on variant change. {%- endcomment -%}
+                    {%- assign orlant_variant = product.selected_or_first_available_variant -%}
+                    {%- if orlant_variant.compare_at_price > orlant_variant.price -%}
+                      <p class="orlant-save">Save {{ orlant_variant.compare_at_price | minus: orlant_variant.price | money }}</p>
+                    {%- endif -%}
                   </div>
                   {%- if product.quantity_price_breaks_configured? -%}
                     <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
@@ -849,6 +864,24 @@
         { "type": "text", "id": "heading", "label": "Heading", "default": "Features" },
         { "type": "color_scheme", "id": "color_scheme", "label": "Tile colour scheme", "default": "scheme-2",
           "info": "Use a dark scheme — the icons are white." }
+      ]
+    },
+    {
+      "type": "orlant_feature_points",
+      "name": "Orlant: feature list",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Point-form features built from the product's catalogue spec fields, in the same order on every model. Edit the values in the product's metafields."
+        },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Key features" },
+        {
+          "type": "text",
+          "id": "multiple_support_label",
+          "label": "Wording for \"Multiple support\"",
+          "info": "The catalogue lists \"Multiple support\" on the D6 without explaining it. Leave blank to hide the line until the client confirms what it means."
+        }
       ]
     },
     {

@@ -62,6 +62,16 @@
                     {%- if is_current -%}
                       <span class="orlant-compare__current-flag">This model</span>
                     {%- endif -%}
+                    {%- if section.settings.show_images and p.featured_media != blank -%}
+                      {%- comment -%} Duplicate of the name link, so hidden from assistive tech and the tab order. {%- endcomment -%}
+                      <a href="{{ p.url }}" class="orlant-compare__thumb" tabindex="-1" aria-hidden="true">
+                        {{
+                          p.featured_media
+                          | image_url: width: 240
+                          | image_tag: loading: 'lazy', widths: '120, 180, 240', sizes: '(min-width: 750px) 120px, 72px', alt: ''
+                        }}
+                      </a>
+                    {%- endif -%}
                     <a href="{{ p.url }}" class="orlant-compare__model-link">{{ p.title }}</a>
                     {%- assign series = p.metafields.orlant.series.value -%}
                     {%- if series != blank -%}
@@ -159,6 +169,8 @@
   </div>
 {%- endif -%}
 
+{% render 'orlant-section-padding', section: section %}
+
 {% schema %}
 {
   "name": "Orlant: model comparison",
@@ -172,6 +184,7 @@
     },
     { "type": "text", "id": "heading", "default": "Compare the range", "label": "Heading" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Every model, side by side." },
+    { "type": "checkbox", "id": "show_images", "label": "Show product images", "default": true },
     { "type": "color_scheme", "id": "color_scheme", "default": "scheme-2", "label": "Colour scheme" },
     { "type": "header", "content": "Padding" },
     { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 52 },

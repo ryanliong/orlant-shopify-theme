@@ -1535,6 +1535,18 @@
         "label": "Hide on the cart page",
         "default": true
       },
+      {"type": "header", "content": "Mailing list pop-up"},
+      {"type": "paragraph", "content": "Sign-ups are saved in Customers as subscribed to email marketing. If you switch to the Shopify Forms app instead, untick this."},
+      {"type": "checkbox", "id": "orlant_popup_enable", "label": "Show the mailing list pop-up", "default": true},
+      {"type": "text", "id": "orlant_popup_eyebrow", "label": "Eyebrow", "default": "Orlant mailing list"},
+      {"type": "text", "id": "orlant_popup_heading", "label": "Heading", "default": "Stay in the loop"},
+      {"type": "textarea", "id": "orlant_popup_text", "label": "Text", "default": "Join our mailing list for updates on new models, roadshows and news from Orlant."},
+      {"type": "text", "id": "orlant_popup_button", "label": "Button label", "default": "Subscribe"},
+      {"type": "textarea", "id": "orlant_popup_consent", "label": "Consent line", "default": "By subscribing you agree to receive marketing emails from Orlant. Unsubscribe anytime.", "info": "Required under Singapore's PDPA. A link to your privacy policy is added after it automatically once the policy is set in Settings → Policies."},
+      {"type": "text", "id": "orlant_popup_success", "label": "Thank-you message", "default": "Thanks for subscribing. You'll hear from us soon."},
+      {"type": "range", "id": "orlant_popup_delay", "label": "Show after", "min": 5, "max": 60, "step": 5, "unit": "s", "default": 10, "info": "Or when the visitor scrolls halfway down the page, whichever comes first."},
+      {"type": "range", "id": "orlant_popup_snooze_days", "label": "After closing, hide for", "min": 1, "max": 90, "step": 1, "unit": "d", "default": 30},
+      {"type": "color_scheme", "id": "orlant_popup_color_scheme", "label": "Colour scheme", "default": "scheme-2"},
       {
         "type": "header",
         "content": "Delivery & installation message"

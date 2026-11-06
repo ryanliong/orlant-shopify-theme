@@ -1,0 +1,52 @@
+{%- comment -%}
+  Point-form feature list (round 2 change I), built from the product's
+  catalogue spec fields in one fixed order for every model: features every
+  model has come first, model-specific ones last. Two product pages read side
+  by side therefore match at the top and only differ at the bottom.
+
+  Accepts:
+  - product: {Object}
+  - multiple_support_label: {String} Wording for the catalogue's "Multiple
+    support" row. Blank hides the row until the client explains what it means.
+
+  Usage:
+  {% render 'orlant-feature-points', product: product, multiple_support_label: '' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign mf = product.metafields.orlant
+  assign pole_min = mf.pole_min_mm.value
+  assign pole_max = mf.pole_max_mm.value
+  assign pole_count = mf.pole_count.value
+  assign ptc = mf.ptc_heaters.value
+  assign ec = mf.ec_blowers.value
+  assign load = mf.load_kg.value
+  assign led = mf.led_panel.value
+  assign steril = mf.sterilisation.value
+  assign thin = mf.ultra_thin_cm.value
+-%}
+
+{%- capture points -%}
+  {%- if pole_min != blank and pole_max != blank -%}
+    <li>{% if pole_count != blank %}{{ pole_count }} telescopic poles{% else %}Telescopic poles{% endif %}, extending {{ pole_min }}–{{ pole_max }} mm</li>
+  {%- endif -%}
+  {%- if ptc != blank and ptc > 0 -%}<li>{{ ptc }} PTC heaters</li>{%- endif -%}
+  {%- if ec != blank and ec > 0 -%}<li>{{ ec }} EC cross-flow blowers</li>{%- endif -%}
+  {%- if load != blank -%}<li>Overweight alarm, {{ load }} kg maximum load</li>{%- endif -%}
+  {%- if mf.bidirectional_protection.value == true -%}<li>Bidirectional resistance protection</li>{%- endif -%}
+  {%- if led != blank -%}<li>{{ led | capitalize | replace: 'Led ', 'LED ' }}</li>{%- endif -%}
+  {%- if mf.ionizer.value == true -%}<li>Ioniser</li>{%- endif -%}
+  {%- if steril == 'UV' -%}<li>UV disinfection</li>{%- elsif steril == 'Plasma' -%}<li>Plasma sterilisation</li>{%- endif -%}
+  {%- if mf.app_control.value == true -%}<li>Mobile app control</li>{%- endif -%}
+  {%- if mf.function_display.value == true -%}<li>Function display</li>{%- endif -%}
+  {%- if mf.multiple_support.value == true and multiple_support_label != blank -%}<li>{{ multiple_support_label }}</li>{%- endif -%}
+  {%- if mf.voice_control.value == true -%}<li>Voice control</li>{%- endif -%}
+  {%- if thin != blank -%}<li>Ultra-thin {{ thin }} cm body</li>{%- endif -%}
+{%- endcapture -%}
+
+{%- if points != blank -%}
+  {%- capture check -%}<span class="orlant-points__icon">{%- render 'orlant-icon', icon: 'check' -%}</span>{%- endcapture -%}
+  <ul class="orlant-points list-unstyled" role="list">
+    {{ points | replace: '<li>', '<li class="orlant-points__item">__CHECK__<span>' | replace: '</li>', '</span></li>' | replace: '__CHECK__', check }}
+  </ul>
+{%- endif -%}

@@ -1,0 +1,69 @@
+/* Function blocks — see sections/orlant-functions.liquid */
+.orlant-fn__header { text-align: center; max-width: 72rem; margin: 0 auto var(--orlant-space-xl); }
+.orlant-fn__title { margin: 0; }
+.orlant-fn__subtitle { margin: 1.2rem 0 0; color: rgba(var(--color-foreground), 0.75); }
+
+.orlant-fn__list { display: grid; gap: var(--orlant-space-xl); }
+
+.orlant-fn__row { display: grid; gap: var(--orlant-space-md); align-items: center; }
+
+.orlant-fn__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--orlant-radius-card);
+  border: 0.1rem solid rgba(211, 176, 92, 0.28);
+  background: var(--orlant-brown);
+}
+.orlant-fn__image,
+.orlant-fn__video-wrap,
+.orlant-fn__video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* No image chosen yet: a brand panel with the function's icon, never an
+   empty or white frame. */
+.orlant-fn__placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--orlant-gold);
+  background:
+    radial-gradient(40rem 30rem at 70% 25%, rgba(211, 176, 92, 0.18) 0%, rgba(211, 176, 92, 0) 64%),
+    linear-gradient(148deg, #1e1714 0%, #15110f 58%, #0b0b0c 100%);
+}
+.orlant-fn__placeholder .orlant-icon { width: 6.4rem; height: 6.4rem; stroke-width: 1; }
+
+.orlant-fn__eyebrow {
+  display: inline-flex; align-items: center; gap: 0.8rem;
+  margin: 0 0 1.2rem;
+  font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--orlant-accent);
+}
+.orlant-fn__eyebrow-icon { display: inline-flex; }
+.orlant-fn__eyebrow-icon .orlant-icon { width: 2.2rem; height: 2.2rem; }
+
+.orlant-fn__heading { margin: 0 0 var(--orlant-space-sm); }
+.orlant-fn__body { color: rgba(var(--color-foreground), 0.82); line-height: 1.7; }
+.orlant-fn__body > p { margin: 0 0 1rem; }
+.orlant-fn__body > p:last-child { margin-bottom: 0; }
+
+.orlant-fn__figures {
+  display: flex; flex-wrap: wrap; gap: var(--orlant-space-sm) var(--orlant-space-lg);
+  margin: var(--orlant-space-md) 0 0; padding: var(--orlant-space-md) 0 0;
+  border-top: 0.1rem solid rgba(var(--color-foreground), 0.14);
+}
+.orlant-fn__figure { display: flex; flex-direction: column-reverse; gap: 0.4rem; margin: 0; white-space: nowrap; }
+.orlant-fn__figure-value {
+  margin: 0;
+  font-family: var(--font-heading-family); font-weight: var(--font-heading-weight);
+  font-size: 2.8rem; line-height: 1.1; color: var(--orlant-accent);
+  font-variant-numeric: tabular-nums;
+}
+.orlant-fn__figure-label { font-size: 1.3rem; line-height: 1.4; color: rgba(var(--color-foreground), 0.7); }
+
+@media screen and (min-width: 750px) {
+  .orlant-fn__list { gap: var(--orlant-space-2xl); }
+  .orlant-fn__row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--orlant-space-xl); }
+  /* Source order keeps media first for every row; only the visual order flips. */
+  .orlant-fn__row--media-right .orlant-fn__media { order: 2; }
+  .orlant-fn__row--media-right .orlant-fn__text { order: 1; }
+  .orlant-fn__figure-value { font-size: 3.4rem; }
+}

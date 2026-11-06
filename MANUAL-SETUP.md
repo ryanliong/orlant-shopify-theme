@@ -92,8 +92,15 @@ Settings › Checkout › Customize. Not theme-editable — Shopify owns checkou
 - [ ] **Hero media** — the hero currently falls back to a Dawn placeholder.
       It takes a desktop image, a separate mobile image, and optionally an MP4
       background video (Content › Files, then paste the link into the section).
-- [ ] **Home page video** — the "See it in a real flat" section points at a
-      placeholder YouTube URL. Replace with the client's walkthrough.
+- [ ] **Function videos (optional)** — every function block (home page and
+      product pages) already shows a photo. To swap in a video: upload it in
+      Content › Files, then in the theme editor open the block and pick it
+      under "Video (optional)". The photo becomes its still frame. The home
+      page and the product template each have their own copy of the blocks,
+      so pick the video in both.
+- [ ] **"Multiple support" (D6)** — once the client explains it, type the
+      wording into the product template's *Orlant: feature list* block; the
+      line then appears on the D6 pages.
 - [ ] **Testimonials** — three placeholder quotes are in the theme editor.
       Replace with real customer words, with permission to publish them.
 - [ ] **Real copy** for About, Contact, FAQ, System Compatibility pages

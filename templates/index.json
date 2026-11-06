@@ -21,8 +21,9 @@
       "type": "orlant-trust-bar",
       "settings": {
         "color_scheme": "scheme-2",
-        "padding_top": 32,
-        "padding_bottom": 32
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "heading": "Why Singapore homes choose Orlant"
       },
       "blocks": {
         "item_0": {
@@ -86,60 +87,6 @@
         "padding_bottom": 52
       }
     },
-    "why_smart": {
-      "type": "orlant-feature-split",
-      "settings": {
-        "eyebrow": "Why smart drying",
-        "heading": "Dries in fewer cycles, then lifts out of the way",
-        "body": "<p>Everyday T-shirts dry in a single cycle; blankets in two or three. Heated airflow and sterilisation work while the rack hangs, and it lifts back to the ceiling when you are done.</p>",
-        "media_position": "left",
-        "button_label": "See the range",
-        "button_link": "/collections/all-models",
-        "color_scheme": "scheme-1",
-        "padding_top": 52,
-        "padding_bottom": 52
-      },
-      "blocks": {
-        "benefit_0": {
-          "type": "benefit",
-          "settings": {
-            "icon": "check",
-            "heading": "One cycle for everyday clothes",
-            "text": "Thicker items such as blankets take two to three."
-          }
-        },
-        "benefit_1": {
-          "type": "benefit",
-          "settings": {
-            "icon": "shield",
-            "heading": "Sterilises as it dries",
-            "text": "UV disinfection on the M Series; ioniser across the range."
-          }
-        },
-        "benefit_2": {
-          "type": "benefit",
-          "settings": {
-            "icon": "tool",
-            "heading": "Gives the space back",
-            "text": "Lifts back up to the ceiling when the load is done."
-          }
-        },
-        "benefit_3": {
-          "type": "benefit",
-          "settings": {
-            "icon": "chat",
-            "heading": "App and voice control",
-            "text": "App and voice on the M6; app on the M5."
-          }
-        }
-      },
-      "block_order": [
-        "benefit_0",
-        "benefit_1",
-        "benefit_2",
-        "benefit_3"
-      ]
-    },
     "compare": {
       "type": "orlant-compare",
       "settings": {
@@ -188,21 +135,6 @@
         "model_3",
         "model_4"
       ]
-    },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "See it in a real flat",
-        "heading_size": "h2",
-        "description": "Replace with the client walkthrough: installation and a full drying cycle.",
-        "cover_image": "",
-        "video_url": "",
-        "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 52,
-        "padding_bottom": 52,
-        "enable_video_looping": false
-      }
     },
     "testimonials": {
       "type": "orlant-testimonials",
@@ -313,15 +245,292 @@
         "padding_top": 64,
         "padding_bottom": 64
       }
+    },
+    "capabilities": {
+      "type": "orlant-capabilities",
+      "settings": {
+        "eyebrow": "Capabilities",
+        "heading": "Designed for Singapore homes",
+        "subheading": "",
+        "color_scheme": "scheme-2",
+        "padding_top": 72,
+        "padding_bottom": 72
+      },
+      "blocks": {
+        "fig_1": {
+          "type": "figure",
+          "settings": {
+            "value": "55 kg",
+            "label": "Maximum load"
+          }
+        },
+        "fig_2": {
+          "type": "figure",
+          "settings": {
+            "value": "15 cm",
+            "label": "Ultra-thin body"
+          }
+        },
+        "fig_3": {
+          "type": "figure",
+          "settings": {
+            "value": "62 dB(A)",
+            "label": "Quiet lifting"
+          }
+        },
+        "fig_4": {
+          "type": "figure",
+          "settings": {
+            "value": "5 years",
+            "label": "Motor warranty"
+          }
+        },
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "icon": "wind",
+            "title": "Hot and cold airflow",
+            "text": "Alternating airflow clears dampness from layered fabrics."
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "icon": "quiet",
+            "title": "Quiet EC blowers",
+            "text": "Up to six EC cross-flow blowers with minimal wind noise."
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "icon": "sparkle",
+            "title": "UV disinfection and ioniser",
+            "text": "Hygiene while it dries, on the M5 and M6."
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "icon": "rails",
+            "title": "Full-span telescopic poles",
+            "text": "Up to 2300 mm of reach, extending all at once."
+          }
+        },
+        "card_5": {
+          "type": "card",
+          "settings": {
+            "icon": "weight",
+            "title": "Overweight alarm",
+            "text": "Sounds when the load passes 45 or 55 kg."
+          }
+        },
+        "card_6": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "title": "Resistance protection",
+            "text": "Bidirectional resistance protection on every model."
+          }
+        },
+        "card_7": {
+          "type": "card",
+          "settings": {
+            "icon": "phone",
+            "title": "App and voice control",
+            "text": "App on the M5 and M6; voice on the M6."
+          }
+        },
+        "card_8": {
+          "type": "card",
+          "settings": {
+            "icon": "cable",
+            "title": "304 stainless steel cables",
+            "text": "Marine-grade, rust-resistant, never needs oiling."
+          }
+        }
+      },
+      "block_order": [
+        "fig_1",
+        "fig_2",
+        "fig_3",
+        "fig_4",
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4",
+        "card_5",
+        "card_6",
+        "card_7",
+        "card_8"
+      ]
+    },
+    "functions": {
+      "type": "orlant-functions",
+      "blocks": {
+        "fn_airflow": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-airflow.jpg",
+            "icon": "wind",
+            "eyebrow": "Rapid drying",
+            "heading": "Hot and cold airflow, alternating",
+            "text": "<p>Alternating hot and cold circulating airflow works through layered fabrics to clear residual dampness. EC cross-flow blowers move the air while PTC heaters warm it.</p>",
+            "requires": "none",
+            "figure_1_value": "Up to 6",
+            "figure_1_label": "EC cross-flow blowers",
+            "figure_2_value": "4",
+            "figure_2_label": "PTC heaters"
+          }
+        },
+        "fn_ec_motor": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-ec-motor.jpg",
+            "icon": "quiet",
+            "eyebrow": "EC motor",
+            "heading": "Strong airflow, low noise",
+            "text": "<p>An energy-efficient EC motor sits in a precision die-cast aluminium frame. Anti-vibration rubber damping pads and a balanced dual-section fan give high airflow with minimal wind noise.</p>",
+            "requires": "none"
+          }
+        },
+        "fn_uv_ioniser": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-uv-ioniser.jpg",
+            "icon": "sparkle",
+            "eyebrow": "Hygiene",
+            "heading": "UV disinfection and ioniser",
+            "text": "<p>On the M5 and M6, UV disinfection and a negative-ion ioniser work on the load while it dries. The D6 has the ioniser.</p>",
+            "requires": "sterilisation"
+          }
+        },
+        "fn_poles": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-poles.jpg",
+            "icon": "rails",
+            "eyebrow": "Drying space",
+            "heading": "Full-span telescopic poles",
+            "text": "<p>Every drying arm, including the central supporting frames, extends fully and at the same time, so the weight spreads evenly across the rack.</p>",
+            "requires": "none",
+            "figure_1_value": "Up to 2300 mm",
+            "figure_1_label": "Pole reach",
+            "figure_2_value": "Up to 7",
+            "figure_2_label": "Poles"
+          }
+        },
+        "fn_lifting": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-lifting.jpg",
+            "icon": "lift",
+            "eyebrow": "Lifting",
+            "heading": "Smooth, quiet lifting",
+            "text": "<p>A precision-wound DC brush motor lifts the rack smoothly under its full rated load. Multi-layer noise reduction keeps it quiet day and night, with minimal routine maintenance.</p>",
+            "requires": "none",
+            "figure_1_value": "62 dB(A)",
+            "figure_1_label": "Operating noise",
+            "figure_2_value": "5 years",
+            "figure_2_label": "Motor warranty"
+          }
+        },
+        "fn_protection": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-protection.jpg",
+            "icon": "shield",
+            "eyebrow": "Safety",
+            "heading": "Overweight alarm and resistance protection",
+            "text": "<p>An alarm sounds when the load goes over the rack's limit: 55 kg on the M6, 45 kg on the M5 and D6. Bidirectional resistance protection guards the rack as it travels up and down.</p>",
+            "requires": "bidirectional_protection",
+            "figure_1_value": "55 kg",
+            "figure_1_label": "Maximum load, M6",
+            "figure_2_value": "45 kg",
+            "figure_2_label": "M5 and D6"
+          }
+        },
+        "fn_ultra_thin": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-ultra-thin.jpg",
+            "icon": "thin",
+            "eyebrow": "Design",
+            "heading": "15 cm ultra-thin body",
+            "text": "<p>Retracted, the M6 is just 15 cm deep. It sits flush against the ceiling and keeps overhead space free in small balconies and service yards.</p>",
+            "requires": "ultra_thin_cm",
+            "figure_1_value": "15 cm",
+            "figure_1_label": "Retracted depth"
+          }
+        },
+        "fn_cables": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-cables.jpg",
+            "icon": "cable",
+            "eyebrow": "Built to last",
+            "heading": "Marine-grade 304 stainless steel cables",
+            "text": "<p>Core cables and hardware use marine-grade 304 stainless steel, lab-tested against Singapore's monsoon rain, coastal salt spray and year-round humidity. Each cable is a 49-strand bundle around a sealed, self-lubricating core, so it never needs oiling.</p>",
+            "requires": "none",
+            "figure_1_value": "304",
+            "figure_1_label": "Stainless steel",
+            "figure_2_value": "49",
+            "figure_2_label": "Strands per cable"
+          }
+        },
+        "fn_app_voice": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-app-voice.jpg",
+            "icon": "phone",
+            "eyebrow": "Smart control",
+            "heading": "Control it from your phone",
+            "text": "<p>Raise, lower and switch functions from the Orlant app, wherever you are. The M6 also takes voice commands.</p>",
+            "requires": "app_control"
+          }
+        },
+        "fn_led": {
+          "type": "function",
+          "settings": {
+            "image": "shopify://shop_images/orlant-fn-led.jpg",
+            "icon": "bulb",
+            "eyebrow": "Lighting",
+            "heading": "Built-in LED panel light",
+            "text": "<p>Every model has an LED panel light built in, so the yard is lit while you hang and collect the laundry. The M6's panel is 3-tone.</p>",
+            "requires": "led_panel"
+          }
+        }
+      },
+      "block_order": [
+        "fn_airflow",
+        "fn_ec_motor",
+        "fn_uv_ioniser",
+        "fn_poles",
+        "fn_lifting",
+        "fn_protection",
+        "fn_ultra_thin",
+        "fn_cables",
+        "fn_app_voice",
+        "fn_led"
+      ],
+      "settings": {
+        "eyebrow": "How it works",
+        "heading": "Every function, explained",
+        "subheading": "",
+        "filter_by_product": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 72,
+        "padding_bottom": 72
+      }
     }
   },
   "order": [
     "hero",
     "trust_bar",
     "featured_models",
-    "why_smart",
+    "capabilities",
+    "functions",
     "compare",
-    "video",
     "testimonials",
     "faq",
     "final_cta"

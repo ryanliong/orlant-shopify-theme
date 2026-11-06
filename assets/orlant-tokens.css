@@ -488,3 +488,36 @@ body.overflow-hidden-desktop .orlant-wa-float {
 @media print {
   .orlant-wa-float { display: none; }
 }
+
+/* --- Point-form feature list (round 2, I) -------------------------------- */
+.orlant-points-block { margin: var(--orlant-space-sm) 0; }
+.orlant-points-block__heading {
+  margin: 0 0 1.2rem;
+  font-size: 1.3rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--orlant-accent);
+}
+.orlant-points { display: grid; gap: 0.9rem; margin: 0; padding: 0; }
+.orlant-points__item { display: flex; align-items: flex-start; gap: 1rem; font-size: 1.5rem; line-height: 1.5; }
+.orlant-points__icon { flex: 0 0 auto; display: inline-flex; margin-top: 0.15rem; color: var(--orlant-accent); }
+.orlant-points__icon .orlant-icon { width: 2rem; height: 2rem; }
+
+/* --- Product page price (round 2, I) ------------------------------------- */
+/* Larger price; on sale, the struck-through retail sits beside the gold sale
+   price and a "Save $X" line follows. Scoped to the product info column so
+   cards and the cart keep Dawn's sizes. */
+.product__info-container .price--large { font-size: 2.4rem; letter-spacing: 0.01em; }
+.product__info-container .price--large .price-item--regular,
+.product__info-container .price--large .price-item--sale { font-family: var(--font-heading-family); font-weight: var(--font-heading-weight); }
+.product__info-container .price--on-sale .price-item--sale { color: var(--orlant-accent); }
+.product__info-container .price--on-sale .price__sale .price-item--regular {
+  font-family: var(--font-body-family); font-weight: 400;
+  font-size: 1.7rem; color: rgba(var(--color-foreground), 0.6);
+}
+.orlant-save {
+  margin: 0.4rem 0 0;
+  font-size: 1.4rem; font-weight: 600; letter-spacing: 0.04em;
+  color: var(--orlant-accent);
+}
+@media screen and (min-width: 750px) {
+  .product__info-container .price--large { font-size: 3rem; }
+}

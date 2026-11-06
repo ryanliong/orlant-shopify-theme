@@ -1,0 +1,251 @@
+{%- comment -%}
+  Function blocks — one row per product function (round 2 change F).
+
+  Each row: an image (required, so the page never shows an empty frame), an
+  optional Shopify-hosted video that plays muted and looped while on screen,
+  then eyebrow, heading, text and up to three key figures. Sides alternate
+  down the page.
+
+  The same section runs on the product page with "Only show functions this
+  model has" ticked: each block can name the product spec it depends on, and
+  rows whose spec is missing or false on the current product are skipped.
+  One uploaded video therefore serves every model that has that function.
+{%- endcomment -%}
+
+{{ 'orlant-functions.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'orlant-functions.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign filter = false
+  if section.settings.filter_by_product and product
+    assign filter = true
+  endif
+  assign reveal = ''
+  if settings.animations_reveal_on_scroll
+    assign reveal = ' scroll-trigger animate--slide-in'
+  endif
+-%}
+
+{%- capture rows -%}
+  {%- assign shown = 0 -%}
+  {%- for block in section.blocks -%}
+    {%- liquid
+      if filter and block.settings.requires != 'none'
+        assign needed = product.metafields.orlant[block.settings.requires].value
+        if needed == blank or needed == false or needed == 0
+          continue
+        endif
+      endif
+      if block.settings.heading == blank
+        continue
+      endif
+      assign shown = shown | plus: 1
+      assign side = 'media-left'
+      assign remainder = shown | modulo: 2
+      if remainder == 0
+        assign side = 'media-right'
+      endif
+      assign alt = block.settings.image.alt | default: block.settings.heading
+    -%}
+    <article class="orlant-fn__row orlant-fn__row--{{ side }}{{ reveal }}" {{ block.shopify_attributes }}>
+      <div class="orlant-fn__media">
+        {%- if block.settings.video != blank -%}
+          {%- liquid
+            assign poster = block.settings.image | default: block.settings.video.preview_image
+          -%}
+          <orlant-autoplay-video class="orlant-fn__video-wrap">
+            <video
+              class="orlant-fn__video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              {% if poster != blank %}poster="{{ poster | image_url: width: 1400 }}"{% endif %}
+              aria-label="{{ alt | escape }}"
+            >
+              {%- for source in block.settings.video.sources -%}
+                {%- if source.mime_type == 'video/mp4' -%}
+                  <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                {%- endif -%}
+              {%- endfor -%}
+            </video>
+          </orlant-autoplay-video>
+        {%- elsif block.settings.image != blank -%}
+          {{
+            block.settings.image
+            | image_url: width: 1400
+            | image_tag:
+              loading: 'lazy',
+              class: 'orlant-fn__image',
+              sizes: '(min-width: 990px) 50vw, 100vw',
+              widths: '480, 720, 960, 1200, 1400',
+              alt: alt
+          }}
+        {%- else -%}
+          <div class="orlant-fn__placeholder" role="img" aria-label="{{ block.settings.heading | escape }}">
+            {%- render 'orlant-icon', icon: block.settings.icon -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="orlant-fn__text">
+        {%- if block.settings.eyebrow != blank -%}
+          <p class="orlant-fn__eyebrow">
+            <span class="orlant-fn__eyebrow-icon">{%- render 'orlant-icon', icon: block.settings.icon -%}</span>
+            {{ block.settings.eyebrow }}
+          </p>
+        {%- endif -%}
+        <h3 class="orlant-fn__heading h2">{{ block.settings.heading }}</h3>
+        {%- if block.settings.text != blank -%}
+          <div class="orlant-fn__body rte">{{ block.settings.text }}</div>
+        {%- endif -%}
+
+        {%- liquid
+          assign has_figures = false
+          if block.settings.figure_1_value != blank or block.settings.figure_2_value != blank or block.settings.figure_3_value != blank
+            assign has_figures = true
+          endif
+        -%}
+        {%- if has_figures -%}
+          <dl class="orlant-fn__figures">
+            {%- for i in (1..3) -%}
+              {%- liquid
+                assign value_key = 'figure_' | append: i | append: '_value'
+                assign label_key = 'figure_' | append: i | append: '_label'
+                assign value = block.settings[value_key]
+                assign label = block.settings[label_key]
+              -%}
+              {%- if value != blank -%}
+                <div class="orlant-fn__figure">
+                  <dt class="orlant-fn__figure-label">{{ label }}</dt>
+                  <dd class="orlant-fn__figure-value">{{ value }}</dd>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </dl>
+        {%- endif -%}
+      </div>
+    </article>
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- if rows != blank -%}
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+    <div class="orlant-fn page-width section-{{ section.id }}-padding">
+      {%- if section.settings.heading != blank or section.settings.eyebrow != blank -%}
+        <header class="orlant-fn__header{{ reveal }}">
+          {%- if section.settings.eyebrow != blank -%}
+            <p class="orlant-eyebrow">{{ section.settings.eyebrow }}</p>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="orlant-fn__title">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.subheading != blank -%}
+            <p class="orlant-fn__subtitle">{{ section.settings.subheading }}</p>
+          {%- endif -%}
+        </header>
+      {%- endif -%}
+      <div class="orlant-fn__list">{{ rows }}</div>
+    </div>
+  </div>
+{%- endif -%}
+
+{% render 'orlant-section-padding', section: section %}
+
+{% schema %}
+{
+  "name": "Orlant: function blocks",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 16,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How it works" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Every function, explained" },
+    { "type": "text", "id": "subheading", "label": "Subheading" },
+    {
+      "type": "checkbox",
+      "id": "filter_by_product",
+      "label": "Only show functions this model has",
+      "default": false,
+      "info": "For product pages. Each block's \"Show only if the model has\" setting decides whether it appears."
+    },
+    { "type": "color_scheme", "id": "color_scheme", "default": "scheme-1", "label": "Colour scheme" },
+    { "type": "header", "content": "Padding" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 64 }
+  ],
+  "blocks": [
+    {
+      "type": "function",
+      "name": "Function",
+      "settings": [
+        { "type": "header", "content": "Media" },
+        { "type": "image_picker", "id": "image", "label": "Image", "info": "Always set an image. When a video is added, the image is shown until the video plays." },
+        { "type": "video", "id": "video", "label": "Video (optional)", "info": "Upload in Content → Files first. Plays muted and looped while on screen; not on devices set to reduce motion." },
+        { "type": "header", "content": "Text" },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "wind",
+          "options": [
+            { "value": "wind", "label": "Airflow" },
+            { "value": "flame", "label": "Heat" },
+            { "value": "sparkle", "label": "UV / ioniser" },
+            { "value": "rails", "label": "Poles" },
+            { "value": "lift", "label": "Lifting" },
+            { "value": "weight", "label": "Load" },
+            { "value": "shield", "label": "Protection" },
+            { "value": "phone", "label": "App" },
+            { "value": "mic", "label": "Voice" },
+            { "value": "bulb", "label": "Light" },
+            { "value": "thin", "label": "Ultra-thin" },
+            { "value": "cable", "label": "Cables" },
+            { "value": "quiet", "label": "Quiet" },
+            { "value": "display", "label": "Display" },
+            { "value": "tool", "label": "Installation" }
+          ]
+        },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "richtext", "id": "text", "label": "Text" },
+        { "type": "header", "content": "Key figures" },
+        { "type": "text", "id": "figure_1_value", "label": "Figure 1", "info": "e.g. \"6\" or \"55 kg\"" },
+        { "type": "text", "id": "figure_1_label", "label": "Figure 1 label" },
+        { "type": "text", "id": "figure_2_value", "label": "Figure 2" },
+        { "type": "text", "id": "figure_2_label", "label": "Figure 2 label" },
+        { "type": "text", "id": "figure_3_value", "label": "Figure 3" },
+        { "type": "text", "id": "figure_3_label", "label": "Figure 3 label" },
+        { "type": "header", "content": "Product pages" },
+        {
+          "type": "select",
+          "id": "requires",
+          "label": "Show only if the model has",
+          "default": "none",
+          "info": "Used when the section's \"Only show functions this model has\" is ticked.",
+          "options": [
+            { "value": "none", "label": "Every model" },
+            { "value": "sterilisation", "label": "UV disinfection" },
+            { "value": "ionizer", "label": "Ioniser" },
+            { "value": "app_control", "label": "App control" },
+            { "value": "voice_control", "label": "Voice control" },
+            { "value": "ultra_thin_cm", "label": "Ultra-thin body" },
+            { "value": "led_panel", "label": "LED panel light" },
+            { "value": "function_display", "label": "Function display" },
+            { "value": "bidirectional_protection", "label": "Bidirectional resistance protection" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Orlant: function blocks",
+      "blocks": [
+        { "type": "function", "settings": { "heading": "Hot and cold airflow", "icon": "wind" } },
+        { "type": "function", "settings": { "heading": "UV disinfection and ioniser", "icon": "sparkle" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
