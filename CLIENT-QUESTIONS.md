@@ -11,13 +11,14 @@ forwarded as-is. Kept up to date as answers come in.
 fixed: new questions take the next free number so the client's copy stays
 valid.
 
-Last updated: 31 Oct 2026 (H2 catalogue reviewed)
+Last updated: 6 Nov 2026. Remaining open questions consolidated into
+CLIENT-QUESTIONS-ROUND-2.md, to be sent in one go at the client's request.
 
 ---
 
 ## Brand
 
-- [ ] **1. Is the rebrand to ASTRA confirmed, and when does it take effect?**
+- [x] **1. Is the rebrand to ASTRA confirmed, and when does it take effect?**
       We received the ASTRA logo, but the 2026 brochure and the current website
       both still say ORLANT. Will the domain change too?
       *Blocks: logo, store name, footer, email and checkout branding.*
@@ -25,12 +26,14 @@ Last updated: 31 Oct 2026 (H2 catalogue reviewed)
       for now — the new site is a future plan — so the site stays ORLANT until
       they confirm. Spelling to confirm too: the logo file says ASTRA, the H2
       catalogue says "M6L ASTAR".*
+      **Answered 6 Nov: no rebrand on this project. The site stays ORLANT. ASTRA would be a separate future project, if the client is happy with this one.**
 
-- [ ] **2. Should the website colours follow the ASTRA logo?**
+- [x] **2. Should the website colours follow the ASTRA logo?**
       The ASTRA logo is black and red. The preview we shared uses purple. If the
       brand is moving to ASTRA, do you want the site re-coloured to match, or keep
       the purple? Brand guidelines or exact colour codes would settle it.
       *Blocks: the whole colour scheme.*
+      **Answered 6 Nov: keep the purple colour scheme.**
 
 - [ ] **3. Could you send the logo as a vector file (SVG or AI)?**
       We have a JPG with a white background, which cannot sit on dark sections.
@@ -242,3 +245,23 @@ so they are not lost. If raised later, they take the next free number.
 - **Company details for payments.** *Not needed from the client: Ryan has
   access to the company's own Shopify account, which the site will move into,
   and payments may already be set up there. To check on that account.*
+
+---
+
+## Round 2 mapping (sent 6 Nov 2026)
+
+Every open question above went out as one consolidated list in
+`CLIENT-QUESTIONS-ROUND-2.md`. Record answers against the round 2 numbers.
+
+| Round 2 | From | | Round 2 | From |
+|---|---|---|---|---|
+| 1 X6 still sold | 5, 15, 17 | | 11 Installation online | 22 |
+| 2 E13EL | 12 | | 12 Page 7 claims | 35 |
+| 3 Prices | 9, 32 | | 13 Logo vector | 3 |
+| 4 SKUs and stock | 14 | | 14 Since 2005 / 31 years | 4 |
+| 5 S and L labels | 6 | | 15 Contact, showroom | 26 |
+| 6 M5 Bright White | 10, 25 | | 16 Social media | 27 |
+| 7 Colour names | 11 | | 17 D6 photos | 23, 30 |
+| 8 Eco mode | new | | 18 Banners without text | 24 |
+| 9 Installation space | 19 | | 19 Icons | 28, 29 |
+| 10 In the box | 21 | | 20 Catalogue editing note | 34 |
