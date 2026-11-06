@@ -8,20 +8,23 @@ Status: `ready` = can start · `blocked` = waiting on an input
 
 | # | Change | Status | Blocked on | Size |
 |---|---|---|---|---|
-| A | Black and gold colour scheme | blocked | Client confirms reversal of purple; Ryan's AI reference | Large |
+| A | Black and gold colour scheme | **on hold** | Ryan's decision, 6 Nov — purple stays for now | Large |
 | B | Logo in the header | blocked | Vector logo (round 2 Q13) | Small |
-| C | "Products" menu with series dropdown | ready* | *Line-up (round 2 Q1, Q2) only affects which items appear | Small |
+| C | "Products" menu with series dropdown | ready* | *Line-up (round 2 Q1, Q2) only affects which items appear. Admin task: Content → Menus | Small |
 | D | Floating WhatsApp button | ready* | *Confirmed number (round 2 Q15); placeholder until then | Small |
-| E | Mailing list pop-up | blocked | Incentive, consent wording, platform choice | Medium |
+| E | Mailing list pop-up | ready* | *Privacy policy for the consent link. Simple sign-up, no discount (6 Nov) | Small–medium |
 
-**Suggested order: A, then B–E.** The colour scheme decides how every other
-piece looks: the logo needs a version for a dark header, and the button,
-pop-up and dropdown all take their colours from it. Building them first means
-restyling them twice.
+**Order:** A is on hold, so B–E are built against the current purple scheme.
+If black and gold is picked up later, they restyle with it automatically,
+because they take their colours from the colour schemes rather than fixed
+values. Build them that way so this stays true.
 
 ---
 
 ## A. Black and gold colour scheme
+
+> **On hold (6 Nov).** Purple stays for now. Kept here so the plan is ready if
+> it is picked up again.
 
 **Request:** the current look is "a bit too monochrome". Lean into heavy
 black and gold for a premium feel. The client has no fixed preference; Ryan
@@ -156,8 +159,10 @@ site.
 3. **Settings** in Theme settings → Orlant: show or hide, label text, which
    side, and a "hide on these pages" option (cart by default).
 4. **Collisions on mobile:**
-   - On product pages the sticky add-to-cart bar takes the bottom of the
-     screen; the button moves up above it while the bar is showing.
+   - On phones, product pages show a full-width add-to-cart bar along the
+     bottom once the main Add to cart button scrolls out of view (desktop never
+     shows it). The button moves up above the bar while it is showing.
+     Everywhere else the bottom-right corner is free.
    - The mailing list pop-up (E) and the button must not overlap.
    - Clear of the iPhone home indicator (safe area).
 5. **Hidden entirely** when no number is set, as the product page button
@@ -180,8 +185,11 @@ from WhatsApp).
 
 **Request:** a "join our mailing list" pop-up when people arrive.
 
-**Decisions needed first:**
-1. **Incentive.** Pop-ups with an offer ("$30 off your first order",
+**Decided 6 Nov:** a simple "join our mailing list for updates" sign-up. No
+discount or other incentive.
+
+**Still needed:**
+1. ~~**Incentive.**~~ *Not needed — no discount.* Pop-ups with an offer ("$30 off your first order",
    "first to hear about roadshow deals") convert far better than a plain
    "join our list". Is there one? If it's a discount, the client must create
    the discount code.
@@ -205,7 +213,8 @@ from WhatsApp).
 | Reports | None | Sign-up stats |
 | Client edits it | In the theme editor | In the app |
 
-**Recommendation: Shopify Forms**, styled to match. It handles consent and
+**Recommendation: still Shopify Forms**, styled to match — even without a
+discount, it records PDPA consent properly and reports sign-ups. It handles consent and
 discounts properly and gives the client reporting, for less code to maintain.
 A custom pop-up only makes sense if Forms can't match the look closely
 enough.
@@ -234,11 +243,10 @@ accessibility checks, and Lighthouse SEO and accessibility hold their scores.
 They asked for questions in one batch, so these wait for the next round
 rather than going out now.
 
-1. **Colour scheme:** confirm moving from purple to black and gold, reversing
-   the 6 Nov decision. Should purple remain anywhere?
-2. **Logo:** please include a light (white or gold) version for the dark
-   header and footer, as well as the dark version.
-3. **Mailing list:** is there a sign-up offer? What will subscribers receive,
-   and how often? Who will send the emails?
+1. ~~Colour scheme~~ — *on hold; not asking for now.*
+2. **Logo:** please include a light (white) version for the dark footer, as
+   well as the dark version.
+3. **Mailing list:** what updates will subscribers receive (new models,
+   promotions, roadshow dates), roughly how often, and who will send them?
 4. **Privacy policy:** a mailing list needs one. Does Orlant have one we can
    use, or should we start from Shopify's template for them to review?
