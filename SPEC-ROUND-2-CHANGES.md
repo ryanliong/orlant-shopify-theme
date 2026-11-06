@@ -8,12 +8,12 @@ Status: `ready` = can start · `blocked` = waiting on an input
 
 | # | Change | Status | Blocked on | Size |
 |---|---|---|---|---|
-| A | Black and gold colour scheme + sans-serif fonts | **ready** | Confirmed by client 7 Nov. Ryan's AI reference still useful | Large |
+| A | Black and gold colour scheme + sans-serif fonts | **ready** | Confirmed by client 7 Nov. Palette taken from the H2 catalogue | Large |
 | B | Logo in the header | blocked | Vector logo (round 2 Q13) | Small |
 | C | "Products" menu with series dropdown | **done** | Ryan, in admin | Small |
-| D | Floating WhatsApp button | **done** | Built 7 Nov; number still the placeholder until round 2 Q15 | Small |
+| D | Floating WhatsApp button | **done** | Built and checked by Ryan on the live store; number still the placeholder until round 2 Q15 | Small |
 | E | Mailing list pop-up | ready | Simple sign-up, no discount. Privacy policy assumed to exist | Small–medium |
-| F | Home page: function blocks with video slots | ready | Videos filmed later by Ryan; placeholders until then | Large |
+| F | Home page: function blocks (image slot, video optional) | ready | Nereos screenshots received. Image or video decided per block later | Large |
 | G | Capabilities showcase (GoodLiving style) | ready | — | Medium |
 | H | Trust bar: more room | ready | — | Small |
 | I | Product page: point-form features, video slots, bigger price | ready* | *Sale price display depends on round 2 Q3 | Medium |
@@ -27,10 +27,11 @@ Rules for everything in F–J:
 - **No empty or white boxes.** Every image or video slot without content
   shows a placeholder: a product render or installation photo from the
   client's assets, never a blank frame or a stock placeholder.
-- **Video slots take Shopify-hosted video**, not pasted links: Ryan uploads
-  the file in Content → Files and picks it in the editor. The placeholder
-  image doubles as the video's poster frame, so swapping a video in needs no
-  other change.
+- **Every media slot is an image slot first.** Each slot can also take a
+  video, added later if the block suits one; the image then becomes the
+  video's poster frame, so adding a video needs no other change. Videos are
+  Shopify-hosted, not pasted links: Ryan uploads the file in Content → Files
+  and picks it in the editor.
 - Colours come from colour schemes, so they follow A.
 
 ---
@@ -38,11 +39,13 @@ Rules for everything in F–J:
 ## A. Black and gold colour scheme, and sans-serif fonts
 
 > **Confirmed by the client 7 Nov**, reversing the 6 Nov purple decision.
-> Ryan's AI reference image is still the best way to settle the exact gold
-> and how dark the pages go.
+> **Colour reference: the H2 catalogue** (Ryan's call, instead of an AI
+> image). The palette below is taken from the catalogue's own artwork.
 
 **Fonts (added 7 Nov):** move from the Playfair Display serif headings to a
-sans-serif with a technical feel. Body text is already sans-serif (Work Sans)
+sans-serif with a technical feel. The catalogue uses a bold, slightly
+rounded sans for its headings; it can't be identified from the file, so the
+shortlist aims for the same feel. Body text is already sans-serif (Work Sans)
 and can stay, or switch to match. Candidates are picked from Shopify's font
 library so the client can still change them in the editor; I'll shortlist
 2–3 options as screenshots of the home page heading and a product page for
@@ -64,20 +67,48 @@ matches how they already present the brand in print.
 tokens, not in individual pages, so this is a settings and token change, not a
 rebuild.
 
-1. **Agree the palette from the reference.** Starting proposal, to be adjusted
-   to the reference:
-   | Role | Proposal | Replaces |
-   |---|---|---|
-   | Base dark | near-black `#0E0D0B` (warm, not pure black) | plum-900 |
-   | Raised dark (cards, bands) | `#1A1815` | plum-700 |
-   | Gold, primary accent | `#C9A86A` (existing champagne) or a richer gold from the reference | plum as accent |
-   | Gold, hover / highlight | lighter gold | plum-500 |
-   | Light surface | warm off-white `#F7F4EE` | lavender |
-   | Text on light | `#1C1822` (existing ink) | — |
-2. **Decide the page rhythm.** All-dark pages get heavy and hard to read in
-   long sections such as specs and FAQ. Proposal: dark header, hero, comparison
-   table, CTA and footer; off-white bands for product details, FAQ and long
-   text. To be confirmed against the reference.
+1. **Palette, taken from the H2 catalogue.** The catalogue's text is
+   outlined artwork, so its fonts can't be read from the file, but its fill
+   colours can. What it uses:
+   - **Black backgrounds:** `#010102` and `#151515`, with gold sparkle and
+     light-streak imagery.
+   - **Warm dark brown** `#231916` behind panels.
+   - **Gold title bars** as a horizontal gradient: deep gold `#BB8C17` at
+     the ends, through `#D3B05C`, to near-white `#FCF0D5` in the centre, like
+     brushed metal. Black bold text on top.
+   - **Thin gold outlines** around each product's spec panel, and pale gold
+     `#F3E2BA` for small headings ("ORLANT Brand Promise").
+   - **Red price tags** for retail and promotional prices.
+
+   Theme palette from that:
+   | Role | Value | From the catalogue | Replaces |
+   |---|---|---|---|
+   | Base dark | `#0B0B0C` | page black, lifted a touch so it isn't pure black on screens | plum-900 |
+   | Raised dark (cards, bands) | `#1E1714` | the warm brown panels | plum-700 |
+   | Gold, primary accent and buttons | `#D3B05C` | mid-point of the gold bars | plum as accent |
+   | Gold, deep (borders, pressed) | `#BB8C17` | ends of the gold bars | — |
+   | Gold, pale (small headings on dark) | `#F3E2BA` | the pale gold headings | plum-500 |
+   | Gold gradient (feature bars, CTA band) | `#BB8C17 → #F3E2BA → #BB8C17` | the title bars | — |
+   | Text on dark | `#F2EFEA`, muted `#B9B3A8` | — | — |
+   | Light surface | warm off-white `#F7F4EE` | — | lavender |
+   | Text on light | `#1C1822` (existing ink) | — | — |
+   | Gold on light surfaces | `#8A6510` (darker gold) | — | — |
+
+   **Contrast, checked:** gold on black 9.5:1, gold on the brown cards
+   8.5:1, black text on gold buttons 9.5:1, muted text on black 9.4:1, dark
+   gold on off-white 4.8:1. All pass AA. Catalogue gold on white is only
+   3.1:1, which is why light sections use the darker gold.
+
+   **Red sale price:** the catalogue marks prices in red tags. For the sale
+   price on the product page (I) we keep it gold, not red, unless the client
+   asks; red would be the only non-gold colour on the site. To confirm when
+   the price display is shown to the client.
+2. **Decide the page rhythm.** The catalogue is black on every page, so the
+   site leans dark: header, hero, function blocks, capabilities, comparison
+   table, CTA and footer all dark. All-dark pages get heavy in long text, so
+   FAQ and policy pages use the off-white surface. Product pages stay dark,
+   with the spec table in a brown panel with a thin gold outline, as in the
+   catalogue.
 3. **Remap the 5 colour schemes** in theme settings, and the `--orlant-*`
    tokens in `assets/orlant-tokens.css`.
 4. **Fix the places that assume purple:** the hero gradient fallback
@@ -167,8 +198,9 @@ are not listed.
 
 ## D. Floating WhatsApp button
 
-> **Done 7 Nov.** Settings in Theme settings → Orlant. Uses the placeholder
-> number until the client confirms theirs (round 2 Q15).
+> **Done 7 Nov; checked by Ryan on the live store.** Settings in Theme
+> settings → Orlant. Uses the placeholder number until the client confirms
+> theirs (round 2 Q15).
 
 **Request:** a "message us" bubble at the bottom right that opens WhatsApp.
 
@@ -248,6 +280,13 @@ discounts properly and gives the client reporting, for less code to maintain.
 A custom pop-up only makes sense if Forms can't match the look closely
 enough.
 
+**Reference (Nereos):** a white card centred over a dimmed page: logo in a
+small circle, bold heading, two lines of pitch, email field, full-width black
+"Subscribe" button, and a consent line with the privacy policy link
+underneath. Ours follows that layout in the black and gold scheme: dark card,
+gold button, no prize or discount wording. On desktop it's a centred card as
+Nereos does; on phones it stays a slide-up panel (below).
+
 **Behaviour, either way:**
 - **Not on arrival.** Show after about 10 seconds or halfway down a page, and
   on desktop optionally when the cursor leaves the page. An instant pop-up is
@@ -270,23 +309,55 @@ accessibility checks, and Lighthouse SEO and accessibility hold their scores.
 ## F. Home page: function blocks with video slots
 
 **Request:** more blocks of information on the home page, following nereos.sg.
-**One function per block, each with a video slot**, filled with placeholders
-until Ryan films the videos. Image slots never left blank or white.
+**One function per block.** Image slots never left blank or white.
 
-**Need from Ryan:** nereos.sg blocks automated page reads and its home page
-has no video blocks, so I couldn't see the layout you mean. Send 2–3
-screenshots of the blocks you like, or the exact page URL.
+**Updated after Ryan's input:** not every block needs a video. **Each block
+gets an image placeholder**, and whether a block is better as an image or a
+video is decided later, block by block. A video can be dropped into any
+block without other changes.
+
+**Nereos home page, from Ryan's screenshots**, top to bottom:
+1. **Full-width video hero**: autoplaying video, big bold headline, a price
+   line ("From $1399 installed") and one dark button.
+2. **Trust row**: section heading, then 4 columns of a thin outline icon,
+   bold title and one supporting line, with a divider underneath.
+3. **Shop by category**: large image cards, one per product line.
+4. **"Why choose" cards**: 4 light grey rounded cards, each with a black
+   square icon tile, bold title and one line.
+5. **Customer video carousel**: portrait video cards (YouTube Shorts and
+   TikTok embeds) with arrow buttons.
+6. **"Loved by Singaporeans"**: photo carousel of customers next to the
+   product.
+7. **Reviews**: star rating summary ("based on 1,920+ reviews", Judge.me)
+   and review cards with photos.
+8. **Black footer** with 4 columns, social icons and a WhatsApp bubble.
+
+What carries over to Orlant:
+- **The rhythm:** short sections, each with one centred heading and a row of
+  equal cards or columns. Generous white space between sections. This is
+  what "give it more room" (H) means in practice.
+- **The video hero:** our hero section gets the same optional video slot,
+  with the current banner as its poster.
+- **Trust row and "why choose" cards:** these are the layouts for H and G.
+- **Not carried over yet:** the customer video carousel, the customer photo
+  carousel and the review widget all need real customer content (videos,
+  photos, a reviews app) that Orlant doesn't have yet. The section types
+  can be added when there's content; empty or invented testimonials would
+  hurt more than help.
+
+The function blocks themselves go beyond Nereos, whose home page has none:
+they come from the client's request for one block per function.
 
 **Approach:** a new section, `orlant-function-block`. It's a reusable row:
-video or image on one side, heading, short description and 2–3 key figures
-on the other, alternating sides down the page. It replaces the single
-"Why smart drying" split. Each block has:
-- **Video:** Shopify-hosted, autoplay muted and looped, with no sound and no
-  controls, like a moving photo. Plays only while on screen, and not at all
-  under reduced-motion settings (the poster shows instead).
-- **Poster / placeholder image:** pre-filled from the client's renders and
-  installation photos, chosen per function, so the page looks finished
-  before any filming.
+image (or video) on one side, heading, short description and 2–3 key
+figures on the other, alternating sides down the page. It replaces the
+single "Why smart drying" split. Each block has:
+- **Image:** required, pre-filled from the client's renders and installation
+  photos, chosen per function, so the page looks finished from day one.
+- **Video (optional):** Shopify-hosted, autoplay muted and looped, with no
+  sound and no controls, like a moving photo. When set, the image becomes
+  its poster. Plays only while on screen, and not at all under
+  reduced-motion settings (the image shows instead).
 - **Heading, text, figures** (e.g. "6 EC blowers", "2200 RPM").
 
 **Proposed blocks**, one per function, all from the H2 catalogue:
@@ -306,7 +377,7 @@ on the other, alternating sides down the page. It replaces the single
 Ten is a lot for one page; the order puts the strongest selling points
 first and the client can hide or reorder any of them in the editor.
 
-**Done when:** every block shows a relevant image; dropping a video into a
+**Done when:** every block shows a relevant image; adding a video to any
 block needs no other change; the page stays fast (videos load only near the
 screen, Lighthouse performance stays at or above 80).
 
@@ -338,8 +409,13 @@ blocks: the grid gives the summary, the blocks give the detail.
 
 **Request:** the "Local stock … Since 2005" strip looks squashed.
 
-**Approach:** more vertical padding (around double), more space between
-items, larger icons (from 26 to around 40 px), and title and supporting line
+**Reference:** Nereos' "Trusted Support From Purchase to Installation" row:
+a centred section heading, then 4 columns of a thin outline icon, bold title
+and one supporting line, with plenty of space around it and a thin divider
+below.
+
+**Approach:** add a section heading, more vertical padding (around double),
+more space between items, larger icons (from 26 to around 40 px), and title and supporting line
 on separate lines with more line height. Desktop stays 4 across; phones go
 from 2×2 to a single column if the 2×2 still feels tight.
 
