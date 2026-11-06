@@ -8,32 +8,53 @@ Status: `ready` = can start · `blocked` = waiting on an input
 
 | # | Change | Status | Blocked on | Size |
 |---|---|---|---|---|
-| A | Black and gold colour scheme | **on hold** | Ryan's decision, 6 Nov — purple stays for now | Large |
+| A | Black and gold colour scheme + sans-serif fonts | **ready** | Confirmed by client 7 Nov. Ryan's AI reference still useful | Large |
 | B | Logo in the header | blocked | Vector logo (round 2 Q13) | Small |
-| C | "Products" menu with series dropdown | ready* | *Line-up (round 2 Q1, Q2) only affects which items appear. Admin task: Content → Menus | Small |
-| D | Floating WhatsApp button | ready* | *Confirmed number (round 2 Q15); placeholder until then | Small |
-| E | Mailing list pop-up | ready* | *Privacy policy for the consent link. Simple sign-up, no discount (6 Nov) | Small–medium |
+| C | "Products" menu with series dropdown | **done** | Ryan, in admin | Small |
+| D | Floating WhatsApp button | **done** | Built 7 Nov; number still the placeholder until round 2 Q15 | Small |
+| E | Mailing list pop-up | ready | Simple sign-up, no discount. Privacy policy assumed to exist | Small–medium |
+| F | Home page: function blocks with video slots | ready | Videos filmed later by Ryan; placeholders until then | Large |
+| G | Capabilities showcase (GoodLiving style) | ready | — | Medium |
+| H | Trust bar: more room | ready | — | Small |
+| I | Product page: point-form features, video slots, bigger price | ready* | *Sale price display depends on round 2 Q3 | Medium |
+| J | Comparison table thumbnails | ready | — | Small |
 
-**Order:** A is on hold, so B–E are built against the current purple scheme.
-If black and gold is picked up later, they restyle with it automatically,
-because they take their colours from the colour schemes rather than fixed
-values. Build them that way so this stays true.
+**Order (updated 7 Nov):** A first — colours and fonts change the look of
+everything else, so building F–J against purple would mean judging them
+twice. Then F, G and I (the bulk of the visible change), then H, J and E.
+
+Rules for everything in F–J:
+- **No empty or white boxes.** Every image or video slot without content
+  shows a placeholder: a product render or installation photo from the
+  client's assets, never a blank frame or a stock placeholder.
+- **Video slots take Shopify-hosted video**, not pasted links: Ryan uploads
+  the file in Content → Files and picks it in the editor. The placeholder
+  image doubles as the video's poster frame, so swapping a video in needs no
+  other change.
+- Colours come from colour schemes, so they follow A.
 
 ---
 
-## A. Black and gold colour scheme
+## A. Black and gold colour scheme, and sans-serif fonts
 
-> **On hold (6 Nov).** Purple stays for now. Kept here so the plan is ready if
-> it is picked up again.
+> **Confirmed by the client 7 Nov**, reversing the 6 Nov purple decision.
+> Ryan's AI reference image is still the best way to settle the exact gold
+> and how dark the pages go.
+
+**Fonts (added 7 Nov):** move from the Playfair Display serif headings to a
+sans-serif with a technical feel. Body text is already sans-serif (Work Sans)
+and can stay, or switch to match. Candidates are picked from Shopify's font
+library so the client can still change them in the editor; I'll shortlist
+2–3 options as screenshots of the home page heading and a product page for
+you to choose from. Heavier weights for headings, generous letter-spacing on
+small uppercase labels, and numbers set in the same family so spec figures
+line up.
 
 **Request:** the current look is "a bit too monochrome". Lean into heavy
 black and gold for a premium feel. The client has no fixed preference; Ryan
 will produce an AI reference image to align on.
 
-**This reverses a decision.** On 6 Nov the client confirmed "Orlant and the
-purple colour scheme". Black and gold replaces that. Get it confirmed in
-writing, together with whether purple survives at all, before starting.
-This is the biggest change in the round, so it is the one not to redo.
+**Purple:** assumed to be dropped entirely. Confirm if any should survive.
 
 **Context:** their H2 catalogue is already black and gold, and its gold is
 close to the theme's existing champagne accent (`#C9A86A`). The direction
@@ -107,6 +128,8 @@ with "Orlant" as its accessible name.
 
 ## C. "Products" menu with a series dropdown
 
+> **Done by Ryan, 7 Nov**, in Content → Menus.
+
 **Request:** rename "Catalog" to "Products" and add a dropdown listing the
 series, each leading to that series' collection page.
 
@@ -143,6 +166,9 @@ are not listed.
 ---
 
 ## D. Floating WhatsApp button
+
+> **Done 7 Nov.** Settings in Theme settings → Orlant. Uses the placeholder
+> number until the client confirms theirs (round 2 Q15).
 
 **Request:** a "message us" bubble at the bottom right that opens WhatsApp.
 
@@ -188,7 +214,10 @@ from WhatsApp).
 **Decided 6 Nov:** a simple "join our mailing list for updates" sign-up. No
 discount or other incentive.
 
-**Still needed:**
+**Decided 7 Nov:** what subscribers receive is not a concern for now. The
+privacy policy is assumed to exist; the client is told one is needed.
+
+**Originally open (now settled):**
 1. ~~**Incentive.**~~ *Not needed — no discount.* Pop-ups with an offer ("$30 off your first order",
    "first to hear about roadshow deals") convert far better than a plain
    "join our list". Is there one? If it's a discount, the client must create
@@ -238,15 +267,154 @@ accessibility checks, and Lighthouse SEO and accessibility hold their scores.
 
 ---
 
+## F. Home page: function blocks with video slots
+
+**Request:** more blocks of information on the home page, following nereos.sg.
+**One function per block, each with a video slot**, filled with placeholders
+until Ryan films the videos. Image slots never left blank or white.
+
+**Need from Ryan:** nereos.sg blocks automated page reads and its home page
+has no video blocks, so I couldn't see the layout you mean. Send 2–3
+screenshots of the blocks you like, or the exact page URL.
+
+**Approach:** a new section, `orlant-function-block`. It's a reusable row:
+video or image on one side, heading, short description and 2–3 key figures
+on the other, alternating sides down the page. It replaces the single
+"Why smart drying" split. Each block has:
+- **Video:** Shopify-hosted, autoplay muted and looped, with no sound and no
+  controls, like a moving photo. Plays only while on screen, and not at all
+  under reduced-motion settings (the poster shows instead).
+- **Poster / placeholder image:** pre-filled from the client's renders and
+  installation photos, chosen per function, so the page looks finished
+  before any filming.
+- **Heading, text, figures** (e.g. "6 EC blowers", "2200 RPM").
+
+**Proposed blocks**, one per function, all from the H2 catalogue:
+| # | Function | Placeholder image |
+|---|---|---|
+| 1 | Rapid drying — EC cross-flow blowers, hot and cold airflow | M6L render, airflow side |
+| 2 | PTC heating | M6 render, underside |
+| 3 | UV disinfection and ioniser | M5 render, light panel |
+| 4 | 6-bar telescopic rails, full span | X6S/M6 render with rails extended |
+| 5 | One-touch lifting and height control | Installation photo, rack lowered |
+| 6 | Overweight alarm and bidirectional resistance protection | M6 render, frame detail |
+| 7 | App and voice control | Installation photo + app icon |
+| 8 | Ultra-thin 15 cm body | Installation photo flush to ceiling |
+| 9 | 304 stainless steel cables, corrosion resistance | Render close-up |
+| 10 | LED panel lighting | Installation photo, light on |
+
+Ten is a lot for one page; the order puts the strongest selling points
+first and the client can hide or reorder any of them in the editor.
+
+**Done when:** every block shows a relevant image; dropping a video into a
+block needs no other change; the page stays fast (videos load only near the
+screen, Lighthouse performance stays at or above 80).
+
+---
+
+## G. Capabilities showcase (GoodLiving style)
+
+**Request:** show specs and capabilities the way goodliving.sg does.
+
+GoodLiving uses an **icon grid**: 8 cards, each with an icon, a bold title
+and one line of text, plus a separate "why trust us" row.
+
+**Approach:** a new section, `orlant-capabilities`:
+1. **Headline figures row:** 4 large numbers with labels, e.g. **55 kg** max
+   load, **2200 RPM** blowers, **15 cm** ultra-thin, **5-year** motor
+   warranty.
+2. **Icon grid:** 8 cards, icon + title + one line. The client's feature icons
+   are white on transparent, so on the black theme they finally sit on the
+   background they were designed for.
+3. Content is picked per block in the editor; the home page gets
+   range-wide capabilities.
+
+On the home page it sits after the hero and trust bar, before the function
+blocks: the grid gives the summary, the blocks give the detail.
+
+---
+
+## H. Trust bar: give it more room
+
+**Request:** the "Local stock … Since 2005" strip looks squashed.
+
+**Approach:** more vertical padding (around double), more space between
+items, larger icons (from 26 to around 40 px), and title and supporting line
+on separate lines with more line height. Desktop stays 4 across; phones go
+from 2×2 to a single column if the 2×2 still feels tight.
+
+---
+
+## I. Product page
+
+**1. Features as point form, in a fixed order.** Replace the paragraph
+description with a bullet list generated from the product's spec data, so
+every product lists features **in the same order**: the ones every model
+has first, model-specific ones last. Reading two product pages side by side,
+the top of the list matches and only the bottom differs.
+
+Proposed order (from the H2 catalogue):
+| Order | Feature | On which models |
+|---|---|---|
+| 1 | Poles (length range × number) | all |
+| 2 | PTC heaters × 4 | all |
+| 3 | EC cross-flow blowers (4 or 6) | all |
+| 4 | Overweight alarm (45 or 55 kg) | all |
+| 5 | Bidirectional resistance protection | all |
+| 6 | LED panel light (3-tone on M6) | all |
+| 7 | Ioniser | all |
+| 8 | UV disinfection | M5, M6 |
+| 9 | Mobile app control | M5, M6 |
+| 10 | Function display | M5, M6 |
+| 11 | Multiple support | D6 |
+| 12 | Voice control | M6 |
+| 13 | Ultra-thin 15 cm design | M6 |
+
+This needs three new spec fields the catalogue lists but the store doesn't
+hold yet: bidirectional resistance protection, function display and
+multiple support. **Question for the client:** what is "multiple support"
+on the D6? (Added to the next batch.)
+
+**2. Video slots.** Two kinds:
+- **The model's own videos** go in the product's media, next to its photos.
+  The gallery already plays video, so this needs no theme work; Ryan uploads
+  them in the product's admin page.
+- **Function videos** reuse the home page function blocks (F) below the
+  product details, filtered to the functions that model has. One filmed
+  video of the heater serves every model with a heater.
+
+**3. Price.** Larger price text (from around 18 to around 28 px) and, when a
+model is discounted, retail struck through beside the sale price and a
+"Save $X" label. **Whether models are discounted is round 2 Q3** (retail vs
+promotional); the display is built either way and shows only when a sale
+price is set.
+
+---
+
+## J. Comparison table thumbnails
+
+**Request:** small product images in "Compare the range", because names alone
+make it hard to tell what is being compared.
+
+**Approach:** each model's column header gets its main image (around 120 px,
+square, linked to the product) above the name and price. On phones, where
+the table scrolls sideways, the images shrink to around 72 px so the table
+doesn't get taller than the screen.
+
+---
+
 ## New questions for the client
 
 They asked for questions in one batch, so these wait for the next round
 rather than going out now.
 
+5. **"Multiple support" on the D6** — what does it refer to? (Needed for the
+   point-form feature list, I.)
+
 1. ~~Colour scheme~~ — *on hold; not asking for now.*
 2. **Logo:** please include a light (white) version for the dark footer, as
    well as the dark version.
-3. **Mailing list:** what updates will subscribers receive (new models,
-   promotions, roadshow dates), roughly how often, and who will send them?
-4. **Privacy policy:** a mailing list needs one. Does Orlant have one we can
-   use, or should we start from Shopify's template for them to review?
+3. ~~Mailing list contents~~ — *not asking for now (7 Nov).*
+4. **Privacy policy (inform, not ask):** the mailing list sign-up links to
+   Orlant's privacy policy, as Singapore's PDPA expects. We are assuming they
+   have one; please send it so it can be added to the site.
