@@ -396,3 +396,68 @@ a.orlant-size__option:hover { border-color: rgb(var(--color-foreground)); }
   display: flex; align-items: center; justify-content: center;
 }
 .orlant-features__icon { width: 100%; height: auto; display: block; }
+
+/* --- Floating WhatsApp button -------------------------------------------- */
+/* See snippets/orlant-whatsapp-float.liquid. Below drawers and modals (Dawn's
+   cart drawer is z-index 1000) and hidden while one is open. */
+.orlant-wa-float {
+  --orlant-wa-gap: 1.6rem;
+  position: fixed;
+  bottom: calc(var(--orlant-wa-gap) + env(safe-area-inset-bottom, 0px));
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  min-height: 5.6rem;
+  min-width: 5.6rem;
+  padding: 0 1.6rem;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  box-shadow: 0 0.6rem 2rem rgba(0, 0, 0, 0.22);
+  transition: transform var(--orlant-duration) var(--orlant-ease),
+    box-shadow var(--orlant-duration) var(--orlant-ease),
+    bottom var(--orlant-duration) var(--orlant-ease);
+}
+.orlant-wa-float--right { right: var(--orlant-wa-gap); }
+.orlant-wa-float--left { left: var(--orlant-wa-gap); }
+.orlant-wa-float:hover {
+  transform: translateY(-0.2rem);
+  box-shadow: 0 0.8rem 2.4rem rgba(0, 0, 0, 0.28);
+}
+.orlant-wa-float__icon { width: 2.6rem; height: 2.6rem; flex: 0 0 auto; }
+
+/* Phones: icon only, so it covers as little of the page as possible. */
+@media screen and (max-width: 749px) {
+  .orlant-wa-float { padding: 0; width: 5.6rem; }
+  .orlant-wa-float__label {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  /* Product pages show a full-width add-to-cart bar along the bottom once the
+     main button scrolls away; sit above it while it is showing. */
+  body:has(.orlant-sticky-atc:not([hidden])) .orlant-wa-float {
+    bottom: calc(var(--orlant-wa-gap) + 7.2rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Out of the way while the cart drawer, menu drawer or a modal is open. */
+body.overflow-hidden .orlant-wa-float,
+body.overflow-hidden-mobile .orlant-wa-float,
+body.overflow-hidden-tablet .orlant-wa-float,
+body.overflow-hidden-desktop .orlant-wa-float {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orlant-wa-float { transition: none; }
+  .orlant-wa-float:hover { transform: none; }
+}
+
+@media print {
+  .orlant-wa-float { display: none; }
+}

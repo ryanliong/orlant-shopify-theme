@@ -1,0 +1,24 @@
+{% comment %}
+  Outputs the wa.me link for the configured WhatsApp number, or nothing when no
+  number is set. Shared by every WhatsApp button so they cannot disagree on the
+  number or the greeting.
+
+  Accepts:
+  - product: {Object} Optional. Appends the product name and link to the greeting.
+
+  Usage:
+  {%- capture wa_url -%}{% render 'orlant-whatsapp-url', product: product %}{%- endcapture -%}
+{% endcomment %}
+
+{%- liquid
+  assign number = settings.orlant_whatsapp_number | strip | remove: '+' | remove: ' ' | remove: '-'
+  if number == blank
+    break
+  endif
+
+  assign message = settings.orlant_whatsapp_message | default: 'Hi Orlant, I would like to ask about'
+  if product
+    assign message = message | append: ' the ' | append: product.title | append: ' — ' | append: shop.url | append: product.url
+  endif
+-%}
+https://wa.me/{{ number }}?text={{ message | url_encode }}

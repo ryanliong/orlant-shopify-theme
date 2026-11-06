@@ -13,22 +13,12 @@
   {% render 'orlant-whatsapp-button', product: product %}
 {% endcomment %}
 
-{%- liquid
-  assign number = settings.orlant_whatsapp_number | strip | remove: '+' | remove: ' ' | remove: '-'
-  if number == blank
-    break
-  endif
+{%- capture wa_url -%}{%- render 'orlant-whatsapp-url', product: product -%}{%- endcapture -%}
+{%- assign wa_url = wa_url | strip -%}
 
-  assign message = settings.orlant_whatsapp_message | default: 'Hi Orlant, I would like to ask about'
-  if product
-    assign message = message | append: ' the ' | append: product.title
-    assign message = message | append: ' — ' | append: shop.url | append: product.url
-  endif
--%}
-
-{%- if number != blank -%}
+{%- if wa_url != blank -%}
   <a
-    href="https://wa.me/{{ number }}?text={{ message | url_encode }}"
+    href="{{ wa_url }}"
     class="button button--{{ style | default: 'secondary' }} orlant-whatsapp{% if full_width %} orlant-whatsapp--full{% endif %}"
     target="_blank"
     rel="noopener"

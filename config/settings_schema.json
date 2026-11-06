@@ -1493,6 +1493,49 @@
         "default": "Hi Orlant, I would like to ask about"
       },
       {
+        "type": "checkbox",
+        "id": "orlant_whatsapp_float_enable",
+        "label": "Show floating WhatsApp button",
+        "default": true,
+        "info": "A round button in the corner of every page. Hidden until a WhatsApp number is set."
+      },
+      {
+        "type": "text",
+        "id": "orlant_whatsapp_float_label",
+        "label": "Button label",
+        "default": "Chat with us",
+        "info": "Shown beside the icon on larger screens. Phones show the icon only."
+      },
+      {
+        "type": "select",
+        "id": "orlant_whatsapp_float_position",
+        "label": "Position",
+        "options": [
+          {
+            "value": "right",
+            "label": "Bottom right"
+          },
+          {
+            "value": "left",
+            "label": "Bottom left"
+          }
+        ],
+        "default": "right"
+      },
+      {
+        "type": "color_scheme",
+        "id": "orlant_whatsapp_float_color_scheme",
+        "label": "Button colour scheme",
+        "default": "scheme-3",
+        "info": "Uses the scheme's button colours."
+      },
+      {
+        "type": "checkbox",
+        "id": "orlant_whatsapp_float_hide_on_cart",
+        "label": "Hide on the cart page",
+        "default": true
+      },
+      {
         "type": "header",
         "content": "Delivery & installation message"
       },
