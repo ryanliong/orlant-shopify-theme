@@ -102,7 +102,15 @@
       {%- endif -%}
 
       {%- if section.settings.heading != blank -%}
-        <h1 class="orlant-hero__heading">{{ section.settings.heading }}</h1>
+        {%- liquid
+          assign hero_heading = section.settings.heading | escape
+          assign accent = section.settings.heading_accent | strip | escape
+          if accent != blank and hero_heading contains accent
+            assign accent_html = '<span class="orlant-hero__accent">' | append: accent | append: '</span>'
+            assign hero_heading = hero_heading | replace_first: accent, accent_html
+          endif
+        -%}
+        <h1 class="orlant-hero__heading">{{ hero_heading }}</h1>
       {%- endif -%}
 
       {%- if section.settings.subheading != blank -%}
@@ -172,6 +180,7 @@
     { "type": "header", "content": "Text" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Smart drying, made for Singapore homes" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Built to dry more" },
+    { "type": "text", "id": "heading_accent", "label": "Word(s) to show in gold", "info": "Must appear in the heading exactly as typed, e.g. \"dry\"." },
     { "type": "richtext", "id": "subheading", "label": "Subheading", "default": "<p>Ceiling-mounted smart drying racks with heated airflow and sterilisation. Local stock, fast delivery and on-site technical support.</p>" },
     {
       "type": "select",

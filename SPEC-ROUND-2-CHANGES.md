@@ -38,8 +38,16 @@ Rules for everything in F–J:
 
 ## A. Black and gold colour scheme, and sans-serif fonts
 
-> **Built.** Waiting on the client's approval of the home page and one product
-> page. What was done:
+> **Superseded by the agency's refined sample**
+> (`orlant_gold_black_refined_v2.html`): flat gold `#D4AF37` on `#0A0A0A`,
+> `#111` panels with `#222` hairlines, square corners, gold header hairline
+> and wordmark, Manrope + Inter. The catalogue gradient, brown panels and
+> Saira below are replaced; README has the current palette. The sample's
+> buttons render white only because the artifact host's stylesheet overrides
+> them; its own CSS specifies a solid gold primary and gold-outline card
+> buttons, which is what the theme uses.
+>
+> **First build (7 Nov), for the record.** What was done:
 > - **Fonts: Saira** (bold headings, regular body), the closest match in
 >   Shopify's font library to the catalogue's lettering (compared against
 >   Titillium Web, Chakra Petch, Rajdhani and Barlow). The client can still

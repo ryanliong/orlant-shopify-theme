@@ -159,24 +159,15 @@
 }
 
 /*
-  No-media fallback.
-
-  A black field with a soft gold glow, echoing the catalogue's black pages with
-  gold light streaks, rather than a stock placeholder: Dawn's placeholders
-  depict apparel, which is the wrong category for this brand and reads as
-  unfinished. The hero is deeper black than the gold announcement bar above,
-  so the two bands have a clear edge. Text: off-white 17:1, gold 9.5:1.
+  No-media fallback: plain near-black, as in the agency's refined sample,
+  rather than a stock placeholder (Dawn's depict apparel). Text: 17:1;
+  gold accent 9.4:1.
 */
 .orlant-hero--no-media .orlant-hero__media {
-  background-color: #050506;
-  background-image:
-    radial-gradient(90rem 60rem at 78% 18%, rgba(211, 176, 92, 0.16) 0%, rgba(211, 176, 92, 0) 62%),
-    radial-gradient(70rem 50rem at 12% 92%, rgba(30, 23, 20, 0.95) 0%, rgba(30, 23, 20, 0) 64%),
-    linear-gradient(152deg, #050506 0%, #0b0b0c 48%, #1e1714 100%);
+  background-color: var(--orlant-black);
 }
 
-/* One gold hairline across the foot — the brand's premium accent,
-   used as a rule rather than a fill, per the palette notes. */
+/* A #222 hairline across the foot, as under the sample's hero. */
 .orlant-hero--no-media .orlant-hero__media::after {
   content: '';
   position: absolute;
@@ -184,11 +175,8 @@
   right: 0;
   bottom: 0;
   height: 0.1rem;
-  background: linear-gradient(
-    to right,
-    rgba(211, 176, 92, 0) 0%,
-    rgba(211, 176, 92, 0.7) 22%,
-    rgba(211, 176, 92, 0.7) 78%,
-    rgba(211, 176, 92, 0) 100%
-  );
+  background: var(--orlant-line);
 }
+
+/* One highlighted word in the headline, as in the agency sample. */
+.orlant-hero__accent { color: var(--orlant-gold); }

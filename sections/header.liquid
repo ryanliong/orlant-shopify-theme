@@ -192,7 +192,7 @@
         --color-foreground: {{ overlay_fg.red }}, {{ overlay_fg.green }}, {{ overlay_fg.blue }};
       {%- endif %}
       background: transparent;
-      border-bottom-color: transparent;
+      {%- comment -%} The gold hairline stays, as in the agency's refined sample. {%- endcomment -%}
     }
 
     .orlant-header--can-overlay {

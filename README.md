@@ -48,7 +48,7 @@ are obvious against Dawn's own files.
 
 | Section | Used on | Notes |
 |---|---|---|
-| `orlant-hero` | Home | Image or muted looping video. Video is desktop-only; a separate mobile image is used instead. Falls back to a black field with a soft gold glow when no media is set. |
+| `orlant-hero` | Home | Image or muted looping video. Video is desktop-only; a separate mobile image is used instead. Falls back to plain near-black with a hairline when no media is set. "Word(s) to show in gold" highlights part of the headline. |
 | `orlant-trust-bar` | Home, About, Contact | 3–4 icon + text items, optional heading |
 | `orlant-capabilities` | Home | Up to 4 headline figures over a grid of icon cards (GoodLiving style) |
 | `orlant-functions` | Home, Product | One row per function: image (required), optional Shopify-hosted video, heading, text, up to 3 figures; sides alternate. On the product page "Only show functions this model has" hides rows whose spec the model lacks (each block's "Show only if the model has"). |
@@ -134,20 +134,20 @@ product shows fewer tabs rather than empty ones.
 
 | Scheme | Background | Text | Buttons | Use |
 |---|---|---|---|---|
-| 1 Black | `#0B0B0C` | off-white `#F2EFEA` | gold, black label | Default: header, most sections |
-| 2 Brown panel | `#1E1714` | off-white | gold, black label | Bands and cards: trust bar, comparison, product cards, feature tiles |
-| 3 Deep black | `#050506` | off-white | gold, black label | Hero, CTA, footer, header over the hero, WhatsApp button |
-| 4 Gold | brushed-gold gradient | black | black, pale gold label | Announcement bar, sale badge |
-| 5 Ivory | `#F7F4EE` | ink `#1C1822` | black, pale gold label | Long text: FAQ page |
+| 1 Black | `#0A0A0A` | `#F2F2F2` | gold `#D4AF37`, black label; gold outline secondary | Default: header, most sections |
+| 2 Panel | `#111111` | `#F2F2F2` | as 1 | Bands and cards: announcement bar, trust bar, comparison, product cards |
+| 3 Black | `#0A0A0A` | `#F2F2F2` | as 1 | Hero, CTA, footer, header over the hero, WhatsApp button |
+| 4 Gold | `#D4AF37` | black | black, gold label | Sale badge |
+| 5 Ivory | `#F7F4EE` | ink `#1C1822` | black, gold label | Spare light scheme (not used; gold text is never put on it) |
 
-Palette (from the client's H2 catalogue): black `#0B0B0C` · brown `#1E1714` ·
-gold `#D3B05C` · deep gold `#BB8C17` · pale gold `#F3E2BA` · dark gold
-`#8A6510` (on light backgrounds only) · ivory `#F7F4EE` · ink `#1C1822`.
-Fonts: Saira bold headings, Saira regular body.
+Look and type follow the agency's refined sample (`orlant_gold_black_refined_v2`):
+flat metallic gold `#D4AF37` (hover `#E4BF4A`) on near-black, `#111`
+panels with `#222` hairlines, `#1A1A1A` image wells, square corners, a gold
+hairline under the header and a gold spaced-out wordmark. Fonts: **Manrope 600**
+headings, **Inter 400** body (both in Shopify's font library).
 
-All pairs meet WCAG AA: gold on black 9.5:1, gold on brown 8.5:1, black on
-gold buttons 9.5:1. Catalogue gold on white is only 3.05:1, so gold text is
-never used on light backgrounds; scheme 5 uses dark gold instead.
+Contrast: gold on black 9.4:1, black on gold buttons 9.4:1, body text 17:1,
+muted `#A8A8A8` 8.6:1.
 
 > Icons, hairlines, eyebrows and focus rings use `--orlant-accent`, which is
 > set per scheme in `assets/orlant-tokens.css`: gold on schemes 1–3, black on

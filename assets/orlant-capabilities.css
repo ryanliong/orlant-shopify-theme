@@ -27,13 +27,15 @@
   display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.8rem;
   padding: var(--orlant-space-md) var(--orlant-space-sm);
   border-radius: var(--orlant-radius-card);
-  background: rgba(var(--color-foreground), 0.04);
-  border: 0.1rem solid rgba(211, 176, 92, 0.22);
+  background: var(--orlant-surface);
+  border: 0.1rem solid var(--orlant-line);
+  transition: border-color var(--orlant-duration) var(--orlant-ease);
 }
+.orlant-cap__card:hover { border-color: var(--orlant-gold); }
 .orlant-cap__icon {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 5.2rem; height: 5.2rem; border-radius: 1rem; margin-bottom: 0.4rem;
-  background: var(--orlant-gold); background-image: var(--orlant-gold-gradient);
+  width: 5.2rem; height: 5.2rem; margin-bottom: 0.4rem;
+  background: var(--orlant-gold);
   color: var(--orlant-black);
 }
 .orlant-cap__icon .orlant-icon { width: 2.6rem; height: 2.6rem; }

@@ -3,7 +3,7 @@
   width: min(48rem, calc(100vw - 3.2rem));
   max-height: calc(100vh - 3.2rem);
   padding: var(--orlant-space-lg) var(--orlant-space-md) var(--orlant-space-md);
-  border: 0.1rem solid rgba(211, 176, 92, 0.4);
+  border: 0.1rem solid var(--orlant-line);
   border-radius: var(--orlant-radius-card);
   background: rgb(var(--color-background));
   color: rgb(var(--color-foreground));
@@ -15,7 +15,7 @@
 .orlant-popup::before {
   content: '';
   position: absolute; left: 0; right: 0; top: 0; height: 0.3rem;
-  background: var(--orlant-gold-gradient);
+  background: var(--orlant-gold);
 }
 
 .orlant-popup__close {

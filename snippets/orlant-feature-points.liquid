@@ -34,7 +34,7 @@
   {%- if ec != blank and ec > 0 -%}<li>{{ ec }} EC cross-flow blowers</li>{%- endif -%}
   {%- if load != blank -%}<li>Overweight alarm, {{ load }} kg maximum load</li>{%- endif -%}
   {%- if mf.bidirectional_protection.value == true -%}<li>Bidirectional resistance protection</li>{%- endif -%}
-  {%- if led != blank -%}<li>{{ led | capitalize | replace: 'Led ', 'LED ' }}</li>{%- endif -%}
+  {%- if led != blank -%}<li>{{ led }}</li>{%- endif -%}
   {%- if mf.ionizer.value == true -%}<li>Ioniser</li>{%- endif -%}
   {%- if steril == 'UV' -%}<li>UV disinfection</li>{%- elsif steril == 'Plasma' -%}<li>Plasma sterilisation</li>{%- endif -%}
   {%- if mf.app_control.value == true -%}<li>Mobile app control</li>{%- endif -%}

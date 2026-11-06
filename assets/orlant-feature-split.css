@@ -24,10 +24,8 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   border-radius: var(--orlant-radius-media);
-  background-color: var(--orlant-brown);
-  background-image:
-    radial-gradient(40rem 30rem at 72% 22%, rgba(211, 176, 92, 0.18) 0%, rgba(211, 176, 92, 0) 64%),
-    linear-gradient(148deg, #1e1714 0%, #15110f 58%, #0b0b0c 100%);
+  background-color: var(--orlant-surface-2);
+  border: 0.1rem solid var(--orlant-line);
   position: relative;
 }
 
