@@ -124,14 +124,6 @@ send versions without text, or the layered design files?
 
 Until we have these we leave those icons off rather than show the wrong one.
 
-## For your print team
-
-**20. Editing note in the catalogue.**
-On page 3, under "Baby-Safe PVC Accessory Clamp Set", the printed text
-includes: *"replacing the overly literal 'Maternal-Infant Clamp Unit' for
-universal market comprehension"*. This looks like a note meant for the
-designer, and may be worth removing before the next print run.
-
 ---
 
 **No reply needed** — for your information:

@@ -251,7 +251,8 @@ so they are not lost. If raised later, they take the next free number.
 ## Round 2 mapping (sent 6 Nov 2026)
 
 Every open question above went out as one consolidated list in
-`CLIENT-QUESTIONS-ROUND-2.md`. Record answers against the round 2 numbers.
+`CLIENT-QUESTIONS-ROUND-2.md`, except 34 (the catalogue editing note),
+which Ryan removed before sending. Record answers against the round 2 numbers.
 
 | Round 2 | From | | Round 2 | From |
 |---|---|---|---|---|
@@ -264,4 +265,4 @@ Every open question above went out as one consolidated list in
 | 7 Colour names | 11 | | 17 D6 photos | 23, 30 |
 | 8 Eco mode | new | | 18 Banners without text | 24 |
 | 9 Installation space | 19 | | 19 Icons | 28, 29 |
-| 10 In the box | 21 | | 20 Catalogue editing note | 34 |
+| 10 In the box | 21 | | — | — |
