@@ -63,7 +63,7 @@ Every Orlant section applies its padding settings through
 `snippets/orlant-section-padding.liquid`.
 
 **Products dropdown (header).** The main-menu item titled "Products" opens a
-panel listing every model, grouped by series (M, X, D), with prices and a
+panel listing every model, grouped by series (M, X, D) and a
 "View all models" link — built from the series collections in
 `snippets/header-dropdown-menu.liquid`, so it needs no nested menu in admin
 and updates itself when models are added or drafted. Model order follows each

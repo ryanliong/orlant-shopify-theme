@@ -59,7 +59,8 @@
         "padding_top": 20,
         "padding_bottom": 20,
         "orlant_allow_overlay": true,
-        "orlant_overlay_color_scheme": "scheme-3"
+        "orlant_overlay_color_scheme": "scheme-3",
+        "orlant_models_show_price": false
       }
     }
   },
