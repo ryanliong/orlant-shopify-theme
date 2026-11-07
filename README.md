@@ -62,6 +62,16 @@ are obvious against Dawn's own files.
 Every Orlant section applies its padding settings through
 `snippets/orlant-section-padding.liquid`.
 
+**Products dropdown (header).** The main-menu item titled "Products" opens a
+panel listing every model, grouped by series (M, X, D), with prices and a
+"View all models" link — built from the series collections in
+`snippets/header-dropdown-menu.liquid`, so it needs no nested menu in admin
+and updates itself when models are added or drafted. Model order follows each
+collection's sort order. Desktop dropdowns open on hover
+(`assets/orlant-header-hover.js`); a mouse click on "Products" goes to its
+page, keyboard users open it with Enter. Settings: header section ›
+"Orlant: Products dropdown".
+
 Site-wide snippets rendered from `layout/theme.liquid`: the floating WhatsApp
 button (`orlant-whatsapp-float`) and the mailing list pop-up
 (`orlant-newsletter-popup`), both configured in Theme settings › Orlant.

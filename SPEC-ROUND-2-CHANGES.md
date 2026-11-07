@@ -166,6 +166,20 @@ need text contrast.
 
 ---
 
+## K. Products dropdown on hover
+
+> **Built.** Agency request, with GoodLiving's "Racks" menu as reference: a
+> text dropdown grouped by series. Hovering "Products" opens a panel with one
+> column per series (gold heading linking to the series collection), each
+> model with its price, and "View all models". The list is generated from the
+> `m-series`, `x-series` and `d-series` collections rather than a nested
+> admin menu (the live menu's Products item had no children, and the API
+> token has no navigation access), so it stays current by itself. Hover opens
+> on mouse/trackpad only; touch and keyboard keep tap/Enter to open, Escape to
+> close. The mobile drawer still links Products to the all-models page.
+
+---
+
 ## B. Logo in the header
 
 **Request:** replace the text "Orlant" in the header with the real logo once

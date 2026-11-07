@@ -7,11 +7,83 @@
 
 <nav class="header__inline-menu">
   <ul class="list-menu list-menu--inline" role="list">
+    {%- liquid
+      assign models_item = section.settings.orlant_models_menu_item | handleize
+      assign series_handles = section.settings.orlant_models_series | remove: ' ' | split: ','
+    -%}
     {%- for link in section.settings.menu.links -%}
       <li>
-        {%- if link.links != blank -%}
+        {%- if section.settings.orlant_models_menu and link.handle == models_item -%}
+          {%- comment -%}
+            Orlant: the Products item lists every model, grouped by series,
+            built from the series collections so it stays current as models
+            are added, drafted or renamed (round 2, agency request; GoodLiving's
+            "Racks" menu as reference). Opens on hover via orlant-header-hover.js.
+          {%- endcomment -%}
+          <header-menu class="orlant-models-menu">
+            <details id="Details-HeaderMenu-{{ forloop.index }}" data-orlant-href="{{ link.url }}">
+              <summary
+                id="HeaderMenu-{{ link.handle }}"
+                class="header__menu-item list-menu__item link focus-inset"
+              >
+                <span
+                  {%- if link.current or link.child_active or template.name == 'collection' or template.name == 'product' %}
+                    class="header__active-menu-item"
+                  {% endif %}
+                >
+                  {{- link.title | escape -}}
+                </span>
+                {{- 'icon-caret.svg' | inline_asset_content -}}
+              </summary>
+              <div
+                id="HeaderMenu-MenuList-{{ forloop.index }}"
+                class="header__submenu orlant-models-menu__panel color-{{ section.settings.menu_color_scheme }} gradient global-settings-popup"
+                tabindex="-1"
+              >
+                <ul class="orlant-models-menu__groups list-unstyled" role="list">
+                  {%- for handle in series_handles -%}
+                    {%- assign series = collections[handle] -%}
+                    {%- if series != blank and series.products_count > 0 -%}
+                      <li class="orlant-models-menu__group">
+                        <a href="{{ series.url }}" class="orlant-models-menu__series focus-inset">{{ series.title | escape }}</a>
+                        <ul class="orlant-models-menu__models list-unstyled" role="list">
+                          {%- for model in series.products limit: 12 -%}
+                            {%- liquid
+                              assign model_name = model.title
+                              if section.settings.orlant_models_strip != blank
+                                assign model_name = model_name | remove: section.settings.orlant_models_strip | strip
+                              endif
+                            -%}
+                            <li>
+                              <a
+                                href="{{ model.url }}"
+                                class="orlant-models-menu__model focus-inset{% if product and product.id == model.id %} orlant-models-menu__model--current{% endif %}"
+                                {% if product and product.id == model.id %}aria-current="page"{% endif %}
+                              >
+                                <span class="orlant-models-menu__name">{{ model_name | escape }}</span>
+                                {%- if section.settings.orlant_models_show_price -%}
+                                  <span class="orlant-models-menu__price">{{ model.price | money }}</span>
+                                {%- endif -%}
+                              </a>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+                {%- if section.settings.orlant_models_all_label != blank -%}
+                  <a href="{{ link.url }}" class="orlant-models-menu__all focus-inset">
+                    {{ section.settings.orlant_models_all_label | escape }}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                {%- endif -%}
+              </div>
+            </details>
+          </header-menu>
+        {%- elsif link.links != blank -%}
           <header-menu>
-            <details id="Details-HeaderMenu-{{ forloop.index }}">
+            <details id="Details-HeaderMenu-{{ forloop.index }}" data-orlant-href="{{ link.url }}">
               <summary
                 id="HeaderMenu-{{ link.handle }}"
                 class="header__menu-item list-menu__item link focus-inset"

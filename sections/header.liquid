@@ -125,6 +125,7 @@
 {%- endstyle -%}
 
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'orlant-header-hover.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   for block in section.blocks
@@ -639,6 +640,51 @@
       ],
       "default": "dropdown",
       "label": "t:sections.header.settings.menu_type_desktop.label"
+    },
+    {
+      "type": "header",
+      "content": "Orlant: Products dropdown"
+    },
+    {
+      "type": "checkbox",
+      "id": "orlant_models_menu",
+      "label": "List every model under the Products menu item",
+      "default": true,
+      "info": "Built from the series collections, so new or drafted models update the menu automatically. Desktop dropdowns open on hover."
+    },
+    {
+      "type": "text",
+      "id": "orlant_models_menu_item",
+      "label": "Menu item that opens the list",
+      "default": "Products",
+      "info": "Must match the item's title in the main menu."
+    },
+    {
+      "type": "text",
+      "id": "orlant_models_series",
+      "label": "Series collections, in order",
+      "default": "m-series, x-series, d-series",
+      "info": "Collection handles, separated by commas. Each becomes a group."
+    },
+    {
+      "type": "text",
+      "id": "orlant_models_strip",
+      "label": "Words to drop from model names",
+      "default": "Smart Drying Rack",
+      "info": "Keeps the list short: \"M6L Smart Drying Rack\" shows as \"M6L\"."
+    },
+    {
+      "type": "checkbox",
+      "id": "orlant_models_show_price",
+      "label": "Show prices",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "orlant_models_all_label",
+      "label": "Link at the bottom",
+      "default": "View all models",
+      "info": "Goes to the menu item's own link. Leave blank to hide."
     },
     {
       "type": "select",

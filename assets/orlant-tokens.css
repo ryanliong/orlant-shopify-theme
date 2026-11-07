@@ -588,3 +588,89 @@ h2, .h2, h3, .h3 { letter-spacing: 0; }
 /* Footer: hairline above, muted small print. */
 .footer { border-top: 0.1rem solid var(--orlant-line-soft); }
 .footer__copyright, .footer__copyright a { color: var(--orlant-text-muted); }
+
+/* --- Products dropdown (header) -------------------------------------------
+   See snippets/header-dropdown-menu.liquid and assets/orlant-header-hover.js.
+   One column per series; the panel's gold top edge continues the header's
+   gold hairline. */
+.orlant-models-menu { position: relative; }
+.orlant-models-menu__panel {
+  position: absolute;
+  top: calc(100% + var(--orlant-menu-gap, 0px));
+  left: 0;
+  min-width: 52rem;
+  padding: 2.4rem 2.8rem 2rem;
+  background-color: var(--orlant-surface);
+  border: 0.1rem solid var(--orlant-line);
+  border-top: 0.1rem solid var(--orlant-gold);
+}
+/* Invisible bridge over the gap under the menu item, so the pointer can
+   travel into the panel without it closing. */
+.orlant-models-menu__panel::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+  height: calc(var(--orlant-menu-gap, 0px) + 0.4rem);
+}
+.orlant-models-menu__panel:focus { outline: none; }
+.orlant-models-menu__groups {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(15rem, 1fr);
+  gap: 3.2rem;
+  margin: 0;
+  padding: 0;
+}
+.orlant-models-menu__series {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
+  color: var(--orlant-gold);
+  text-decoration: none;
+}
+.orlant-models-menu__series:hover { color: var(--orlant-gold-hover); }
+.orlant-models-menu__models { display: grid; margin: 0; padding: 0; }
+.orlant-models-menu__model {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2.4rem;
+  padding: 0.7rem 0;
+  border-bottom: 0.1rem solid var(--orlant-line-soft);
+  color: var(--orlant-text);
+  text-decoration: none;
+}
+.orlant-models-menu__models li:last-child .orlant-models-menu__model { border-bottom: 0; }
+.orlant-models-menu__name {
+  font-family: var(--font-heading-family);
+  font-weight: 600;
+  font-size: 1.5rem;
+  transition: color var(--orlant-duration) var(--orlant-ease);
+}
+.orlant-models-menu__price {
+  font-size: 1.3rem;
+  color: var(--orlant-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.orlant-models-menu__model:hover .orlant-models-menu__name,
+.orlant-models-menu__model--current .orlant-models-menu__name { color: var(--orlant-gold); }
+.orlant-models-menu__all {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.8rem;
+  padding-top: 1.4rem;
+  border-top: 0.1rem solid var(--orlant-line);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--orlant-gold);
+  text-decoration: none;
+}
+.orlant-models-menu__all:hover { color: var(--orlant-gold-hover); }
